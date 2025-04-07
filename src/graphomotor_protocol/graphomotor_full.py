@@ -8,7 +8,6 @@
 # ]
 # ///
 
-
 import pygame 
 import time
 import cv2
@@ -178,83 +177,83 @@ outlet.push_sample([3])
 ############### SYNC AUDIO TEST #################
 #################################################
 
-############### VOLUME ADJUSTMENT ###############
-font = pygame.font.Font(None, 60)
-text_lines = [
-    "VOLUME ADJUSTMENT",
-    "In the next step you will listen to an audio.",
-    "Once the audio starts playing increase the volume",
-    "as much as possible without being uncomfortable.",
-    "",
-    "",
-    "Press any key to continue"
-]
+# ############### VOLUME ADJUSTMENT ###############
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "VOLUME ADJUSTMENT",
+#     "In the next step you will listen to an audio.",
+#     "Once the audio starts playing increase the volume",
+#     "as much as possible without being uncomfortable.",
+#     "",
+#     "",
+#     "Press any key to continue"
+# ]
 
-# # Render and display each line of text
-# y_offset = 500
+# # # Render and display each line of text
+# # y_offset = 500
+# # for line in text_lines:
+# #     text_surface = font.render(line, True, (255, 255, 255))
+# #     screen.blit(text_surface, (1000, y_offset)) 
+# #     y_offset += font.get_linesize()
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
 # for line in text_lines:
 #     text_surface = font.render(line, True, (255, 255, 255))
-#     screen.blit(text_surface, (1000, y_offset)) 
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
 #     y_offset += font.get_linesize()
 
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
+# pygame.display.flip()
 
-pygame.display.flip()
+# # Event Trigger
+# outlet.push_sample([2])
 
-# Event Trigger
-outlet.push_sample([2])
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
 
-# Wait for a mouse click or key press
-waiting = True
-while waiting:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            waiting = False
-        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-            waiting = False
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+# # Event Trigger
+# outlet.push_sample([3])
 
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-# Event Trigger
-outlet.push_sample([3])
+# ##### Increase Volume (and play volume)
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Increase the volume to a loud, but comfortable level."
+# ]
 
-##### Increase Volume (and play volume)
-font = pygame.font.Font(None, 60)
-text_lines = [
-    "Increase the volume to a loud, but comfortable level."
-]
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
 
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
+# pygame.display.flip()
 
-pygame.display.flip()
+# # Play audio
+# audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav"
+# pygame.mixer.music.load(audio_file)
+# pygame.mixer.music.play(4)
+# while pygame.mixer.music.get_busy():
+#     pygame.time.Clock().tick(10)
+# outlet.push_sample([2])
+# print("send marker: volume_stim_start")
 
-# Play audio
-audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav"
-pygame.mixer.music.load(audio_file)
-pygame.mixer.music.play(4)
-while pygame.mixer.music.get_busy():
-    pygame.time.Clock().tick(10)
-outlet.push_sample([2])
-print("send marker: volume_stim_start")
-
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-# Send marker for the start of the experiment
-outlet.push_sample([4])
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+# # Send marker for the start of the experiment
+# outlet.push_sample([4])
 
 # ############### TRAINING PART 1: Synchrony Test ###############
 # font = pygame.font.Font(None, 60)
