@@ -4,7 +4,7 @@
 #   "pygame",
 #   "pylsl",
 #   "opencv-python",
-#   "moviepy"
+#   "ffpyplayer"
 # ]
 # ///
 
@@ -12,9 +12,8 @@ import pygame
 import time
 import cv2
 import numpy as np
-from moviepy import VideoFileClip
-import threading
 from pylsl import StreamInfo, StreamOutlet
+from ffpyplayer.player import MediaPlayer 
 
 # Initialize pygame 
 pygame.init()
@@ -748,53 +747,52 @@ while waiting:
         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
             waiting = False
 
-# Load the video using OpenCV
-video_path = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\Diary_of_a_Wimpy_Kid_Trailer.mp4"
-# --- Function to play audio using MoviePy ---
-def play_audio(video_path):
-    clip = VideoFileClip(video_path)
-    clip.audio.preview()  # This plays audio in real-time
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4"
 
-# Start audio playback in a separate thread
-audio_thread = threading.Thread(target=play_audio, args=(video_path,))
-audio_thread.start()
+def get_audio_player(video_path):
+    return MediaPlayer(video_path)
 
-cap = cv2.VideoCapture(video_path)
+def PlayVideo(video_path):
+    video = cv2.VideoCapture(video_path)
+    player = get_audio_player(video_path)
 
-# Get video properties
-frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-fps = cap.get(cv2.CAP_PROP_FPS) or 30  # fallback to 30 FPS if not available
+    # Get the video's frames per second (fps)
+    fps = video.get(cv2.CAP_PROP_FPS)
+    frame_time = 1 / fps # Time per frame in seconds
 
-# Set up Pygame window
-screen = pygame.display.set_mode((frame_width, frame_height))
-pygame.display.set_caption("Video + Audio Player")
+    # Add offset
+    sync_offset = 0.06
 
-# Main loop
-running = True
-clock = pygame.time.Clock()
-
-while running and cap.isOpened():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    while True:
+        grabbed, frame = video.read()
+        if not grabbed:
+            print("End of video")
             break
 
-    ret, frame = cap.read()
-    if not ret:
-        break  # End of video
+        # Get the audio frame and its timestamp
+        audio_frame, val = player.get_frame()
+        
+        # Synchronize video with audio 
+        if val != 'eof' and audio_frame is not None:
+            img, t = audio_frame # 't' is the timestamp of the audio frame
 
-    # Convert BGR (OpenCV) to RGB (Pygame)
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame = np.rot90(frame)  # Optional: rotate if needed
-    frame_surface = pygame.surfarray.make_surface(frame)
+            # wait until the audio and video are synchronized
+            time.sleep(max(0, t - player.get_pts() + sync_offset))
 
-    # Display the frame
-    screen.blit(frame_surface, (0, 0))
-    pygame.display.update()
+        # Display the video frame
+        cv2.imshow("Video", frame)
+        
+        # Exit on 'q' key press
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+    video.release()
+    cv2.destroyAllWindows()
 
-    # Maintain video framerate
-    clock.tick(fps)
+PlayVideo(video_path)
+
 
 # Clear the screen
 screen.fill((0, 0, 0))
