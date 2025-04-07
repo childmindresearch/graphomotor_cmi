@@ -1,9 +1,9 @@
 [project]
-name = "app-name"
+name = "graphomotor_cmi"
 version = "0.1.0"
-description = "A beautiful description."
+description = "This project contains scripts to run the Graphomotor Protocol at Harlem starting 2025-04."
 authors = [
-  {name = "Reinder Vos de Wael", email = "reinder.vosdewael@childmind.org"}
+  {name = "MoBI", email = "mobi@childmind.org"}
 ]
 license = "LGPL-2.1"
 readme = "README.md"
