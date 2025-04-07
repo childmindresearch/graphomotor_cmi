@@ -3,35 +3,6 @@ revision = 1
 requires-python = ">=3.12"
 
 [[package]]
-name = "app-name"
-version = "0.1.0"
-source = { editable = "." }
-
-[package.dev-dependencies]
-dev = [
-    { name = "mypy" },
-    { name = "pre-commit" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-]
-docs = [
-    { name = "pdoc" },
-]
-
-[package.metadata]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.13.0" },
-    { name = "pre-commit", specifier = ">=4.0.1" },
-    { name = "pytest", specifier = ">=8.3.4" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
-    { name = "ruff", specifier = ">=0.8.1" },
-]
-docs = [{ name = "pdoc", specifier = ">=15.0.0" }]
-
-[[package]]
 name = "cfgv"
 version = "3.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -105,6 +76,35 @@ sdist = { url = "https://files.pythonhosted.org/packages/0a/10/c23352565a6544bdc
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4d/36/2a115987e2d8c300a974597416d9de88f2444426de9571f4b59b2cca3acc/filelock-3.18.0-py3-none-any.whl", hash = "sha256:c401f4f8377c4464e6db25fff06205fd89bdd83b65eb0488ed1b160f780e21de", size = 16215 },
 ]
+
+[[package]]
+name = "graphomotor-cmi"
+version = "0.1.0"
+source = { editable = "." }
+
+[package.dev-dependencies]
+dev = [
+    { name = "mypy" },
+    { name = "pre-commit" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+]
+docs = [
+    { name = "pdoc" },
+]
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "mypy", specifier = ">=1.13.0" },
+    { name = "pre-commit", specifier = ">=4.0.1" },
+    { name = "pytest", specifier = ">=8.3.4" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
+    { name = "ruff", specifier = ">=0.8.1" },
+]
+docs = [{ name = "pdoc", specifier = ">=15.0.0" }]
 
 [[package]]
 name = "identify"
