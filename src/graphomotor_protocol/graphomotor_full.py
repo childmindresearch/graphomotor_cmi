@@ -11,7 +11,6 @@
 import pygame 
 import time
 import cv2
-import numpy as np
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
@@ -800,6 +799,5 @@ pygame.display.flip()
 # Event Trigger
 outlet.push_sample([3])
 
-# Cleanup
-cap.release()
+# Quit
 pygame.quit()
