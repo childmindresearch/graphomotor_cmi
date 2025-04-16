@@ -18,8 +18,8 @@ from ffpyplayer.player import MediaPlayer
 pygame.init()
 
 # Set up screen to display
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# screen = pygame.display.set_mode((1600,1200))
 screen_width, screen_height = screen.get_size()
 
 
@@ -771,6 +771,9 @@ def PlayVideo(video_path):
             print("End of video")
             break
 
+        # Resize the frame to fit the screen dimensions
+        frame = cv2.resize(frame, (screen_width, screen_height))
+        
         # Get the audio frame and its timestamp
         audio_frame, val = player.get_frame()
         
