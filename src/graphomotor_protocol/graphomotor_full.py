@@ -18,8 +18,8 @@ from ffpyplayer.player import MediaPlayer
 pygame.init()
 
 # Set up screen to display
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-# screen = pygame.display.set_mode((1600,1200))
+# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((1600,1200))
 screen_width, screen_height = screen.get_size()
 
 
@@ -31,145 +31,145 @@ outlet = StreamOutlet(info)
 # Event Trigger
 outlet.push_sample([1])
 
-#################################################
-############### EXPERIMENT START ################
-#################################################
-font = pygame.font.Font(None, 60)
-text_lines = [
-    "Welcome to the Graphomotor Protocol!",
-    "",
-    "",
-    "Press any key to continue"
-]
+# #################################################
+# ############### EXPERIMENT START ################
+# #################################################
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Welcome to the Graphomotor Protocol!",
+#     "",
+#     "",
+#     "Press any key to continue"
+# ]
 
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
-
-pygame.display.flip()
-
-# Wait for a mouse click or key press
-waiting = True
-while waiting:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            waiting = False
-        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-            waiting = False
-
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-# Event Trigger
-outlet.push_sample([3])
-
-#################################################
-############### RESTING STATE ###################
-#################################################
-font = pygame.font.Font(None, 60)
-text_lines = [
-    "You will now start the resting state task",
-    "Please keep your eyes on the cross at the center of the screen.",
-    "",
-    "",
-    "Press any key when you are ready to start."
-]
-
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
-
-pygame.display.flip()
-
-# Wait for a mouse click or key press
-waiting = True
-while waiting:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            waiting = False
-        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-            waiting = False
-
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-# Event Trigger
-outlet.push_sample([3])
-
-font = pygame.font.Font(None, 90)
-text_lines = [
-    "+"
-]
-
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
-
-pygame.display.flip()
-
-# to test use 10 secs
-pygame.time.delay(10000)
-# pygame.time.delay(300000) --> use this for actual experiment: 5 mins 
-
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-
-#################################################
-############### MINDLOGGER IPAD TASKS ###########
-#################################################
-font = pygame.font.Font(None, 60)
-text_lines = [
-    "Now it is time to play on the iPad!",
-    "Please listen to the research assistant.",
-    "",
-    "",
-    "Press any key once you finish the iPad tasks."
-]
-
-# # Render and display each line of text
-# y_offset = 500
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
 # for line in text_lines:
 #     text_surface = font.render(line, True, (255, 255, 255))
-#     screen.blit(text_surface, (1000, y_offset)) 
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
 #     y_offset += font.get_linesize()
 
-# Render and display each line of text centered on the screen
-y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-for line in text_lines:
-    text_surface = font.render(line, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-    screen.blit(text_surface, text_rect)
-    y_offset += font.get_linesize()
+# pygame.display.flip()
 
-pygame.display.flip()
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
 
-# Wait for a mouse click or key press
-waiting = True
-while waiting:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            waiting = False
-        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-            waiting = False
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+# # Event Trigger
+# outlet.push_sample([3])
 
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
-# Event Trigger
-outlet.push_sample([3])
+# #################################################
+# ############### RESTING STATE ###################
+# #################################################
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "You will now start the resting state task",
+#     "Please keep your eyes on the cross at the center of the screen.",
+#     "",
+#     "",
+#     "Press any key when you are ready to start."
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+# # Event Trigger
+# outlet.push_sample([3])
+
+# font = pygame.font.Font(None, 90)
+# text_lines = [
+#     "+"
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # to test use 10 secs
+# pygame.time.delay(10000)
+# # pygame.time.delay(300000) --> use this for actual experiment: 5 mins 
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# #################################################
+# ############### MINDLOGGER IPAD TASKS ###########
+# #################################################
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Now it is time to play on the iPad!",
+#     "Please listen to the research assistant.",
+#     "",
+#     "",
+#     "Press any key once you finish the iPad tasks."
+# ]
+
+# # # Render and display each line of text
+# # y_offset = 500
+# # for line in text_lines:
+# #     text_surface = font.render(line, True, (255, 255, 255))
+# #     screen.blit(text_surface, (1000, y_offset)) 
+# #     y_offset += font.get_linesize()
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+# # Event Trigger
+# outlet.push_sample([3])
 
 #################################################
 ############### SYNC AUDIO TEST #################
@@ -771,8 +771,8 @@ def PlayVideo(video_path):
             print("End of video")
             break
 
-        # Resize the frame to fit the screen dimensions
-        frame = cv2.resize(frame, (screen_width, screen_height))
+        # # Resize the frame to fit the screen dimensions
+        # frame = cv2.resize(frame, (screen_width, screen_height))
         
         # Get the audio frame and its timestamp
         audio_frame, val = player.get_frame()
