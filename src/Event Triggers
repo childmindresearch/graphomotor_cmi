@@ -30,3 +30,13 @@ Event Triggers
 28 - The Rey-Osterrieth Complex Figure: 20min recall Start
 29 - The Rey-Osterrieth Complex Figure: 20min recall Start End
 30 - Sync Audio Test Start
+31 - Speaker Rate Training Start
+32 - Speaker Rate Training End
+33 - Sync Test Practice Start
+34 - Sync Test Practice End
+35 - Sync Test Part 1 Start
+36 - Sync Test Part 1 End
+37 - Training Part 2 Start
+38 - Training Part 2 End
+39 - Sync Test Part 2 Start
+40 - Sync Test Part 2 End

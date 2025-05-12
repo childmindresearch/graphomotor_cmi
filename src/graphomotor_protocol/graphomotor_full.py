@@ -1083,13 +1083,6 @@ text_lines = [
     "Press any key to continue"
 ]
 
-# # Render and display each line of text
-# y_offset = 500
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     screen.blit(text_surface, (1000, y_offset)) 
-#     y_offset += font.get_linesize()
-
 # Render and display each line of text centered on the screen
 y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
 for line in text_lines:
@@ -1099,9 +1092,6 @@ for line in text_lines:
     y_offset += font.get_linesize()
 
 pygame.display.flip()
-
-# Event Trigger
-outlet.push_sample([2])
 
 # Wait for a mouse click or key press
 waiting = True
@@ -1115,8 +1105,6 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-# Event Trigger
-outlet.push_sample([3])
 
 ##### Increase Volume (and play volume)
 font = pygame.font.Font(None, 60)
@@ -1140,14 +1128,10 @@ pygame.mixer.music.load(audio_file)
 pygame.mixer.music.play(4)
 while pygame.mixer.music.get_busy():
     pygame.time.Clock().tick(10)
-outlet.push_sample([2])
-print("send marker: volume_stim_start")
 
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-# Send marker for the start of the experiment
-outlet.push_sample([4])
 
 ############### TRAINING PART 1: Synchrony Test ###############
 font = pygame.font.Font(None, 60)
@@ -1186,8 +1170,8 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-outlet.push_sample([2])
-print("pressed key")
+
+
 
 ############### Speaking Rate Training ###############
 font = pygame.font.Font(None, 60)
@@ -1222,9 +1206,9 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-outlet.push_sample([2])
-print("pressed key")
 
+# Event Trigger - Speaker Rate Training Start
+outlet.push_sample([31])
 
 #### Please pay attention to the rate and remain silent
 font = pygame.font.Font(None, 60)
@@ -1248,12 +1232,13 @@ pygame.mixer.music.load(audio_file)
 pygame.mixer.music.play()
 while pygame.mixer.music.get_busy():
     pygame.time.Clock().tick(10)
-outlet.push_sample([2])
-print("send marker: volume_stim_start")
 
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
+
+# Event Trigger - Speaker Rate Training End
+outlet.push_sample([32])
 
 
 ############### Now it is your turn! ###############
@@ -1289,6 +1274,9 @@ while waiting:
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
+# Event Trigger - Sync Test Practice Start
+outlet.push_sample([33])
+
 font = pygame.font.Font(None, 60)
 text_lines = [
     "Recording! Continue to whisper 'ta ta ta'."
@@ -1309,6 +1297,9 @@ pygame.time.delay(10000)
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
+
+# Event Trigger - Sync Test Practice End
+outlet.push_sample([34])
 
 ############### TESTING PART 1: SYNCHRONY TEST ###############
 font = pygame.font.Font(None, 60)
@@ -1350,8 +1341,9 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-outlet.push_sample([2])
-print("pressed key")
+
+# Event Trigger - Sync Test Part 1 Start
+outlet.push_sample([35])
 
 ############### Play Stimulus Audio ###############
 font = pygame.font.Font(None, 75)
@@ -1380,8 +1372,12 @@ while pygame.mixer.music.get_busy():
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
+# Event Trigger - Sync Test Part 1 End
+outlet.push_sample([36])
+
 ###############################################################
 ############### TRAINING PART 2: Synchrony Test ###############
+###############################################################
 font = pygame.font.Font(None, 60)
 text_lines = [
     "SYNCHRONY TEST",
@@ -1418,8 +1414,7 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-outlet.push_sample([2])
-print("pressed key")
+
 
 ############### Speaking Rate Training ###############
 font = pygame.font.Font(None, 60)
@@ -1454,9 +1449,9 @@ while waiting:
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
-outlet.push_sample([2])
-print("pressed key")
 
+# Event Trigger - Training Part 2 Start
+outlet.push_sample([37])
 
 #### Please pay attention to the rate and remain silent
 font = pygame.font.Font(None, 60)
@@ -1480,12 +1475,13 @@ pygame.mixer.music.load(audio_file)
 pygame.mixer.music.play()
 while pygame.mixer.music.get_busy():
     pygame.time.Clock().tick(10)
-outlet.push_sample([2])
-print("send marker: volume_stim_start")
 
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
+
+# Event Trigger - Training Part 2 End
+outlet.push_sample([38])
 
 
 ############### Now it is your turn! ###############
@@ -1521,6 +1517,9 @@ while waiting:
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
+# Event Trigger - Sync Test Part 2 Start
+outlet.push_sample([39])
+
 font = pygame.font.Font(None, 60)
 text_lines = [
     "Recording! Continue to whisper 'ta ta ta'."
@@ -1541,6 +1540,9 @@ pygame.time.delay(10000)
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
+
+# Event Trigger - Sync Test Part 2 Start
+outlet.push_sample([40])
 
 ############### TESTING PART 1: SYNCHRONY TEST ###############
 font = pygame.font.Font(None, 60)
@@ -1611,6 +1613,9 @@ while pygame.mixer.music.get_busy():
 # Clear the screen
 screen.fill((0, 0, 0))
 pygame.display.flip()
+
+
+
 
 #################################################
 ############### VIDEOS ##########################
