@@ -398,7 +398,7 @@ pygame.display.flip()
 outlet.push_sample([11])
 
 #######################
-# Alphabetic Writing: Forward
+# Alphabetic Writing: Forward 
 #######################
 
 ####### Start Alphabetic Writing: Forward  
@@ -433,14 +433,13 @@ while waiting:
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
-# Event Trigger - Rey-Osterrieth Complex Figure: Immediate Recall Task Start
-outlet.push_sample([10])
+# Event Trigger - Alphabetic Writing: Forward Start
+outlet.push_sample([12])
 
-####### ROC Figure: Immediate Recall 
+####### Alphabetic Writing: Forward 
 font = pygame.font.Font(None, 60)
 text_lines = [
-    "Rey-Osterrieth Complex Figure:",
-    "Immediate Recall.",
+    "Alphabetic Writing: Forward",
     "",
     "",
     "Press any key to when you are finished."
@@ -469,14 +468,601 @@ while waiting:
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
-# Event Trigger - Rey-Osterrieth Complex Figure: Immediate Recall Task Start End
-outlet.push_sample([11])
+# Event Trigger - Alphabetic Writing: Forward End
+outlet.push_sample([13])
+
+#######################
+# Alphabetic Writing: Backward
+#######################
+
+####### Start Alphabetic Writing: Backward   
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Alphabetic Writing: Backward",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Alphabetic Writing: Backward Start
+outlet.push_sample([14])
+
+####### Alphabetic Writing: Backward
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Alphabetic Writing: Backward",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Alphabetic Writing: Backward End
+outlet.push_sample([15])
+
+#######################
+# Spiral Dominant Hand: Tracing
+#######################
+
+####### Start Spiral Dominant Hand: Tracing   
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Spiral Dominant Hand: Tracing",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Dominant Hand: Tracing Start
+outlet.push_sample([16])
+
+####### Spiral Dominant Hand: Tracing
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Spiral Dominant Hand: Tracing",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Dominant Hand: Tracing End
+outlet.push_sample([17])
+
+#######################
+# Spiral Dominant Hand: Drawing from memory
+#######################
+
+####### Start Spiral Dominant Hand: Drawing from memory   
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Spiral Dominant Hand: Drawing from memory",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Dominant Hand: Drawing from memory Start
+outlet.push_sample([18])
+
+####### Spiral Dominant Hand: Drawing from memory
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Spiral Dominant Hand: Tracing",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Dominant Hand: Drawing from memory End
+outlet.push_sample([19])
 
 
+#######################
+# Spiral Non-Dominant Hand: Tracing
+#######################
 
+####### Start Spiral Non-Dominant Hand: Tracing   
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Spiral Non-Dominant Hand: Tracing",
+    "",
+    "Press any key to continue."
+]
 
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
 
+pygame.display.flip()
 
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Non-Dominant Hand: Tracing Start
+outlet.push_sample([20])
+
+####### Spiral Non-Dominant Hand: Tracing
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Spiral Dominant Hand: Tracing",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Non-Dominant Hand: Tracing End
+outlet.push_sample([21])
+
+#######################
+# Spiral Non-Dominant Hand: Drawing from memory
+#######################
+
+####### Start Spiral Non-Dominant Hand: Drawing from memory  
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Spiral Non-Dominant Hand: Drawing from memory",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Non-Dominant Hand: Drawing from memory Start
+outlet.push_sample([22])
+
+####### Spiral Non-Dominant Hand: Drawing from memory
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Spiral Non-Dominant Hand: Drawing from memory",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Spiral Non-Dominant Hand: Drawing from memory End
+outlet.push_sample([23])
+
+#######################
+# Digit Symbol Substitute Test: Transcription
+#######################
+
+####### Digit Symbol Substitute Test: Transcription 
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Digit Symbol Substitute Test: Transcription",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Digit Symbol Substitute Test: Transcription Start
+outlet.push_sample([24])
+
+####### Digit Symbol Substitute Test: Transcription
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Digit Symbol Substitute Test: Transcription",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Digit Symbol Substitute Test: Transcription End
+outlet.push_sample([25])
+
+#######################
+# Digit Symbol Substitute Test: Incidental Learning
+#######################
+
+####### Digit Symbol Substitute Test: Incidental Learning 
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "Digit Symbol Substitute Test: Incidental Learning",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Digit Symbol Substitute Test: Incidental Learning Start
+outlet.push_sample([26])
+
+####### Digit Symbol Substitute Test: Incidental Learning
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Digit Symbol Substitute Test: Incidental Learning",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Digit Symbol Substitute Test: Incidental Learning End
+outlet.push_sample([27])
+
+#######################
+# The Rey-Osterrieth Complex Figure: 20min recall 
+#######################
+
+####### The Rey-Osterrieth Complex Figure: 20min recall 
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "When you are ready, click next to begin",
+    "The Rey-Osterrieth Complex Figure: 20min recall",
+    "",
+    "Press any key to continue."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - The Rey-Osterrieth Complex Figure: 20min recall Start
+outlet.push_sample([28])
+
+####### The Rey-Osterrieth Complex Figure: 20min recall Start
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "The Rey-Osterrieth Complex Figure: 20min recall Start",
+    "",
+    "",
+    "Press any key to when you are finished."
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - The Rey-Osterrieth Complex Figure: 20min recall Start End
+outlet.push_sample([29])
 
 ################################################
 ############## SYNC AUDIO TEST #################

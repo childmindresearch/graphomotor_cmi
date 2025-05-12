@@ -11,3 +11,21 @@ Event Triggers
 9 - Rey-Osterrieth Complex Figure: Copy Task End
 10 - Rey-Osterrieth Complex Figure: Immediate Recall Task Start
 11 - Rey-Osterrieth Complex Figure: Immediate Recall Task End
+12 - Alphabetic Writing: Forward Start
+13 - Alphabetic Writing: Forward End
+14 - Alphabetic Writing: Backward Start
+15 - Alphabetic Writing: Backward End
+16 - Spiral Dominant Hand: Tracing Start
+17 - Spiral Dominant Hand: Tracing End
+18 - Spiral Dominant Hand: Drawing from memory Start
+19 - Spiral Dominant Hand: Drawing from memory End
+20 - Spiral Non-Dominant Hand: Tracing Start
+21 - Spiral Non-Dominant Hand: Tracing End
+22 - Spiral Non-Dominant Hand: Drawing from memory Start
+23 - Spiral Non-Dominant Hand: Drawing from memory End
+24 - Digit Symbol Substitute Test: Transcription Start
+25 -  Digit Symbol Substitute Test: Transcription End
+26 - Digit Symbol Substitute Test: Incidental Learning Start
+27 - Digit Symbol Substitute Test: Incidental Learning End
+28 - The Rey-Osterrieth Complex Figure: 20min recall Start
+29 - The Rey-Osterrieth Complex Figure: 20min recall Start End
