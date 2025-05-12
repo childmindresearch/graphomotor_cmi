@@ -1061,12 +1061,15 @@ while waiting:
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
-# Event Trigger - The Rey-Osterrieth Complex Figure: 20min recall Start End
+# Event Trigger - The Rey-Osterrieth Complex Figure: 20min recall End
 outlet.push_sample([29])
 
 ################################################
 ############## SYNC AUDIO TEST #################
 ################################################
+
+# Event Trigger - Sync Audio Test Start
+outlet.push_sample([30])
 
 ############### VOLUME ADJUSTMENT ###############
 font = pygame.font.Font(None, 60)
