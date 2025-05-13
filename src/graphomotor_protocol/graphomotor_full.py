@@ -1614,9 +1614,6 @@ while pygame.mixer.music.get_busy():
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
-
-
-
 #################################################
 ############### VIDEOS ##########################
 #################################################
@@ -1646,6 +1643,10 @@ while waiting:
             waiting = False
         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
             waiting = False
+
+# Load the JPEG background
+background_image = pygame.image.load("path/to/your/background.jpg")  # Replace with the path to your JPEG
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
 # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4"
