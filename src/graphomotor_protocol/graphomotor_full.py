@@ -14,7 +14,7 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated: 1:14pm")
+print("the script updated: 1:21pm")
 
 # Initialize pygame 
 pygame.init()
@@ -1718,42 +1718,41 @@ def PlayVideo(video_path):
 
     fps = video.get(cv2.CAP_PROP_FPS)
     frame_time = 1 / fps if fps > 0 else 1 / 30
-    sync_offset = 0.06
+    clock = pygame.time.Clock()
 
-    while True:
+    # Set video size (smaller than screen to see background)
+    video_width = int(screen_width * 0.8)
+    video_height = int(screen_height * 0.8)
+    video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
+
+    running = True
+    while running:
         grabbed, frame = video.read()
         if not grabbed:
             print("End of video")
             break
 
-        # Resize the frame to fit the screen dimensions
-        frame = cv2.resize(frame, (screen_width, screen_height))
+        # Resize the frame to fit the video area
+        frame = cv2.resize(frame, (video_width, video_height))
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
 
-        # Get the audio frame and its timestamp
+        # Get the audio frame (let ffpyplayer handle playback)
         audio_frame, val = player.get_frame()
-        if val != 'eof' and audio_frame is not None:
-            img, t = audio_frame
-            time.sleep(max(0, t - player.get_pts() + sync_offset))
 
-        # Blit background, then video frame
+        # Draw background, then video frame
         screen.blit(background_image, (0, 0))
-        screen.blit(frame_surface, (0, 0))
+        screen.blit(frame_surface, video_pos)
         pygame.display.flip()
 
         # Handle quit events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                video.release()
-                pygame.quit()
-                return
+                running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
-                video.release()
-                return
+                running = False
 
-        # Maintain frame rate
-        pygame.time.delay(int(frame_time * 1000))
+        clock.tick(fps)
 
     video.release()
 
