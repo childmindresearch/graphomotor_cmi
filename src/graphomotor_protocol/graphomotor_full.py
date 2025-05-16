@@ -1646,7 +1646,7 @@ while waiting:
 
 # Load the JPEG background
 background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor.jpg"
-background_image = pygame.image.loadbackground_image_path)
+background_image = background_image_path
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
