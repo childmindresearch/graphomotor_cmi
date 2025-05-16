@@ -14,7 +14,7 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated:")
+print("the script updated: 1:14pm")
 
 # Initialize pygame 
 pygame.init()
@@ -1646,15 +1646,68 @@ while waiting:
         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
             waiting = False
 
+#### OLD 
+# # Load the JPEG background
+# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor.jpg"
+# background_image = pygame.image.load(background_image_path)
+# screen.blit(background_image, (screen_width, screen_height))
+
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
+# # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4"
+# # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4"
+# # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4"
+
+# def get_audio_player(video_path):
+#     return MediaPlayer(video_path)
+
+# def PlayVideo(video_path):
+#     video = cv2.VideoCapture(video_path)
+#     player = get_audio_player(video_path)
+
+#     # Get the video's frames per second (fps)
+#     fps = video.get(cv2.CAP_PROP_FPS)
+#     frame_time = 1 / fps # Time per frame in seconds
+
+#     # Add offset
+#     sync_offset = 0.06
+
+#     while True:
+#         grabbed, frame = video.read()
+#         if not grabbed:
+#             print("End of video")
+#             break
+
+#         # # Resize the frame to fit the screen dimensions
+#         # frame = cv2.resize(frame, (screen_width, screen_height))
+        
+#         # Get the audio frame and its timestamp
+#         audio_frame, val = player.get_frame()
+        
+#         # Synchronize video with audio 
+#         if val != 'eof' and audio_frame is not None:
+#             img, t = audio_frame # 't' is the timestamp of the audio frame
+
+#             # wait until the audio and video are synchronized
+#             time.sleep(max(0, t - player.get_pts() + sync_offset))
+
+#         # Display the video frame
+#         cv2.imshow("Video", frame)
+        
+#         # Exit on 'q' key press
+#         if cv2.waitKey(1) & 0xFF == ord("q"):
+#             break
+#     video.release()
+#     cv2.destroyAllWindows()
+
+# PlayVideo(video_path)
+
+### New video player with BILT
 # Load the JPEG background
 background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor.jpg"
 background_image = pygame.image.load(background_image_path)
-screen.blit(background_image, (screen_width, screen_height)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))  # Ensure it fits
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4"
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4"
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4"
 
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
@@ -1663,11 +1716,8 @@ def PlayVideo(video_path):
     video = cv2.VideoCapture(video_path)
     player = get_audio_player(video_path)
 
-    # Get the video's frames per second (fps)
     fps = video.get(cv2.CAP_PROP_FPS)
-    frame_time = 1 / fps # Time per frame in seconds
-
-    # Add offset
+    frame_time = 1 / fps if fps > 0 else 1 / 30
     sync_offset = 0.06
 
     while True:
@@ -1676,30 +1726,38 @@ def PlayVideo(video_path):
             print("End of video")
             break
 
-        # # Resize the frame to fit the screen dimensions
-        # frame = cv2.resize(frame, (screen_width, screen_height))
-        
+        # Resize the frame to fit the screen dimensions
+        frame = cv2.resize(frame, (screen_width, screen_height))
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+
         # Get the audio frame and its timestamp
         audio_frame, val = player.get_frame()
-        
-        # Synchronize video with audio 
         if val != 'eof' and audio_frame is not None:
-            img, t = audio_frame # 't' is the timestamp of the audio frame
-
-            # wait until the audio and video are synchronized
+            img, t = audio_frame
             time.sleep(max(0, t - player.get_pts() + sync_offset))
 
-        # Display the video frame
-        cv2.imshow("Video", frame)
-        
-        # Exit on 'q' key press
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
+        # Blit background, then video frame
+        screen.blit(background_image, (0, 0))
+        screen.blit(frame_surface, (0, 0))
+        pygame.display.flip()
+
+        # Handle quit events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                video.release()
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                video.release()
+                return
+
+        # Maintain frame rate
+        pygame.time.delay(int(frame_time * 1000))
+
     video.release()
-    cv2.destroyAllWindows()
 
 PlayVideo(video_path)
-
 
 # Clear the screen
 screen.fill((0, 0, 0))
