@@ -14,6 +14,8 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
+print("the script updated:")
+
 # Initialize pygame 
 pygame.init()
 
@@ -1646,8 +1648,8 @@ while waiting:
 
 # Load the JPEG background
 background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor.jpg"
-background_image = background_image_path
-background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+background_image = pygame.image.load(background_image_path)
+screen.blit(background_image, (screen_width, screen_height)
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
 # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4"
