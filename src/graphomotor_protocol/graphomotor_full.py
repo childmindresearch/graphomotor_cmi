@@ -1703,7 +1703,7 @@ while waiting:
 
 ### New video player with BILT
 # Load the JPEG background
-background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor.jpg"
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
 background_image = pygame.image.load(background_image_path)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))  # Ensure it fits
 
