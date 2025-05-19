@@ -14,14 +14,14 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated: 1:21pm")
+print("the script updated: 9:57am")
 
 # Initialize pygame 
 pygame.init()
 
 # Set up screen to display
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# screen = pygame.display.set_mode((1600,1200))
 screen_width, screen_height = screen.get_size()
 
 
