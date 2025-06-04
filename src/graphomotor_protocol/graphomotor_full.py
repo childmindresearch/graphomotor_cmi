@@ -14,7 +14,7 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated: 9:57am")
+print("the script updated: 2:39pm")
 
 # Initialize pygame 
 pygame.init()
@@ -1703,11 +1703,13 @@ while waiting:
 
 ### New video player with BILT
 # Load the JPEG background
-background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
+# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
 background_image = pygame.image.load(background_image_path)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))  # Ensure it fits
 
-video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # path for HARLEM/MORGEN
+video_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # path for MIDTOWN/MOIRA
 
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
