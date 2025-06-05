@@ -36,7 +36,9 @@ Event Triggers
 34 - Sync Test Practice End
 35 - Sync Test Part 1 Start
 36 - Sync Test Part 1 End
-37 - Training Part 2 Start
-38 - Training Part 2 End
+37 - Speaker Rate Training Part 2 Start
+38 - Speaker Rate Training Part 2 End
 39 - Sync Test Part 2 Start
 40 - Sync Test Part 2 End
+41 - Video 1 Start
+42 - Video 1 End 
