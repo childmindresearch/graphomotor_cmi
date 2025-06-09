@@ -1749,7 +1749,7 @@ video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
 
-def PlayVideo(video_path, audio_offset=6):
+def PlayVideo(video_path, audio_offset=5.5):
     video = cv2.VideoCapture(video_path)
     player = get_audio_player(video_path)
 
