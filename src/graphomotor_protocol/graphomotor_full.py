@@ -14,7 +14,7 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated: 12:24pm")
+print("the script updated: 11am")
 
 # Initialize pygame 
 pygame.init()
