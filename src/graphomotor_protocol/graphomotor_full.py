@@ -1749,7 +1749,7 @@ video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
 
-def PlayVideo(video_path):
+def PlayVideo(video_path, audio_offset=0.7):
     video = cv2.VideoCapture(video_path)
     player = get_audio_player(video_path)
 
@@ -1763,41 +1763,35 @@ def PlayVideo(video_path):
     video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
 
     running = True
-    frame_idx = 0
-
-    # Start audio playback
-    player.set_pause(False)
+    video_start_time = time.time()
+    audio_started = False
 
     while running:
-        # Get the current audio pts (in seconds)
-        audio_pts = player.get_pts()
-        if audio_pts is None:
-            audio_pts = 0
+        grabbed, frame = video.read()
+        if not grabbed:
+            print("End of video")
+            break
 
-        # Calculate the expected video pts for this frame
-        video_pts = frame_idx * frame_time
+        # Resize the frame to fit the video area
+        frame = cv2.resize(frame, (video_width, video_height))
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
 
-        # Only advance video if audio has reached this point
-        if audio_pts >= video_pts:
-            grabbed, frame = video.read()
-            if not grabbed:
-                print("End of video")
-                break
+        # Wait before starting audio to offset sync
+        current_time = time.time()
+        if not audio_started and (current_time - video_start_time) >= audio_offset:
+            audio_started = True
 
-            # Resize the frame to fit the video area
-            frame = cv2.resize(frame, (video_width, video_height))
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+        # Only get audio frames after offset
+        if audio_started:
+            audio_frame, val = player.get_frame()
+        else:
+            audio_frame, val = None, None
 
-            # Draw background, then video frame
-            screen.blit(background_image, (0, 0))
-            screen.blit(frame_surface, video_pos)
-            pygame.display.flip()
-
-            frame_idx += 1
-
-        # Always call get_frame to keep audio playing
-        player.get_frame()
+        # Draw background, then video frame
+        screen.blit(background_image, (0, 0))
+        screen.blit(frame_surface, video_pos)
+        pygame.display.flip()
 
         # Handle quit events
         for event in pygame.event.get():
@@ -1806,7 +1800,7 @@ def PlayVideo(video_path):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 running = False
 
-        clock.tick(60)  # Run loop fast for better sync
+        clock.tick(fps)
 
     video.release()
 
