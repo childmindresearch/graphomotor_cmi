@@ -1730,9 +1730,10 @@ for line in text_lines:
     screen.blit(text_surface, text_rect)
     y_offset += font.get_linesize()
 
+pygame.display.flip()
+
 # Display the screen for 5 seconds
 pygame.time.delay(5000)
-pygame.display.flip()
 
 # Event Trigger - Video 2 Start
 outlet.push_sample([43])
