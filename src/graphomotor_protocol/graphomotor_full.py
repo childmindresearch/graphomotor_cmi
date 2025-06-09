@@ -1749,7 +1749,7 @@ video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
 
-def PlayVideo(video_path):
+def PlayVideo(video_path, audio_offset=0.5):
     video = cv2.VideoCapture(video_path)
     player = get_audio_player(video_path)
 
@@ -1763,6 +1763,9 @@ def PlayVideo(video_path):
     video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
 
     running = True
+    video_start_time = time.time()
+    audio_started = False
+
     while running:
         grabbed, frame = video.read()
         if not grabbed:
@@ -1774,8 +1777,16 @@ def PlayVideo(video_path):
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
 
-        # Get the audio frame (let ffpyplayer handle playback)
-        audio_frame, val = player.get_frame()
+        # Wait before starting audio to offset sync
+        current_time = time.time()
+        if not audio_started and (current_time - video_start_time) >= audio_offset:
+            audio_started = True
+
+        # Only get audio frames after offset
+        if audio_started:
+            audio_frame, val = player.get_frame()
+        else:
+            audio_frame, val = None, None
 
         # Draw background, then video frame
         screen.blit(background_image, (0, 0))
