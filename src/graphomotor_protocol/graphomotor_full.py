@@ -1716,7 +1716,104 @@ outlet.push_sample([2])
 # outlet.push_sample([42])
 
 
-############### VIDEO 2 #####################
+# ############### VIDEO 2 #####################
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Let's watch another video!"
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Display the screen for 5 seconds
+# pygame.time.delay(5000)
+
+# # Event Trigger - Video 2 Start
+# outlet.push_sample([43])
+
+# # Load the JPEG background
+# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+# background_image = pygame.image.load(background_image_path)
+# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4" # path for HARLEM/MORGEN
+
+# def get_audio_player(video_path):
+#     return MediaPlayer(video_path)
+
+# def PlayVideo(video_path, audio_offset=5.5):
+#     video = cv2.VideoCapture(video_path)
+#     player = get_audio_player(video_path)
+
+#     fps = video.get(cv2.CAP_PROP_FPS)
+#     frame_time = 1 / fps if fps > 0 else 1 / 30
+#     clock = pygame.time.Clock()
+
+#     # Set video size (smaller than screen to see background)
+#     video_width = int(screen_width * 0.8)
+#     video_height = int(screen_height * 0.8)
+#     video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
+
+#     running = True
+#     video_start_time = time.time()
+#     audio_started = False
+
+#     while running:
+#         grabbed, frame = video.read()
+#         if not grabbed:
+#             print("End of video")
+#             break
+
+#         # Resize the frame to fit the video area
+#         frame = cv2.resize(frame, (video_width, video_height))
+#         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+#         frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+
+#         # Wait before starting audio to offset sync
+#         current_time = time.time()
+#         if not audio_started and (current_time - video_start_time) >= audio_offset:
+#             audio_started = True
+
+#         # Only get audio frames after offset
+#         if audio_started:
+#             audio_frame, val = player.get_frame()
+#         else:
+#             audio_frame, val = None, None
+
+#         # Draw background, then video frame
+#         screen.blit(background_image, (0, 0))
+#         screen.blit(frame_surface, video_pos)
+#         pygame.display.flip()
+
+#         # Handle quit events
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 running = False
+#             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+#                 running = False
+
+#         clock.tick(fps)
+
+#     video.release()
+
+# PlayVideo(video_path)
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# # Event Trigger - Video 2 End 
+# outlet.push_sample([44])
+
+############### VIDEO 3 #####################
 font = pygame.font.Font(None, 60)
 text_lines = [
     "Let's watch another video!"
@@ -1735,8 +1832,8 @@ pygame.display.flip()
 # Display the screen for 5 seconds
 pygame.time.delay(5000)
 
-# Event Trigger - Video 2 Start
-outlet.push_sample([43])
+# Event Trigger - Video 3 Start
+outlet.push_sample([45])
 
 # Load the JPEG background
 background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
@@ -1744,12 +1841,12 @@ background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_proto
 background_image = pygame.image.load(background_image_path)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4" # path for HARLEM/MORGEN
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\The_Present.mp4" # path for HARLEM/MORGEN
 
 def get_audio_player(video_path):
     return MediaPlayer(video_path)
 
-def PlayVideo(video_path, audio_offset=5.5):
+def PlayVideo(video_path, audio_offset=0):
     video = cv2.VideoCapture(video_path)
     player = get_audio_player(video_path)
 
@@ -1810,8 +1907,106 @@ PlayVideo(video_path)
 screen.fill((0, 0, 0))
 pygame.display.flip()
 
-# Event Trigger - Video 2 End 
-outlet.push_sample([44])
+# Event Trigger - Video 3 End 
+outlet.push_sample([46])
+
+
+############### VIDEO 4 #####################
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Let's watch another video!"
+]
+
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
+
+pygame.display.flip()
+
+# Display the screen for 5 seconds
+pygame.time.delay(5000)
+
+# Event Trigger - Video 4 Start
+outlet.push_sample([47])
+
+# Load the JPEG background
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4" # path for HARLEM/MORGEN
+
+def get_audio_player(video_path):
+    return MediaPlayer(video_path)
+
+def PlayVideo(video_path, audio_offset=0):
+    video = cv2.VideoCapture(video_path)
+    player = get_audio_player(video_path)
+
+    fps = video.get(cv2.CAP_PROP_FPS)
+    frame_time = 1 / fps if fps > 0 else 1 / 30
+    clock = pygame.time.Clock()
+
+    # Set video size (smaller than screen to see background)
+    video_width = int(screen_width * 0.8)
+    video_height = int(screen_height * 0.8)
+    video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
+
+    running = True
+    video_start_time = time.time()
+    audio_started = False
+
+    while running:
+        grabbed, frame = video.read()
+        if not grabbed:
+            print("End of video")
+            break
+
+        # Resize the frame to fit the video area
+        frame = cv2.resize(frame, (video_width, video_height))
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+
+        # Wait before starting audio to offset sync
+        current_time = time.time()
+        if not audio_started and (current_time - video_start_time) >= audio_offset:
+            audio_started = True
+
+        # Only get audio frames after offset
+        if audio_started:
+            audio_frame, val = player.get_frame()
+        else:
+            audio_frame, val = None, None
+
+        # Draw background, then video frame
+        screen.blit(background_image, (0, 0))
+        screen.blit(frame_surface, video_pos)
+        pygame.display.flip()
+
+        # Handle quit events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                running = False
+
+        clock.tick(fps)
+
+    video.release()
+
+PlayVideo(video_path)
+
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
+
+# Event Trigger - Video 4 End 
+outlet.push_sample([48])
 
 # Quit
 pygame.quit()
