@@ -1659,9 +1659,6 @@ background_image = pygame.transform.scale(background_image, (screen_width, scree
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
 
-# def get_audio_player(video_path):
-#     return MediaPlayer(video_path)
-
 def PlayVideo(video_path):
     player = MediaPlayer(video_path)
     clock = pygame.time.Clock()
@@ -1763,9 +1760,6 @@ outlet.push_sample([42])
 
 # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Three_Little_Kittens_Despicable_Me.mp4" # path for HARLEM/MORGEN
 
-# def get_audio_player(video_path):
-#     return MediaPlayer(video_path)
-
 # PlayVideo(video_path)
 
 # # Clear the screen
@@ -1813,10 +1807,6 @@ background_image = pygame.image.load(background_image_path)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4" # path for HARLEM/MORGEN
-
-
-# def get_audio_player(video_path):
-#     return MediaPlayer(video_path)
 
 PlayVideo(video_path)
 
@@ -1866,9 +1856,6 @@ outlet.push_sample([46])
 # background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
 # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4" # path for HARLEM/MORGEN
-
-# def get_audio_player(video_path):
-#     return MediaPlayer(video_path)
 
 # PlayVideo(video_path)
 
