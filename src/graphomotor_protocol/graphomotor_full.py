@@ -1707,12 +1707,8 @@ def get_audio_player(video_path):
 
 #     video.release()
 
-def PlayVideo(video_path, audio_offset=0.5):
-    video = cv2.VideoCapture(video_path)
-    player = get_audio_player(video_path)
-
-    fps = video.get(cv2.CAP_PROP_FPS)
-    frame_time = 1 / fps if fps > 0 else 1 / 30
+def PlayVideo(video_path):
+    player = MediaPlayer(video_path)
     clock = pygame.time.Clock()
 
     # Set video size (smaller than screen to see background)
@@ -1721,35 +1717,33 @@ def PlayVideo(video_path, audio_offset=0.5):
     video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
 
     running = True
-    video_start_time = time.time()
-    audio_started = False
+    start_time = time.time()
+    base_video_time = None
 
     while running:
-        grabbed, frame = video.read()
-        if not grabbed:
+        frame, val = player.get_frame()
+        if val == 'eof':
             print("End of video")
             break
+        if frame is not None:
+            img, t = frame  # t is the timestamp in seconds
+            if base_video_time is None:
+                base_video_time = time.time() - t  # Align video time to wall clock
 
-        # Resize the frame to fit the video area
-        frame = cv2.resize(frame, (video_width, video_height))
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+            # Synchronize: wait if video is ahead of real time
+            real_time = time.time() - base_video_time
+            if t > real_time:
+                time.sleep(t - real_time)
 
-        # Wait before starting audio to offset sync
-        current_time = time.time()
-        if not audio_started and (current_time - video_start_time) >= audio_offset:
-            audio_started = True
+            w, h = img.get_size()
+            frame_array = img.to_bytearray()[0]
+            frame_surface = pygame.image.frombuffer(frame_array, (w, h), 'RGB')
+            frame_surface = pygame.transform.scale(frame_surface, (video_width, video_height))
 
-        # Only get audio frames after offset
-        if audio_started:
-            audio_frame, val = player.get_frame()
-        else:
-            audio_frame, val = None, None
-
-        # Draw background, then video frame
-        screen.blit(background_image, (0, 0))
-        screen.blit(frame_surface, video_pos)
-        pygame.display.flip()
+            # Draw background, then video frame
+            screen.blit(background_image, (0, 0))
+            screen.blit(frame_surface, video_pos)
+            pygame.display.flip()
 
         # Handle quit events
         for event in pygame.event.get():
@@ -1758,9 +1752,9 @@ def PlayVideo(video_path, audio_offset=0.5):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 running = False
 
-        clock.tick(fps)
+        clock.tick(60)  # Limit to 60 FPS for smoothness
 
-    video.release()
+    player.close_player()
 
 PlayVideo(video_path)
 
