@@ -1649,72 +1649,72 @@ while waiting:
 # Event Trigger - Video 1 Start
 outlet.push_sample([41])
 
-# ############### VIDEO 1 #####################
-# # Load the JPEG background
-# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
-# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
-# background_image = pygame.image.load(background_image_path)
-# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+############### VIDEO 1 #####################
+# Load the JPEG background
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-# # video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # old
-# # video_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # path for MIDTOWN/MOIRA
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # old
+# video_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary_of_a_Wimpy_Kid_Trailer.mp4" # path for MIDTOWN/MOIRA
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
 
-# def get_audio_player(video_path):
-#     return MediaPlayer(video_path)
+def get_audio_player(video_path):
+    return MediaPlayer(video_path)
 
-# def PlayVideo(video_path):
-#     video = cv2.VideoCapture(video_path)
-#     player = get_audio_player(video_path)
+def PlayVideo(video_path):
+    video = cv2.VideoCapture(video_path)
+    player = get_audio_player(video_path)
 
-#     fps = video.get(cv2.CAP_PROP_FPS)
-#     frame_time = 1 / fps if fps > 0 else 1 / 30
-#     clock = pygame.time.Clock()
+    fps = video.get(cv2.CAP_PROP_FPS)
+    frame_time = 1 / fps if fps > 0 else 1 / 30
+    clock = pygame.time.Clock()
 
-#     # Set video size (smaller than screen to see background)
-#     video_width = int(screen_width * 0.8)
-#     video_height = int(screen_height * 0.8)
-#     video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
+    # Set video size (smaller than screen to see background)
+    video_width = int(screen_width * 0.8)
+    video_height = int(screen_height * 0.8)
+    video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
 
-#     running = True
-#     while running:
-#         grabbed, frame = video.read()
-#         if not grabbed:
-#             print("End of video")
-#             break
+    running = True
+    while running:
+        grabbed, frame = video.read()
+        if not grabbed:
+            print("End of video")
+            break
 
-#         # Resize the frame to fit the video area
-#         frame = cv2.resize(frame, (video_width, video_height))
-#         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#         frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
+        # Resize the frame to fit the video area
+        frame = cv2.resize(frame, (video_width, video_height))
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame_surface = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
 
-#         # Get the audio frame (let ffpyplayer handle playback)
-#         audio_frame, val = player.get_frame()
+        # Get the audio frame (let ffpyplayer handle playback)
+        audio_frame, val = player.get_frame()
 
-#         # Draw background, then video frame
-#         screen.blit(background_image, (0, 0))
-#         screen.blit(frame_surface, video_pos)
-#         pygame.display.flip()
+        # Draw background, then video frame
+        screen.blit(background_image, (0, 0))
+        screen.blit(frame_surface, video_pos)
+        pygame.display.flip()
 
-#         # Handle quit events
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 running = False
-#             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
-#                 running = False
+        # Handle quit events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                running = False
 
-#         clock.tick(fps)
+        clock.tick(fps)
 
-#     video.release()
+    video.release()
 
-# PlayVideo(video_path)
+PlayVideo(video_path)
 
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
 
-# # Event Trigger - Video 1 End 
-# outlet.push_sample([42])
+# Event Trigger - Video 1 End 
+outlet.push_sample([42])
 
 
 # ############### VIDEO 2 #####################
