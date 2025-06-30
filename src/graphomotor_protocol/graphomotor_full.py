@@ -1649,15 +1649,15 @@ while waiting:
 # Event Trigger - Video 1 Start
 outlet.push_sample([41])
 
-############### VIDEO 1 #####################
-#### Load the JPEG background
-background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
-# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+# ############### VIDEO 1 #####################
+# #### Load the JPEG background
+# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
 
-background_image = pygame.image.load(background_image_path)
-background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+# background_image = pygame.image.load(background_image_path)
+# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
+# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
 
 def PlayVideo(video_path):
     player = MediaPlayer(video_path)
@@ -1708,14 +1708,14 @@ def PlayVideo(video_path):
 
     player.close_player()
 
-PlayVideo(video_path)
+# PlayVideo(video_path)
 
-# Clear the screen
-screen.fill((0, 0, 0))
-pygame.display.flip()
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
 
-# Event Trigger - Video 1 End 
-outlet.push_sample([42])
+# # Event Trigger - Video 1 End 
+# outlet.push_sample([42])
 
 
 # ############### VIDEO 2 #####################
