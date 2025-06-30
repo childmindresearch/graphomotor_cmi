@@ -20,8 +20,8 @@ print("the script updated: 11am")
 pygame.init()
 
 # Set up screen to display
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# screen = pygame.display.set_mode((1600,1200))
 screen_width, screen_height = screen.get_size()
 
 
@@ -1649,15 +1649,15 @@ while waiting:
 # Event Trigger - Video 1 Start
 outlet.push_sample([41])
 
-# ############### VIDEO 1 #####################
-# #### Load the JPEG background
-# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
-# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+############### VIDEO 1 #####################
+#### Load the JPEG background
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
 
-# background_image = pygame.image.load(background_image_path)
-# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4"
 
 def PlayVideo(video_path):
     player = MediaPlayer(video_path)
@@ -1708,14 +1708,14 @@ def PlayVideo(video_path):
 
     player.close_player()
 
-# PlayVideo(video_path)
+PlayVideo(video_path)
 
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
 
-# # Event Trigger - Video 1 End 
-# outlet.push_sample([42])
+# Event Trigger - Video 1 End 
+outlet.push_sample([42])
 
 
 ############### VIDEO 2 #####################
@@ -1760,7 +1760,6 @@ background_image = pygame.transform.scale(background_image, (screen_width, scree
 
 video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4" # path for HARLEM/MORGEN
 
-
 PlayVideo(video_path)
 
 # Clear the screen
@@ -1770,95 +1769,95 @@ pygame.display.flip()
 # Event Trigger - Video 2 End 
 outlet.push_sample([44])
 
-# ############### VIDEO 3 #####################
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Let's watch another video!",
-#     "",
-#     "",
-#     "Press any key to continue."
-# ]
+############### VIDEO 3 #####################
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Let's watch another video!",
+    "",
+    "",
+    "Press any key to continue."
+]
 
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
 
-# pygame.display.flip()
+pygame.display.flip()
 
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
 
-# # Event Trigger - Video 3 Start
-# outlet.push_sample([45])
+# Event Trigger - Video 3 Start
+outlet.push_sample([45])
 
-# # Load the JPEG background
-# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
-# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
-# background_image = pygame.image.load(background_image_path)
-# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+# Load the JPEG background
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4" # path for HARLEM/MORGEN
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4" # path for HARLEM/MORGEN
 
-# PlayVideo(video_path)
+PlayVideo(video_path)
 
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
+# Clear the screen
+screen.fill((0, 0, 0))
+pygame.display.flip()
 
-# # Event Trigger - Video 3 End 
-# outlet.push_sample([46])
+# Event Trigger - Video 3 End 
+outlet.push_sample([46])
 
 
-# ############### VIDEO 4 #####################
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Let's watch another video!",
-#     "",
-#     "",
-#     "Press any key to continue."
-# ]
+############### VIDEO 4 #####################
+font = pygame.font.Font(None, 60)
+text_lines = [
+    "Let's watch another video!",
+    "",
+    "",
+    "Press any key to continue."
+]
 
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
+# Render and display each line of text centered on the screen
+y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+for line in text_lines:
+    text_surface = font.render(line, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+    screen.blit(text_surface, text_rect)
+    y_offset += font.get_linesize()
 
-# pygame.display.flip()
+pygame.display.flip()
 
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
+# Wait for a mouse click or key press
+waiting = True
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            waiting = False
+        elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+            waiting = False
 
-# # Event Trigger - Video 4 Start
-# outlet.push_sample([47])
+# Event Trigger - Video 4 Start
+outlet.push_sample([47])
 
-# # Load the JPEG background
-# background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
-# # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
-# background_image = pygame.image.load(background_image_path)
-# background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
+# Load the JPEG background
+background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
+# background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height)) 
 
-# video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4" # path for HARLEM/MORGEN
+video_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4" # path for HARLEM/MORGEN
 
-# PlayVideo(video_path)
+PlayVideo(video_path)
 
 # Clear the screen
 screen.fill((0, 0, 0))
