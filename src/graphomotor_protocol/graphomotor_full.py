@@ -62,17 +62,6 @@ def draw_forward_button(screen):
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
-# def show_text_screen(text_lines):
-#     screen.fill((0, 0, 0))
-#     font = pygame.font.Font(None, 60)
-#     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-#     for line in text_lines:
-#         text_surface = font.render(line, True, (255, 255, 255))
-#         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#         screen.blit(text_surface, text_rect)
-#         y_offset += font.get_linesize()
-#     back_rect = draw_back_button(screen)
-#     pygame.display.flip()
 
 def show_text_screen(text_lines):
     screen.fill((0, 0, 0))
@@ -102,41 +91,6 @@ def show_text_screen(text_lines):
                 # return "next"
     return "next"
 
-#     waiting = True
-#     while waiting:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 return "quit"
-#             elif event.type == pygame.MOUSEBUTTONDOWN:
-#                 if back_rect.collidepoint(event.pos):
-#                     return "back"
-#                 else:
-#                     waiting = False
-#             elif event.type == pygame.KEYDOWN:
-#                 waiting = False
-#     return "next"
-
-# # Example usage in your protocol:
-# def protocol_flow():
-#     screens = [
-#         ["Welcome to the Graphomotor Protocol!", "", "", "Press any key to continue"],
-#         ["You will now watch some videos!", "", "", "Press any key to continue."],
-#         # ... add more screens as needed ...
-#     ]
-#     idx = 0
-#     while idx < len(screens):
-#         result = show_text_screen(screens[idx])
-#         if result == "back":
-#             if idx > 0:
-#                 idx -= 1
-#         elif result == "quit":
-#             break
-#         else:
-#             idx += 1
-
-# # Call protocol_flow() at the appropriate place in your script
-# protocol_flow()
-
 
 ############### TESTING #################3
 # Run 'Experiment Start' and 'Resting State'
@@ -159,6 +113,25 @@ def protocol_flow():
 
 # Run protocol 
 protocol_flow()
+
+def show_cross(duration_ms=10000):
+    """Display a centered cross for the given duration (in ms), with no buttons."""
+    screen.fill((0, 0, 0))
+    font = pygame.font.Font(None, 90)
+    cross = "+"
+    text_surface = font.render(cross, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
+    pygame.time.delay(duration_ms)
+    screen.fill((0, 0, 0))
+    pygame.display.flip()
+
+# Display cross 
+show_cross(10000)
+
+# Event Trigger - Resting State End 
+outlet.push_sample([4])
 
 
 # #########################################
