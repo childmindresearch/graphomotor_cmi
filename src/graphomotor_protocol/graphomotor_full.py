@@ -132,7 +132,7 @@ def protocol_flow(*screens):
         else:
             idx += 1
 
-protocol_flow(experiment_start)
+protocol_flow(experiment_start, resting_state)
 
 
 def show_cross(duration_ms=10000):
