@@ -33,10 +33,15 @@ outlet = StreamOutlet(info)
 def draw_back_button(screen):
     btn_w, btn_h = 150, 60
     margin = 30
-    back_rect = pygame.Rect(margin, margin, btn_w, btn_h)
-    pygame.draw.rect(screen, (200, 70, 70), back_rect)
+    # Place at bottom left
+    x = margin 
+    y = screen_height - btn_h - margin
+    back_rect = pygame.Rect(x, y, btn_w, btn_h)
+    # White button
+    pygame.draw.rect(screen, (255, 255, 255), back_rect)
     font = pygame.font.Font(None, 48)
-    back_surf = font.render("Back", True, (255,255,255))
+    # Black text for button 
+    back_surf = font.render("Back", True, (0,0,0))
     screen.blit(back_surf, back_surf.get_rect(center=back_rect.center))
     return back_rect
 
