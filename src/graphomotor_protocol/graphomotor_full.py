@@ -14,7 +14,7 @@ import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 
-print("the script updated: 11am")
+print("the script updated: 11:56am")
 
 ###########################################
 ################## SETUP ##################
