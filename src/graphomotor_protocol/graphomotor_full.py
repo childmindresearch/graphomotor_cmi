@@ -98,9 +98,30 @@ experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Press any ke
 resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
                  "", "", "Press any key when you are ready to start."]
 
-def protocol_flow():
-    protocol = [experiment_start, resting_state]
+# def protocol_flow():
+#     protocol = [experiment_start, resting_state]
+#     idx = 0
+#     while idx < len(protocol):
+#         result = show_text_screen(protocol[idx])
+#         if result == 'back':
+#             if idx > 0:
+#                 idx -= 1
+#         elif result == 'quit':
+#             break
+#         else:
+#             idx += 1
+
+# # Run protocol 
+# protocol_flow()
+
+def protocol_flow(*screens):
+    """
+    Display a sequence of instruction screens.
+    Each argument should be a list of text lines for one screen.
+    Returns when the sequence is finished or user quits.
+    """
     idx = 0
+    protocol = list(screens)
     while idx < len(protocol):
         result = show_text_screen(protocol[idx])
         if result == 'back':
@@ -111,8 +132,8 @@ def protocol_flow():
         else:
             idx += 1
 
-# Run protocol 
-protocol_flow()
+protocol_flow(experiment_start, resting_state)
+
 
 def show_cross(duration_ms=10000):
     """Display a centered cross for the given duration (in ms), with no buttons."""
