@@ -58,7 +58,7 @@ def show_start_screen():
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
-    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 4))
+    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 2))
     screen.blit(title_surface, title_rect)
 
     start_rect = start_button(screen)
@@ -131,7 +131,7 @@ def show_text_screen(text_lines):
                 # return "next"
     return "next"
 
-# def protocol_flow(*screens):
+# def protocol_flow(*screens): --> this function works, sans event markers 
 #     """
 #     Display a sequence of instruction screens.
 #     Each argument should be a list of text lines for one screen.
@@ -215,7 +215,7 @@ name_hand_writing = ["When you are ready, click next to begin Name Handwriting T
 # protocol_flow(experiment_start, resting_state)
 
 show_start_screen()
-protocol_flow(experiment_start, resting_state, event_markers=[[1,2], [3,4]])
+protocol_flow(experiment_start, resting_state, event_markers=[[2,3], [4,5]])
 
 # Display cross 
 show_cross(5000)
