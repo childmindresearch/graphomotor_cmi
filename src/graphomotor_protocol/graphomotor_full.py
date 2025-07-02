@@ -34,6 +34,10 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
+###########################################
+############## FUNCTIONS ##################
+###########################################
+
 def start_button(screen):
     btn_w, btn_h = 150, 60
     # Place center 
@@ -69,10 +73,6 @@ def show_start_screen():
                 if start_rect.collidepoint(event.pos):
                     outlet.push_sample([1])
                     return "start"
-###########################################
-############## FUNCTIONS ##################
-###########################################
-
 
 # Set up Buttons on Screen 
 def draw_back_button(screen):
@@ -213,6 +213,8 @@ name_hand_writing = ["When you are ready, click next to begin Name Handwriting T
 #### PROTOCOL FLOW:
 # Start, Resting State
 # protocol_flow(experiment_start, resting_state)
+
+show_start_screen()
 protocol_flow(experiment_start, resting_state, event_markers=[[1,2], [3,4]])
 
 # Display cross 
