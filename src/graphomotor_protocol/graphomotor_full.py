@@ -34,6 +34,11 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
+###########################################
+############## FUNCTIONS ##################
+###########################################
+
+
 # Set up Buttons on Screen 
 def draw_back_button(screen):
     btn_w, btn_h = 150, 60
@@ -91,29 +96,6 @@ def show_text_screen(text_lines):
                 # return "next"
     return "next"
 
-
-############### TESTING #################3
-# Run 'Experiment Start' and 'Resting State'
-experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Press any key to continue"]
-resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
-                 "", "", "Press any key when you are ready to start."]
-
-# def protocol_flow():
-#     protocol = [experiment_start, resting_state]
-#     idx = 0
-#     while idx < len(protocol):
-#         result = show_text_screen(protocol[idx])
-#         if result == 'back':
-#             if idx > 0:
-#                 idx -= 1
-#         elif result == 'quit':
-#             break
-#         else:
-#             idx += 1
-
-# # Run protocol 
-# protocol_flow()
-
 def protocol_flow(*screens):
     """
     Display a sequence of instruction screens.
@@ -132,9 +114,6 @@ def protocol_flow(*screens):
         else:
             idx += 1
 
-protocol_flow(experiment_start, resting_state)
-
-
 def show_cross(duration_ms=10000):
     """Display a centered cross for the given duration (in ms), with no buttons."""
     screen.fill((0, 0, 0))
@@ -148,118 +127,28 @@ def show_cross(duration_ms=10000):
     screen.fill((0, 0, 0))
     pygame.display.flip()
 
+############### TESTING #################
+
+### Create screens for experiment
+experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Press any key to continue"]
+resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
+                 "", "", "Press any key when you are ready to start."]
+# Mind Logger screens
+mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
+                    "", "", "Click 'Next' when task is complete."]
+name_hand_writing = ["When you are ready, click next to begin Name Handwriting Task.", "", "",
+                     "Click 'Next' to continue."]
+
+
+#### PROTOCOL FLOW:
+# Start, Resting State
+protocol_flow(experiment_start, resting_state)
+
 # Display cross 
 show_cross(5000)
 
-protocol_flow(resting_state)
-
-
-# #########################################
-# ############### EXPERIMENT START ########
-# #########################################
-# # Event Trigger - Intro Start
-# outlet.push_sample([1])
-
-# # Set up font and text 
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Welcome to the Graphomotor Protocol!",
-#     "",
-#     "",
-#     "Press any key to continue"
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# # Event Trigger - Intro End 
-# outlet.push_sample([2])
-
-# #################################################
-# ############### RESTING STATE ###################
-# #################################################
-
-# # Event Trigger - Resting State Start
-# outlet.push_sample([3])
-
-# # Resting State Task
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "You will now start the resting state task",
-#     "Please keep your eyes on the cross at the center of the screen.",
-#     "",
-#     "",
-#     "Press any key when you are ready to start."
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# font = pygame.font.Font(None, 90)
-# text_lines = [
-#     "+"
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # to test use 10 secs
-# pygame.time.delay(10000)
-# # pygame.time.delay(300000) --> use this for actual experiment: 5 mins 
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# # Event Trigger - Resting State End 
-# outlet.push_sample([4])
+# MindLogger
+protocol_flow(mindlogger_start, name_hand_writing)
 
 # #################################################
 # ############### MINDLOGGER IPAD TASKS ###########
@@ -1992,3 +1881,116 @@ outlet.push_sample([48])
 
 # Quit
 pygame.quit()
+
+
+
+
+
+
+
+# #########################################
+# ############### EXPERIMENT START ########
+# #########################################
+# # Event Trigger - Intro Start
+# outlet.push_sample([1])
+
+# # Set up font and text 
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Welcome to the Graphomotor Protocol!",
+#     "",
+#     "",
+#     "Press any key to continue"
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# # Event Trigger - Intro End 
+# outlet.push_sample([2])
+
+# #################################################
+# ############### RESTING STATE ###################
+# #################################################
+
+# # Event Trigger - Resting State Start
+# outlet.push_sample([3])
+
+# # Resting State Task
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "You will now start the resting state task",
+#     "Please keep your eyes on the cross at the center of the screen.",
+#     "",
+#     "",
+#     "Press any key when you are ready to start."
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# font = pygame.font.Font(None, 90)
+# text_lines = [
+#     "+"
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # to test use 10 secs
+# pygame.time.delay(10000)
+# # pygame.time.delay(300000) --> use this for actual experiment: 5 mins 
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# # Event Trigger - Resting State End 
+# outlet.push_sample([4])
