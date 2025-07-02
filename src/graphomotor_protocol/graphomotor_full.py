@@ -130,9 +130,9 @@ def show_cross(duration_ms=10000):
 ############### TESTING #################
 
 ### Create screens for experiment
-experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Press any key to continue"]
+experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
 resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
-                 "", "", "Press any key when you are ready to start."]
+                 "", "", "Click 'Next' when you are ready to start."]
 # Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
                     "", "", "Click 'Next' when task is complete."]
