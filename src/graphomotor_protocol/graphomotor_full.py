@@ -132,7 +132,7 @@ def protocol_flow(*screens):
         else:
             idx += 1
 
-protocol_flow(experiment_start, resting_state)
+protocol_flow(experiment_start)
 
 
 def show_cross(duration_ms=10000):
@@ -149,10 +149,9 @@ def show_cross(duration_ms=10000):
     pygame.display.flip()
 
 # Display cross 
-show_cross(10000)
+show_cross(5000)
 
-# Event Trigger - Resting State End 
-outlet.push_sample([4])
+protocol_flow(resting_state)
 
 
 # #########################################
