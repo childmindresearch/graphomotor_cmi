@@ -34,6 +34,41 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
+def start_button(screen):
+    btn_w, btn_h = 150, 60
+    # Place center 
+    margin = 30
+    x = (screen_width - btn_w) // 2
+    y = (screen_height - btn_h) // 2
+    start_rect = pygame.Rect(x, y, btn_w, btn_h)
+    # White button
+    pygame.draw.rect(screen, (255, 255, 255), start_rect)
+    font = pygame.font.Font(None, 48)
+    # Black text for button
+    start_surf = font.render("Start", True, (0, 0, 0))
+    screen.blit(start_surf, start_surf.get_rect(center=start_rect.center))
+    return start_rect
+
+def show_start_screen():
+    """Display the start screen with a button to begin."""
+    screen.fill((0, 0, 0))
+    font = pygame.font.Font(None, 60)
+    title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
+    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 4))
+    screen.blit(title_surface, title_rect)
+
+    start_rect = start_button(screen)
+    pygame.display.flip()
+
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return "quit"
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if start_rect.collidepoint(event.pos):
+                    outlet.push_sample([1])
+                    return "start"
 ###########################################
 ############## FUNCTIONS ##################
 ###########################################
@@ -1913,7 +1948,7 @@ screen.fill((0, 0, 0))
 pygame.display.flip()
 
 # Event Trigger - Video 4 End 
-outlet.push_sample([48])
+# outlet.push_sample([48])
 
 # Quit
 pygame.quit()
