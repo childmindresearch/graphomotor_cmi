@@ -16,6 +16,10 @@ from ffpyplayer.player import MediaPlayer
 
 print("the script updated: 11am")
 
+###########################################
+################## SETUP ##################
+###########################################
+
 # Initialize pygame 
 pygame.init()
 
@@ -30,6 +34,7 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
+# Set up Buttons on Screen 
 def draw_back_button(screen):
     btn_w, btn_h = 150, 60
     margin = 30
@@ -71,30 +76,54 @@ def show_text_screen(text_lines):
                 waiting = False
     return "next"
 
-# Example usage in your protocol:
+# # Example usage in your protocol:
+# def protocol_flow():
+#     screens = [
+#         ["Welcome to the Graphomotor Protocol!", "", "", "Press any key to continue"],
+#         ["You will now watch some videos!", "", "", "Press any key to continue."],
+#         # ... add more screens as needed ...
+#     ]
+#     idx = 0
+#     while idx < len(screens):
+#         result = show_text_screen(screens[idx])
+#         if result == "back":
+#             if idx > 0:
+#                 idx -= 1
+#         elif result == "quit":
+#             break
+#         else:
+#             idx += 1
+
+# # Call protocol_flow() at the appropriate place in your script
+# protocol_flow()
+
+
+############### TESTING #################3
+# Run 'Experiment Start' and 'Resting State'
+experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Press any key to continue"]
+resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
+                 "", "", "Press any key when you are ready to start."]
+
 def protocol_flow():
-    screens = [
-        ["Welcome to the Graphomotor Protocol!", "", "", "Press any key to continue"],
-        ["You will now watch some videos!", "", "", "Press any key to continue."],
-        # ... add more screens as needed ...
-    ]
+    protocol = [experiment_start, resting_state]
     idx = 0
-    while idx < len(screens):
-        result = show_text_screen(screens[idx])
-        if result == "back":
+    while idx < len(protocol):
+        result = show_text_screen(protocol[idx])
+        if result == 'back':
             if idx > 0:
                 idx -= 1
-        elif result == "quit":
+        elif result == 'quit':
             break
         else:
             idx += 1
 
-# Call protocol_flow() at the appropriate place in your script
+# Run protocol 
 protocol_flow()
 
-# #################################################
-# ############### EXPERIMENT START ################
-# #################################################
+
+# #########################################
+# ############### EXPERIMENT START ########
+# #########################################
 # # Event Trigger - Intro Start
 # outlet.push_sample([1])
 
