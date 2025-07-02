@@ -150,31 +150,28 @@ def show_text_screen(text_lines):
 #             idx += 1
 
 
-def protocol_flow(*screens, event_markers=None):
+def protocol_flow(*screens, event_markers):
     """
     Display a sequence of instruction screens.
     Each argument should be a list of text lines for one screen.
-    Sends the specified event markers (if provided) to LSL at the start and end of each screen.
+    Sends the specified event markers to LSL at the start and end of each screen.
+    event_markers must be a list of [start_marker, end_marker] for each screen.
     Returns when the sequence is finished or user quits.
     """
-    idx = 0
     protocol = list(screens)
-    if event_markers is None:
-        # If no markers provided, use None for all
-        event_markers = [None] * len(protocol)
+    if event_markers is None or len(event_markers) != len(protocol):
+        raise ValueError("You must provide event_markers as a list of [start_marker, end_marker] for each screen.")
+    idx = 0
     while idx < len(protocol):
-        # Send start marker if provided
-        marker = event_markers[idx] if idx < len(event_markers) else None
-        if marker is not None and isinstance(marker, (list, tuple)) and len(marker) == 2:
-            # marker = [start_marker, end_marker]
+        marker = event_markers[idx]
+        # Send start marker
+        if isinstance(marker, (list, tuple)) and len(marker) == 2:
             outlet.push_sample([marker[0]])
-        elif marker is not None:
-            # marker = single value, send as start
-            outlet.push_sample([marker])
+        else:
+            raise ValueError("Each event_markers entry must be a [start_marker, end_marker] pair.")
         result = show_text_screen(protocol[idx])
-        # Send end marker if provided
-        if marker is not None and isinstance(marker, (list, tuple)) and len(marker) == 2:
-            outlet.push_sample([marker[1]])
+        # Send end marker
+        outlet.push_sample([marker[1]])
         if result == 'back':
             if idx > 0:
                 idx -= 1
