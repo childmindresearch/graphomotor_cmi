@@ -58,7 +58,7 @@ def show_start_screen():
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
-    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 2))
+    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 4))
     screen.blit(title_surface, title_rect)
 
     start_rect = start_button(screen)
