@@ -50,6 +50,30 @@ def draw_back_button(screen):
     screen.blit(back_surf, back_surf.get_rect(center=back_rect.center))
     return back_rect
 
+def draw_forward_button(screen):
+    btn_w, btn_h = 150, 60
+    margin = 30
+    x = screen_width - btn_w - margin
+    y = screen_height - btn_h - margin
+    forward_rect = pygame.Rect(x, y, btn_w, btn_h)
+    pygame.draw.rect(screen, (255, 255, 255), forward_rect)
+    font = pygame.font.Font(None, 48)
+    forward_surf = font.render("Next", True, (0,0,0))
+    screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
+    return forward_rect
+
+# def show_text_screen(text_lines):
+#     screen.fill((0, 0, 0))
+#     font = pygame.font.Font(None, 60)
+#     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+#     for line in text_lines:
+#         text_surface = font.render(line, True, (255, 255, 255))
+#         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#         screen.blit(text_surface, text_rect)
+#         y_offset += font.get_linesize()
+#     back_rect = draw_back_button(screen)
+#     pygame.display.flip()
+
 def show_text_screen(text_lines):
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
@@ -60,6 +84,7 @@ def show_text_screen(text_lines):
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
     back_rect = draw_back_button(screen)
+    forward_rect = draw_forward_button(screen)
     pygame.display.flip()
 
     waiting = True
@@ -70,11 +95,26 @@ def show_text_screen(text_lines):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if back_rect.collidepoint(event.pos):
                     return "back"
-                else:
-                    waiting = False
-            elif event.type == pygame.KEYDOWN:
-                waiting = False
+                elif forward_rect.collidepoint(event.pos):
+                    return "next"
+            # elif event.type == pygame.KEYDOWN:
+                # Optionally, you can keep this to allow keyboard navigation
+                # return "next"
     return "next"
+
+#     waiting = True
+#     while waiting:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 return "quit"
+#             elif event.type == pygame.MOUSEBUTTONDOWN:
+#                 if back_rect.collidepoint(event.pos):
+#                     return "back"
+#                 else:
+#                     waiting = False
+#             elif event.type == pygame.KEYDOWN:
+#                 waiting = False
+#     return "next"
 
 # # Example usage in your protocol:
 # def protocol_flow():
