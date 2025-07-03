@@ -179,12 +179,22 @@ def show_cross(duration_ms=10000):
     # Event Marker End
     outlet.push_sample([7])
 
+def play_volume_adjustment_audio(audio_file):
+    pygame.mixer.music.load(audio_file)
+    pygame.mixer.music.play(4) # play audio 4 times
+    # Wait for the audio to finish playing
+    while pygame.mixer.music.get_busy():
+    pygame.time.Clock().tick(10)
+
+
 ############### TESTING #################
 
 ### Create screens for experiment
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
 resting_state_instrc = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
                  "", "", "Click 'Next' when you are ready to start."]
+
+
 #### Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
                     "", "", "Click 'Next' when task is complete."]
@@ -213,27 +223,41 @@ rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
 trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
 trails = ["Trails", "", "", "Click 'Next' when you are finished."]
 
+#### Sync Audio Screens
+sync_audio_instrc = [
+    "VOLUME ADJUSTMENT",
+    "In the next step you will listen to an audio.",
+    "Once the audio starts playing increase the volume",
+    "as much as possible without being uncomfortable.",
+    "",
+    "",
+    "Press any key to continue"
+]
+increase_vol = ["Increase the volume to a loud, but comfortable level."]
+
 #### PROTOCOL FLOW:
 
 # Start Screen 
 show_start_screen()
 
-# Experiment Start, Resting State 
-protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
+# # Experiment Start, Resting State 
+# protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-# Resting State
-show_cross(5000)
+# # Resting State
+# show_cross(5000)
 
-# MindLogger
-protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-              rey_delay, trails_instrc, trails, 
-              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-              [32,33],[34,35],[36,37],[38,39],[40,41]])
+# # MindLogger
+# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+#               rey_delay, trails_instrc, trails, 
+#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+#               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
+protocol_flow(sync_audio_instrc, increase_vol, event_markers=[[42,43], [44,45]])
+play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav")
 
 
 # ################################################
