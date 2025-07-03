@@ -184,7 +184,7 @@ def protocol_flow(*screens, event_markers):
 def show_cross(duration_ms=10000):
     """Display a centered cross for the given duration (in ms), with no buttons."""
     # Event Marker Start
-    outlet.push_sample(6)
+    outlet.push_sample([6])
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 90)
     cross = "+"
@@ -196,7 +196,7 @@ def show_cross(duration_ms=10000):
     screen.fill((0, 0, 0))
     pygame.display.flip()
     # Event Marker End
-    outlet.push_sample(7)
+    outlet.push_sample([7])
 
 ############### TESTING #################
 
