@@ -196,7 +196,7 @@ rey_copy_instrc = ["When you are ready, click 'Next' to begin Rey Copy Task.", "
 rey_copy = ["Rey Copy", "", "", "Click 'Next' when you are finished."]
 # alpha 
 alpha_instrc = ["When you are ready, click 'Next' to begin Alpha Task.", "", "", "Click 'Next' to continue."]
-alpa = ["Alpha", "", "", "Click 'Next' when you are finished."]
+alpha = ["Alpha", "", "", "Click 'Next' when you are finished."]
 # spiral dominat 
 sprial_dominat_instruc = ["When you are ready, click 'Next' to begin Spiral Drawing Dominat.", "", "", "Click 'Next' to continue."]
 sprial_dominat = ["Spiral Drawing Dominat", "", "", "Click 'Next' when you are finished."]
