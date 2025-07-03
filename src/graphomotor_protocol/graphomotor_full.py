@@ -184,7 +184,7 @@ def play_volume_adjustment_audio(audio_file):
     pygame.mixer.music.play(4) # play audio 4 times
     # Wait for the audio to finish playing
     while pygame.mixer.music.get_busy():
-    pygame.time.Clock().tick(10)
+        pygame.time.Clock().tick(10)
 
 
 ############### TESTING #################
