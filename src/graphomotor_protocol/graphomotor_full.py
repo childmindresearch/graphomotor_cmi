@@ -207,7 +207,7 @@ spiral_nondominat = ["Spiral Drawing Non-Dominat", "", "", "Click 'Next' when yo
 digit_symbol_sub_instrc = ["When you are ready, click 'Next' to begin Digit Symbol Subsitution.", "", "", "Click 'Next' to continue."]
 digit_symbol_sub = ["Digit Symbol Substitution", "", "", "Click 'Next' when you are finished."]
 # rey delay 
-rey_delay_instruc = ["When you are ready, click 'Next' to begin Rey Delay.", "", "", "Click 'Next' to continue."]
+rey_delay_instrc = ["When you are ready, click 'Next' to begin Rey Delay.", "", "", "Click 'Next' to continue."]
 rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
 # trails 
 trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
