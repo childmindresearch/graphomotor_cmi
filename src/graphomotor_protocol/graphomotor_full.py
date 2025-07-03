@@ -185,13 +185,33 @@ def show_cross(duration_ms=10000):
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
 resting_state_instrc = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
                  "", "", "Click 'Next' when you are ready to start."]
-# Mind Logger screens
+#### Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
                     "", "", "Click 'Next' when task is complete."]
-name_hand_writing_instrc = ["When you are ready, click next to begin Name Handwriting Task.", "", "",
-                     "Click 'Next' to continue."]
-name_hand_writing = ["Name Handwriting Task.", "", "", "Click 'Next' when you are finished."]
-
+# name_writing 
+name_hand_writing_instrc = ["When you are ready, click 'Next' to begin Name Handwriting Task.", "", "", "Click 'Next' to continue."]
+name_hand_writing = ["Name Handwriting Task", "", "", "Click 'Next' when you are finished."]
+# rey copy
+rey_copy_instrc = ["When you are ready, click 'Next' to begin Rey Copy Task.", "", "", "Click 'Next' to continue."]
+rey_copy = ["Rey Copy", "", "", "Click 'Next' when you are finished."]
+# alpha 
+alpha_instrc = ["When you are ready, click 'Next' to begin Alpha Task.", "", "", "Click 'Next' to continue."]
+alpa = ["Alpha", "", "", "Click 'Next' when you are finished."]
+# spiral dominat 
+sprial_dominat_instruc = ["When you are ready, click 'Next' to begin Spiral Drawing Dominat.", "", "", "Click 'Next' to continue."]
+sprial_dominat = ["Spiral Drawing Dominat", "", "", "Click 'Next' when you are finished."]
+# spiral non-dominat
+spiral_nondominat_instrc = ["When you are ready, click 'Next' to beging Spiral Drawing Non-Dominat.", "", "", "Click 'Next' to continue."]
+spiral_nondominat = ["Spiral Drawing Non-Dominat", "", "", "Click 'Next' when you are finished."]
+# digit symbol subsitution
+digit_symbol_sub_instrc = ["When you are ready, click 'Next' to begin Digit Symbol Subsitution.", "", "", "Click 'Next' to continue."]
+digit_symbol_sub = ["Digit Symbol Substitution", "", "", "Click 'Next' when you are finished."]
+# rey delay 
+rey_delay_instruc = ["When you are ready, click 'Next' to begin Rey Delay.", "", "", "Click 'Next' to continue."]
+rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
+# trails 
+trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
+trails = ["Trails", "", "", "Click 'Next' when you are finished."]
 
 #### PROTOCOL FLOW:
 
@@ -205,7 +225,14 @@ protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5
 show_cross(5000)
 
 # MindLogger
-protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, event_markers=[[8,9], [10,11],[12,13]])
+protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+              rey_delay, trails_instrc, trails, 
+              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+              [32,33],[34,35],[36,37],[38,39],[40,41]])
 
 # #################################################
 # ############### MINDLOGGER IPAD TASKS ###########
