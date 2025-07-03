@@ -222,7 +222,7 @@ protocol_flow(experiment_start, resting_state, event_markers=[[2,3], [4,5]])
 show_cross(5000)
 
 # MindLogger
-protocol_flow(mindlogger_start, name_hand_writing, event_marekrs=[[8,9], [10,11]])
+protocol_flow(mindlogger_start, name_hand_writing, event_markers=[[8,9], [10,11]])
 
 # #################################################
 # ############### MINDLOGGER IPAD TASKS ###########
