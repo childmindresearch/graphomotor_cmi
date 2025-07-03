@@ -183,6 +183,8 @@ def protocol_flow(*screens, event_markers):
 
 def show_cross(duration_ms=10000):
     """Display a centered cross for the given duration (in ms), with no buttons."""
+    # Event Marker Start
+    outlet.push_sample(6)
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 90)
     cross = "+"
@@ -193,6 +195,8 @@ def show_cross(duration_ms=10000):
     pygame.time.delay(duration_ms)
     screen.fill((0, 0, 0))
     pygame.display.flip()
+    # Event Marker End
+    outlet.push_sample(7)
 
 ############### TESTING #################
 
@@ -218,7 +222,7 @@ protocol_flow(experiment_start, resting_state, event_markers=[[2,3], [4,5]])
 show_cross(5000)
 
 # MindLogger
-protocol_flow(mindlogger_start, name_hand_writing)
+protocol_flow(mindlogger_start, name_hand_writing, event_marekrs=[[8,9], [10,11]])
 
 # #################################################
 # ############### MINDLOGGER IPAD TASKS ###########
