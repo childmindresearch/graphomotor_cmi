@@ -175,6 +175,8 @@ def protocol_flow(*screens, event_markers):
         if result == 'back':
             if idx > 0:
                 idx -= 1
+            # you need to add something here to resend the event marker 
+            outlet.push_sample([marker[0]])
         elif result == 'quit':
             break
         else:
