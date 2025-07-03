@@ -131,25 +131,6 @@ def show_text_screen(text_lines):
                 # return "next"
     return "next"
 
-# def protocol_flow(*screens): --> this function works, sans event markers 
-#     """
-#     Display a sequence of instruction screens.
-#     Each argument should be a list of text lines for one screen.
-#     Returns when the sequence is finished or user quits.
-#     """
-#     idx = 0
-#     protocol = list(screens)
-#     while idx < len(protocol):
-#         result = show_text_screen(protocol[idx])
-#         if result == 'back':
-#             if idx > 0:
-#                 idx -= 1
-#         elif result == 'quit':
-#             break
-#         else:
-#             idx += 1
-
-
 def protocol_flow(*screens, event_markers):
     """
     Display a sequence of instruction screens.
@@ -202,27 +183,29 @@ def show_cross(duration_ms=10000):
 
 ### Create screens for experiment
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
-resting_state = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
+resting_state_instrc = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
                  "", "", "Click 'Next' when you are ready to start."]
 # Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
                     "", "", "Click 'Next' when task is complete."]
-name_hand_writing = ["When you are ready, click next to begin Name Handwriting Task.", "", "",
+name_hand_writing_instrc = ["When you are ready, click next to begin Name Handwriting Task.", "", "",
                      "Click 'Next' to continue."]
+name_hand_writing = ["Name Handwriting Task.", "", "", "Click 'Next' when you are finished."]
 
 
 #### PROTOCOL FLOW:
-# Start, Resting State
-# protocol_flow(experiment_start, resting_state)
 
+# Start Screen 
 show_start_screen()
-protocol_flow(experiment_start, resting_state, event_markers=[[2,3], [4,5]])
 
-# Display cross 
+# Experiment Start, Resting State 
+protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
+
+# Resting State
 show_cross(5000)
 
 # MindLogger
-protocol_flow(mindlogger_start, name_hand_writing, event_markers=[[8,9], [10,11]])
+protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, event_markers=[[8,9], [10,11],[12,13]])
 
 # #################################################
 # ############### MINDLOGGER IPAD TASKS ###########
@@ -2068,3 +2051,21 @@ pygame.quit()
 
 # # Event Trigger - Resting State End 
 # outlet.push_sample([4])
+
+# def protocol_flow(*screens): --> this function works, sans event markers 
+#     """
+#     Display a sequence of instruction screens.
+#     Each argument should be a list of text lines for one screen.
+#     Returns when the sequence is finished or user quits.
+#     """
+#     idx = 0
+#     protocol = list(screens)
+#     while idx < len(protocol):
+#         result = show_text_screen(protocol[idx])
+#         if result == 'back':
+#             if idx > 0:
+#                 idx -= 1
+#         elif result == 'quit':
+#             break
+#         else:
+#             idx += 1
