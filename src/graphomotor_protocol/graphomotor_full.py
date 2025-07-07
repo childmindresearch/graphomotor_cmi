@@ -163,24 +163,6 @@ def protocol_flow(*screens, event_markers):
         else:
             idx += 1
 
-
-# def show_cross(duration_ms=10000):
-#     """Display a centered cross for the given duration (in ms), with no buttons."""
-#     # Event Marker Start
-#     outlet.push_sample([6])
-#     screen.fill((0, 0, 0))
-#     font = pygame.font.Font(None, 90)
-#     cross = "+"
-#     text_surface = font.render(cross, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
-#     screen.blit(text_surface, text_rect)
-#     pygame.display.flip()
-#     pygame.time.delay(duration_ms)
-#     screen.fill((0, 0, 0))
-#     pygame.display.flip()
-#     # Event Marker End
-#     outlet.push_sample([7])
-
 def show_text_no_buttons(text_lines, duration_ms, event_markers):
     # Event Marker Start
     markers = event_markers
@@ -320,7 +302,6 @@ show_start_screen()
 # protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
 # Resting State
-# show_cross(5000)
 show_text_no_buttons(cross, 5000, event_markers=[6,7])
 
 # # MindLogger
@@ -335,9 +316,9 @@ show_text_no_buttons(cross, 5000, event_markers=[6,7])
 
 # Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[50,51])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[50,51])
 protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
 
