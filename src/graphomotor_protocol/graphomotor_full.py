@@ -188,7 +188,7 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     outlet.push_sample([markers[1]])
 
 
-def play_audio(audio_file, text_lines, event_markers):
+def play_audio(audio_file, num_times_play, text_lines, event_markers):
     # Event Marker Start
     markers = event_markers
     print("event markers:", markers)
@@ -206,7 +206,7 @@ def play_audio(audio_file, text_lines, event_markers):
     pygame.display.flip()
     # Play audio
     pygame.mixer.music.load(audio_file)
-    pygame.mixer.music.play(4) # play audio 4 times
+    pygame.mixer.music.play(num_times_play) # play audio 4 times
     # Wait for the audio to finish playing
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
@@ -316,9 +316,9 @@ show_text_no_buttons(cross, 5000, event_markers=[6,7])
 
 # Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[50,51])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
 protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
 
@@ -327,65 +327,7 @@ show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
 # ############## SYNC AUDIO TEST #################
 # ################################################
 
-# # ############### Now it is your turn! ###############
-# # font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Now it is your turn!",
-#     "As soon as you PRESS ANY KEY TO CONTINUE, start whispering 'ta'",
-#     "continuously ('ta ta ta ...') and at the SAME RATE as the sounds",
-#     "you heard previously."
-    
-# ]
 
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# # Event Trigger - Sync Test Practice Start
-# outlet.push_sample([33])
-
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Recording! Continue to whisper 'ta ta ta'."
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# pygame.time.delay(10000)
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# # Event Trigger - Sync Test Practice End
-# outlet.push_sample([34])
 
 # ############### TESTING PART 1: SYNCHRONY TEST ###############
 # font = pygame.font.Font(None, 60)
@@ -1255,3 +1197,63 @@ pygame.quit()
 
 # # Event Trigger - Speaker Rate Training End
 # outlet.push_sample([32])
+
+# # ############### Now it is your turn! ###############
+# # font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Now it is your turn!",
+#     "As soon as you PRESS ANY KEY TO CONTINUE, start whispering 'ta'",
+#     "continuously ('ta ta ta ...') and at the SAME RATE as the sounds",
+#     "you heard previously."
+    
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# # Event Trigger - Sync Test Practice Start
+# outlet.push_sample([33])
+
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Recording! Continue to whisper 'ta ta ta'."
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# pygame.time.delay(10000)
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# # Event Trigger - Sync Test Practice End
+# outlet.push_sample([34])
