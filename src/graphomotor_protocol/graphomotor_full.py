@@ -179,11 +179,11 @@ def show_cross(duration_ms=10000):
     # Event Marker End
     outlet.push_sample([7])
 
-def play_volume_adjustment_audio(audio_file, text_lines):
+def play_audio(audio_file, text_lines, event_markers):
     # Event Marker Start
-    outlet.push_sample([44])
+    markers = event_markers
+    outlet.push_sample([markers[0]])
     # Display screen
-    # show_text_screen(screen)
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
@@ -192,10 +192,6 @@ def play_volume_adjustment_audio(audio_file, text_lines):
         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
-    # text = "Increase the volume to a loud, but comfortable level."
-    # text_surface = font.render(text, True, (255, 255, 255))
-    # text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
-    # screen.blit(text_surface, text_rect)
     pygame.display.flip()
     # Play audio
     pygame.mixer.music.load(audio_file)
@@ -204,14 +200,8 @@ def play_volume_adjustment_audio(audio_file, text_lines):
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
     # Event Marker End 
-    outlet.push_sample([45])
+    outlet.push_sample([markers[1]])
 
-# def play_speaker_rate_training(audio_file):
-#     screen = "Please pay attention to the rate and remain silent."
-#     pygame.mixer.music.load(audio_file)
-#     pygame.mixer.music.play()
-#     while pygame.mixer.music.get_busy():
-#         pygame.time.Clock().tick(10)
 
 ############### TESTING #################
 
@@ -305,12 +295,10 @@ show_start_screen()
 
 # Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol)
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[[44,45]])
 protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training)
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[[50,51]])
 
-# Play audio
-# audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav"
 
 # ################################################
 # ############## SYNC AUDIO TEST #################
