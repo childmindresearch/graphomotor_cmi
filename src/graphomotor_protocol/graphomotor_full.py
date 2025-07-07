@@ -140,6 +140,8 @@ def protocol_flow(*screens, event_markers):
     Returns when the sequence is finished or user quits.
     """
     protocol = list(screens)
+    print("len(protocol):", len(protocol))
+    print("event markers:", event_markers)
     if event_markers is None or len(event_markers) != len(protocol):
         raise ValueError("You must provide event_markers as a list of [start_marker, end_marker] for each screen.")
     idx = 0
@@ -333,10 +335,10 @@ show_text_no_buttons(cross, 5000, event_markers=[6,7])
 
 # Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
+# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
 # play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[50,51])
-protocol_flow(whisper_ta_instrc, event_markers=[52,53])
+protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
 
 
