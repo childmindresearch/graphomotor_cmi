@@ -179,17 +179,23 @@ def show_cross(duration_ms=10000):
     # Event Marker End
     outlet.push_sample([7])
 
-def play_volume_adjustment_audio(audio_file, text):
+def play_volume_adjustment_audio(audio_file, text_lines):
     # Event Marker Start
     outlet.push_sample([44])
     # Display screen
     # show_text_screen(screen)
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
+    y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+    for line in text_lines:
+        text_surface = font.render(line, True, (255, 255, 255))
+        text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+        screen.blit(text_surface, text_rect)
+        y_offset += font.get_linesize()
     # text = "Increase the volume to a loud, but comfortable level."
-    text_surface = font.render(text, True, (255, 255, 255))
-    text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
-    screen.blit(text_surface, text_rect)
+    # text_surface = font.render(text, True, (255, 255, 255))
+    # text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
+    # screen.blit(text_surface, text_rect)
     pygame.display.flip()
     # Play audio
     pygame.mixer.music.load(audio_file)
