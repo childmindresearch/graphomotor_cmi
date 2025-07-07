@@ -180,6 +180,8 @@ def show_cross(duration_ms=10000):
     outlet.push_sample([7])
 
 def play_volume_adjustment_audio(audio_file, screen):
+    # Event Marker Start
+    outlet.push_sample([44])
     # Display screen
     show_text_screen(screen)
     # Play audio
@@ -188,6 +190,8 @@ def play_volume_adjustment_audio(audio_file, screen):
     # Wait for the audio to finish playing
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
+    # Event Marker End 
+    outlet.push_sample([45])
 
 
 ############### TESTING #################
@@ -259,7 +263,6 @@ show_start_screen()
 #               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
 #               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
-# protocol_flow(sync_audio_instrc, increase_vol, event_markers=[[42,43], [44,45]])
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
 play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol)
 
