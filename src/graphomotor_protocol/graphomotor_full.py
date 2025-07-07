@@ -179,14 +179,14 @@ def show_cross(duration_ms=10000):
     # Event Marker End
     outlet.push_sample([7])
 
-def play_volume_adjustment_audio(audio_file):
+def play_volume_adjustment_audio(audio_file, text):
     # Event Marker Start
     outlet.push_sample([44])
     # Display screen
     # show_text_screen(screen)
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
-    text = "Increase the volume to a loud, but comfortable level."
+    # text = "Increase the volume to a loud, but comfortable level."
     text_surface = font.render(text, True, (255, 255, 255))
     text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
     screen.blit(text_surface, text_rect)
@@ -200,6 +200,12 @@ def play_volume_adjustment_audio(audio_file):
     # Event Marker End 
     outlet.push_sample([45])
 
+# def play_speaker_rate_training(audio_file):
+#     screen = "Please pay attention to the rate and remain silent."
+#     pygame.mixer.music.load(audio_file)
+#     pygame.mixer.music.play()
+#     while pygame.mixer.music.get_busy():
+#         pygame.time.Clock().tick(10)
 
 ############### TESTING #################
 
@@ -248,6 +254,27 @@ sync_audio_instrc = [
     "Press any key to continue"
 ]
 increase_vol = ["Increase the volume to a loud, but comfortable level."]
+sync_test_instruc = [
+    "SYNCHRONY TEST",
+    "",
+    "We will evaluate your degree of synchrony. In this task you will listen to",
+    "a strange voice thorugh your headphones. While listening to the voice",
+    "you should whisper continuously and in synch with the voice the",
+    "syllable 'tah' (in synch means with the same rhythm at the same pace).",
+    "Let's show you how to whisper rhythmically by doing a short training.",
+    "", 
+    "",
+    "Press any key to continue"
+]
+speaker_rate_training_instrct = [
+    "SPEAKING RATE TRAINING",
+    "",
+    "Now you are going to hear a set of sounds. After listening to the audio,",
+    "you must whipser the syllable 'ta' (ta ta ta...) continuously and at the",
+    "same rate as teh sounds you just heard. Press any key when ready."
+    
+]
+speaker_rate_training = ["Please pay attention to the rate and remain silent."]
 
 #### PROTOCOL FLOW:
 
@@ -270,78 +297,20 @@ show_start_screen()
 #               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
 #               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
+# Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav")
+play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol)
+protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
+play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training)
 
+# Play audio
+# audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav"
 
 # ################################################
 # ############## SYNC AUDIO TEST #################
 # ################################################
 
-# # Event Trigger - Sync Audio Test Start
-# outlet.push_sample([30])
 
-# ############### VOLUME ADJUSTMENT ###############
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "VOLUME ADJUSTMENT",
-#     "In the next step you will listen to an audio.",
-#     "Once the audio starts playing increase the volume",
-#     "as much as possible without being uncomfortable.",
-#     "",
-#     "",
-#     "Press any key to continue"
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # Wait for a mouse click or key press
-# waiting = True
-# while waiting:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             waiting = False
-#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
-#             waiting = False
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
-
-# ##### Increase Volume (and play volume)
-# font = pygame.font.Font(None, 60)
-# text_lines = [
-#     "Increase the volume to a loud, but comfortable level."
-# ]
-
-# # Render and display each line of text centered on the screen
-# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-# for line in text_lines:
-#     text_surface = font.render(line, True, (255, 255, 255))
-#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-#     screen.blit(text_surface, text_rect)
-#     y_offset += font.get_linesize()
-
-# pygame.display.flip()
-
-# # Play audio
-# audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav"
-# pygame.mixer.music.load(audio_file)
-# pygame.mixer.music.play(4)
-# while pygame.mixer.music.get_busy():
-#     pygame.time.Clock().tick(10)
-
-# # Clear the screen
-# screen.fill((0, 0, 0))
-# pygame.display.flip()
 
 # ############### TRAINING PART 1: Synchrony Test ###############
 # font = pygame.font.Font(None, 60)
@@ -1207,3 +1176,68 @@ pygame.quit()
 #             break
 #         else:
 #             idx += 1
+
+# # Event Trigger - Sync Audio Test Start
+# outlet.push_sample([30])
+
+# ############### VOLUME ADJUSTMENT ###############
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "VOLUME ADJUSTMENT",
+#     "In the next step you will listen to an audio.",
+#     "Once the audio starts playing increase the volume",
+#     "as much as possible without being uncomfortable.",
+#     "",
+#     "",
+#     "Press any key to continue"
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Wait for a mouse click or key press
+# waiting = True
+# while waiting:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             waiting = False
+#         elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+#             waiting = False
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
+
+# ##### Increase Volume (and play volume)
+# font = pygame.font.Font(None, 60)
+# text_lines = [
+#     "Increase the volume to a loud, but comfortable level."
+# ]
+
+# # Render and display each line of text centered on the screen
+# y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+# for line in text_lines:
+#     text_surface = font.render(line, True, (255, 255, 255))
+#     text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#     screen.blit(text_surface, text_rect)
+#     y_offset += font.get_linesize()
+
+# pygame.display.flip()
+
+# # Play audio
+# audio_file = r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav"
+# pygame.mixer.music.load(audio_file)
+# pygame.mixer.music.play(4)
+# while pygame.mixer.music.get_busy():
+#     pygame.time.Clock().tick(10)
+
+# # Clear the screen
+# screen.fill((0, 0, 0))
+# pygame.display.flip()
