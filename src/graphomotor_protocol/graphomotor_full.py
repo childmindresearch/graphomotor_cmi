@@ -179,7 +179,7 @@ def show_cross(duration_ms=10000):
     # Event Marker End
     outlet.push_sample([7])
 
-def play_volume_adjustment_audio(audio_file, screen):
+def play_volume_adjustment_audio(audio_file):
     # Event Marker Start
     outlet.push_sample([44])
     # Display screen
@@ -271,7 +271,7 @@ show_start_screen()
 #               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol)
+play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav")
 
 
 # ################################################
