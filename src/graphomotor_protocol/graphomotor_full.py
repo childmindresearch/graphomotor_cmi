@@ -246,18 +246,18 @@ show_start_screen()
 # # Resting State
 # show_cross(5000)
 
-# MindLogger
-protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-              rey_delay, trails_instrc, trails, 
-              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-              [32,33],[34,35],[36,37],[38,39],[40,41]])
+# # MindLogger
+# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+#               rey_delay, trails_instrc, trails, 
+#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+#               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
-# protocol_flow(sync_audio_instrc, increase_vol, event_markers=[[42,43], [44,45]])
-# play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav")
+protocol_flow(sync_audio_instrc, increase_vol, event_markers=[[42,43], [44,45]])
+play_volume_adjustment_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav")
 
 
 # ################################################
