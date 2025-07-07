@@ -182,6 +182,8 @@ def show_cross(duration_ms=10000):
 def play_audio(audio_file, text_lines, event_markers):
     # Event Marker Start
     markers = event_markers
+    print(markers)
+    print(markers[0])
     outlet.push_sample([markers[0]])
     # Display screen
     screen.fill((0, 0, 0))
@@ -295,9 +297,9 @@ show_start_screen()
 
 # Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[[44,45]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[[50,51]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", speaker_rate_training, event_markers=[50,51])
 
 
 # ################################################
