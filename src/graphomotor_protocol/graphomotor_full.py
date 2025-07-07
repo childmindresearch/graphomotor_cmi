@@ -214,8 +214,62 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     outlet.push_sample([markers[1]])
     print("end marker:", markers[1])
 
+def play_video(video_path):
+    background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
+    background_image = pygame.image.load(background_image_path)
+    background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
-############### TESTING #################
+    # to play video:
+    player = MediaPlayer(video_path)
+    clock = pygame.time.Clock()
+
+    # Set video size (smaller than screen to see background)
+    video_width = int(screen_width * 0.8)
+    video_height = int(screen_height * 0.8)
+    video_pos = ((screen_width - video_width) // 2, (screen_height - video_height) // 2)
+
+    running = True
+    start_time = time.time()
+    base_video_time = None
+
+    while running:
+        frame, val = player.get_frame()
+        if val == 'eof':
+            print("End of video")
+            break
+        if frame is not None:
+            img, t = frame  # t is the timestamp in seconds
+            if base_video_time is None:
+                base_video_time = time.time() - t  # Align video time to wall clock
+
+            # Synchronize: wait if video is ahead of real time
+            real_time = time.time() - base_video_time
+            if t > real_time:
+                time.sleep(t - real_time)
+
+            w, h = img.get_size()
+            frame_array = img.to_bytearray()[0]
+            frame_surface = pygame.image.frombuffer(frame_array, (w, h), 'RGB')
+            frame_surface = pygame.transform.scale(frame_surface, (video_width, video_height))
+
+            # Draw background, then video frame
+            screen.blit(background_image, (0, 0))
+            screen.blit(frame_surface, video_pos)
+            pygame.display.flip()
+
+        # Handle quit events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                running = False
+
+        clock.tick(60)  # Limit to 60 FPS for smoothness
+
+    player.close_player()
+
+
+############### PROTOCOL #################
 
 ### Create screens for experiment
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
@@ -308,6 +362,10 @@ sync_test_instruc_2 = [
     "Click 'Next' when ready!"
 ]
 
+### Video Screens
+video_start_instrc = ["You will now watch some videos!", "", "","Press 'Next' to continue."]
+
+
 #### PROTOCOL FLOW:
 
 # Start Screen 
@@ -346,6 +404,9 @@ show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
 protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
 play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
 
+### Videos 
+protocol_flow(video_start_instrc, event_markers=[[74,75]])
+
 
 
 # #################################################
@@ -381,7 +442,7 @@ play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt
 # # Event Trigger - Video 1 Start
 # outlet.push_sample([41])
 
-# ############### VIDEO 1 #####################
+############### VIDEO 1 #####################
 # #### Load the JPEG background
 # background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg" # path for HARLEM/MORGEN
 # # background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg" # path for MIDTWON/MOIRA
