@@ -183,7 +183,14 @@ def play_volume_adjustment_audio(audio_file, screen):
     # Event Marker Start
     outlet.push_sample([44])
     # Display screen
-    show_text_screen(screen)
+    # show_text_screen(screen)
+    screen.fill((0, 0, 0))
+    font = pygame.font.Font(None, 60)
+    text = "Increase the volume to a loud, but comfortable level."
+    text_surface = font.render(cross, True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height // 2))
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
     # Play audio
     pygame.mixer.music.load(audio_file)
     pygame.mixer.music.play(4) # play audio 4 times
