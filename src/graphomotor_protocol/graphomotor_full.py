@@ -269,16 +269,36 @@ def play_video(video_path):
 
     player.close_player()
 
-def play_videos_in_random_order(video_paths):
+# def play_videos_in_random_order(video_paths):
+#     random_order = video_paths[:]
+#     random.shuffle(random_order)
+#     for path in random_order:
+#         play_video(path)
+#         # Wait for a key press to continue to the next video
+#         text_lines = ["Press 'Next' to watch the next video."]
+#         show_text_screen(text_lines)
+
+def play_videos_in_random_order(video_paths, event_markers):
+    """
+    Plays all videos in the provided list in random order.
+    Sends event markers (start, end) for each video.
+    event_markers must be a dict: {video_path: [start_marker, end_marker], ...}
+    """
     random_order = video_paths[:]
     random.shuffle(random_order)
-    for path in random_order:
-        play_video(path)
+    for video in random_order:
+        # Send start marker for this video
+        if video in event_markers:
+            outlet.push_sample([event_markers[video][0]])
+            print("start marker:", event_markers[video][0])
+        play_video(video)
+        # Send end marker for this video
+        if video in event_markers:
+            outlet.push_sample([event_markers[video][1]])
+            print("end marker:", event_markers[video][1])
         # Wait for a key press to continue to the next video
         text_lines = ["Press 'Next' to watch the next video."]
         show_text_screen(text_lines)
-
-
 
 ############### PROTOCOL #################
 
