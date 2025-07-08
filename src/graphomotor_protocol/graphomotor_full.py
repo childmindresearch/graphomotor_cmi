@@ -139,8 +139,7 @@ def protocol_flow(*screens, event_markers):
     Returns when the sequence is finished or user quits.
     """
     protocol = list(screens)
-    print("len(protocol):", len(protocol))
-    print("event markers:", event_markers)
+    # print("event markers:", event_markers)
     if event_markers is None or len(event_markers) != len(protocol):
         raise ValueError("You must provide event_markers as a list of [start_marker, end_marker] for each screen.")
     idx = 0
@@ -166,9 +165,8 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     """Show text on screen wihtout buttons. Need to specify duration in milliseconds."""
     # Event Marker Start
     markers = event_markers
-    print("event markers:", markers)
     outlet.push_sample([markers[0]])
-    print("start marker:", markers[0])
+    # print("start marker:", markers[0])
     # Display screen 
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
@@ -184,7 +182,7 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     screen.fill((0, 0, 0))
     pygame.display.flip()
     # Event Marker End 
-    print("end marker:", markers[1])
+    # print("end marker:", markers[1])
     outlet.push_sample([markers[1]])
 
 
@@ -192,9 +190,8 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
     # Event Marker Start
     markers = event_markers
-    print("event markers:", markers)
     outlet.push_sample([markers[0]])
-    print("start marker:", markers[0])
+    # print("start marker:", markers[0])
     # Display screen
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
@@ -213,7 +210,7 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
         pygame.time.Clock().tick(10)
     # Event Marker End 
     outlet.push_sample([markers[1]])
-    print("end marker:", markers[1])
+    # print("end marker:", markers[1])
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
@@ -237,7 +234,6 @@ def play_video(video_path):
     while running:
         frame, val = player.get_frame()
         if val == 'eof':
-            print("End of video")
             break
         if frame is not None:
             img, t = frame  # t is the timestamp in seconds
@@ -278,18 +274,17 @@ def play_videos_in_random_order(video_paths, event_markers):
     """
     random_order = video_paths[:]
     random.shuffle(random_order)
-    print("random order of videos:", random_order)
     for video in random_order:
         # Send start marker for this video
         if video in event_markers:
             outlet.push_sample([event_markers[video][0]])
-            print("start marker:", event_markers[video][0])
+            # print("start marker:", event_markers[video][0])
         print(video)
         play_video(video)
         # Send end marker for this video
         if video in event_markers:
             outlet.push_sample([event_markers[video][1]])
-            print("end marker:", event_markers[video][1])
+            # print("end marker:", event_markers[video][1])
         # Wait for a key press to continue to the next video
         text_lines = ["Press 'Next' to watch the next video."]
         show_text_screen(text_lines)
