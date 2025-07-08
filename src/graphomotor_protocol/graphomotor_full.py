@@ -294,73 +294,60 @@ def play_videos_in_random_order(video_paths, event_markers):
         text_lines = ["Press 'Next' to watch the next video."]
         show_text_screen(text_lines)
 
-############### PROTOCOL #################
+# SCREENS ####################
+##############################
 
-### Create screens for experiment
+# Experiment screens
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
-resting_state_instrc = ["You will now start the resting state task", "Please keep your eyes on the cross at the center of the screen.",
-                 "", "", "Click 'Next' when you are ready to start."]
+resting_state_instrc = [
+    "You will now start the resting state task",
+    "Please keep your eyes on the cross at the center of the screen.",
+    "", "", "Click 'Next' when you are ready to start."
+]
 cross = ["+"]
 
-
-#### Mind Logger screens
-mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.",
-                    "", "", "Click 'Next' when task is complete."]
-# name_writing 
+# Mind Logger screens
+mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.", "", "", "Click 'Next' when task is complete."]
 name_hand_writing_instrc = ["When you are ready, click 'Next' to begin Name Handwriting Task.", "", "", "Click 'Next' to continue."]
 name_hand_writing = ["Name Handwriting Task", "", "", "Click 'Next' when you are finished."]
-# rey copy
 rey_copy_instrc = ["When you are ready, click 'Next' to begin Rey Copy Task.", "", "", "Click 'Next' to continue."]
 rey_copy = ["Rey Copy", "", "", "Click 'Next' when you are finished."]
-# alpha 
 alpha_instrc = ["When you are ready, click 'Next' to begin Alpha Task.", "", "", "Click 'Next' to continue."]
 alpha = ["Alpha", "", "", "Click 'Next' when you are finished."]
-# spiral dominat 
 sprial_dominat_instrc = ["When you are ready, click 'Next' to begin Spiral Drawing Dominat.", "", "", "Click 'Next' to continue."]
 sprial_dominat = ["Spiral Drawing Dominat", "", "", "Click 'Next' when you are finished."]
-# spiral non-dominat
 spiral_nondominat_instrc = ["When you are ready, click 'Next' to beging Spiral Drawing Non-Dominat.", "", "", "Click 'Next' to continue."]
 spiral_nondominat = ["Spiral Drawing Non-Dominat", "", "", "Click 'Next' when you are finished."]
-# digit symbol subsitution
 digit_symbol_sub_instrc = ["When you are ready, click 'Next' to begin Digit Symbol Subsitution.", "", "", "Click 'Next' to continue."]
 digit_symbol_sub = ["Digit Symbol Substitution", "", "", "Click 'Next' when you are finished."]
-# rey delay 
 rey_delay_instrc = ["When you are ready, click 'Next' to begin Rey Delay.", "", "", "Click 'Next' to continue."]
 rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
-# trails 
 trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
 trails = ["Trails", "", "", "Click 'Next' when you are finished."]
 
-#### Sync Audio Screens
+# Sync Audio Screens
 sync_audio_instrc = [
     "VOLUME ADJUSTMENT",
     "In the next step you will listen to an audio.",
     "Once the audio starts playing increase the volume",
     "as much as possible without being uncomfortable.",
-    "",
-    "",
-    "Press 'Next' to continue"
+    "", "", "Press 'Next' to continue"
 ]
 increase_vol = ["Increase the volume to a loud, but comfortable level."]
 sync_test_instruc_1 = [
-    "SYNCHRONY TEST",
-    "",
+    "SYNCHRONY TEST", "",
     "We will evaluate your degree of synchrony. In this task you will listen to",
     "a strange voice thorugh your headphones. While listening to the voice",
     "you should whisper continuously and in synch with the voice the",
     "syllable 'tah' (in synch means with the same rhythm at the same pace).",
     "Let's show you how to whisper rhythmically by doing a short training.",
-    "", 
-    "",
-    "Press 'Next' to continue"
+    "", "", "Press 'Next' to continue"
 ]
 speaker_rate_training_instrct = [
-    "SPEAKING RATE TRAINING",
-    "",
+    "SPEAKING RATE TRAINING", "",
     "Now you are going to hear a set of sounds. After listening to the audio,",
     "you must whipser the syllable 'ta' (ta ta ta...) continuously and at the",
     "same rate as teh sounds you just heard. Press 'Next' when ready."
-    
 ]
 speaker_rate_training = ["Please pay attention to the rate and remain silent."]
 whisper_ta_instrc = [
@@ -368,12 +355,10 @@ whisper_ta_instrc = [
     "As soon as you PRESS ANY KEY TO CONTINUE, start whispering 'ta'",
     "continuously ('ta ta ta ...') and at the SAME RATE as the sounds",
     "you heard previously."
-    
 ]
 whisper_ta = ["Recording! Continue to whisper 'ta ta ta'."]
 sync_test_instruc_2 = [
-    "SYNCHRONY TEST",
-    "",
+    "SYNCHRONY TEST", "",
     "You will now listen to an audio that contains several sounds",
     "presented rhythmically. Your task is to whisper the syllable 'ta'",
     "SIMULTANEOUSLY AND IN SYNCH with the sounds throughout the ENTIRE",
@@ -382,51 +367,50 @@ sync_test_instruc_2 = [
     "2. You must repeat 'ta ta ta' CONTINUOUSLY, SIMULTANEOUSLY, and IN SYNCH",
     "           with the audio. Do not stop before audio ends.",
     "3. Fix your gaze on a cross that will appear in the center of the screen.",
-    "",
-    "",
-    "Click 'Next' when ready!"
+    "", "", "Click 'Next' when ready!"
 ]
 
-### Video Screens
-video_start_instrc = ["You will now watch some videos!", "", "","Press 'Next' to continue."]
+# Video Screens
+video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' to continue."]
 
-#### PROTOCOL FLOW:
+# PROTOCOL ##################
+##############################
 
-# Start Screen 
+### Start Screen 
 show_start_screen()
 
-# # Experiment Start, Resting State 
-# protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
+### Experiment Start, Resting State 
+protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-# # Resting State
-# show_text_no_buttons(cross, 5000, event_markers=[6,7])
+### Resting State
+show_text_no_buttons(cross, 5000, event_markers=[6,7])
 
-# # MindLogger
-# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-#               rey_delay, trails_instrc, trails, 
-#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-#               [32,33],[34,35],[36,37],[38,39],[40,41]])
+### MindLogger
+protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+              rey_delay, trails_instrc, trails, 
+              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+              [32,33],[34,35],[36,37],[38,39],[40,41]])
 
-# ### Sync Audio Test
-# protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
-# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
-# protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
-# show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
-# protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
-# # Run through a 2nd time
-# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
-# protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
-# show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
-# protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
+### Sync Audio Test
+protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
+show_text_no_buttons(whisper_ta, 5000, event_markers=[54,55])
+protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+# Run through a 2nd time
+protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
+protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
+show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
+protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
@@ -444,4 +428,7 @@ video_event_markers = {
 }
 
 play_videos_in_random_order(video_files, video_event_markers)
+
+### Send final end marker   
+outlet.push_sample([84])
 
