@@ -269,28 +269,21 @@ def play_video(video_path):
 
     player.close_player()
 
-# def play_videos_in_random_order(video_paths):
-#     random_order = video_paths[:]
-#     random.shuffle(random_order)
-#     for path in random_order:
-#         play_video(path)
-#         # Wait for a key press to continue to the next video
-#         text_lines = ["Press 'Next' to watch the next video."]
-#         show_text_screen(text_lines)
-
 def play_videos_in_random_order(video_paths, event_markers):
     """
     Plays all videos in the provided list in random order.
     Sends event markers (start, end) for each video.
-    event_markers must be a dict: {video_path: [start_marker, end_marker], ...}
+    event_markers_video must be a dict: {video_path: [start_marker, end_marker], ...}
     """
     random_order = video_paths[:]
     random.shuffle(random_order)
+    print("random order of videos:", random_order)
     for video in random_order:
         # Send start marker for this video
         if video in event_markers:
             outlet.push_sample([event_markers[video][0]])
             print("start marker:", event_markers[video][0])
+        print(video)
         play_video(video)
         # Send end marker for this video
         if video in event_markers:
@@ -448,5 +441,6 @@ video_event_markers = {
     video_files[2]: [80, 81],
     video_files[3]: [82, 83]
 }
+
 play_videos_in_random_order(video_files, video_event_markers)
 
