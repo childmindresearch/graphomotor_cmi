@@ -10,16 +10,12 @@
 
 import pygame 
 import time
-import cv2
 from pylsl import StreamInfo, StreamOutlet
 from ffpyplayer.player import MediaPlayer 
 import random 
 
-print("the script updated: 11:56am")
-
-###########################################
-################## SETUP ##################
-###########################################
+# SETUP ######################
+##############################
 
 # Initialize pygame 
 pygame.init()
@@ -35,11 +31,11 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
-###########################################
-############## FUNCTIONS ##################
-###########################################
+# FUNCTIONS ##################
+##############################
 
 def start_button(screen):
+    """Draws a centered "Start" button on the given Pygame screen and returns its rectangle."""
     btn_w, btn_h = 150, 60
     # Place center 
     margin = 30
@@ -55,7 +51,7 @@ def start_button(screen):
     return start_rect
 
 def show_start_screen():
-    """Display the start screen with a button to begin."""
+    """Display the start screen with a button to begin and send event marker."""
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
@@ -75,8 +71,8 @@ def show_start_screen():
                     outlet.push_sample([1])
                     return "start"
 
-# Set up Buttons on Screen 
 def draw_back_button(screen):
+    """Draws a "Back" button at the bottom left corner of the given Pygame screen."""
     btn_w, btn_h = 150, 60
     margin = 30
     # Place at bottom left
@@ -92,6 +88,7 @@ def draw_back_button(screen):
     return back_rect
 
 def draw_forward_button(screen):
+    """Draws a "Next" button at the bottom right corner of the given Pygame screen."""
     btn_w, btn_h = 150, 60
     margin = 30
     x = screen_width - btn_w - margin
@@ -105,6 +102,7 @@ def draw_forward_button(screen):
 
 
 def show_text_screen(text_lines):
+    """Show text on screen with 'Back' and 'Next' buttons."""
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
@@ -165,6 +163,7 @@ def protocol_flow(*screens, event_markers):
             idx += 1
 
 def show_text_no_buttons(text_lines, duration_ms, event_markers):
+    """Show text on screen wihtout buttons. Need to specify duration in milliseconds."""
     # Event Marker Start
     markers = event_markers
     print("event markers:", markers)
@@ -190,6 +189,7 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
 
 
 def play_audio(audio_file, num_times_play, text_lines, event_markers):
+    """Play an audio file a specified number of times and display text on screen."""
     # Event Marker Start
     markers = event_markers
     print("event markers:", markers)
@@ -216,6 +216,7 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     print("end marker:", markers[1])
 
 def play_video(video_path):
+    """Play a video file with a background image with ET air tags."""
     background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
     background_image = pygame.image.load(background_image_path)
     background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
