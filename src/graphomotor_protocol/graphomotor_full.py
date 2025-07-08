@@ -436,11 +436,17 @@ show_start_screen()
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
-video_files = [r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4", 
-               r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4", 
-               r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
-               r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4"]
-play_videos_in_random_order(video_files)
-
-######### ADD EVENT TRIGGERS FOR VIDEOS!!!!!!
+video_files = [
+    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4",
+    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4",
+    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
+    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\Fun_Fractals_v2_full.mp4"
+]
+video_event_markers = {
+    video_files[0]: [76, 77],
+    video_files[1]: [78, 79],
+    video_files[2]: [80, 81],
+    video_files[3]: [82, 83]
+}
+play_videos_in_random_order(video_files, video_event_markers)
 
