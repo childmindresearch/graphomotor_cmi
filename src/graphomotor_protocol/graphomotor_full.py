@@ -21,8 +21,8 @@ import random
 pygame.init()
 
 # Set up screen to display
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# screen = pygame.display.set_mode((1600,1200))
 screen_width, screen_height = screen.get_size()
 
 
