@@ -21,9 +21,12 @@ import random
 pygame.init()
 
 # Set up screen to display
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1600,1200))
+#screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen_width, screen_height = screen.get_size()
+# Start Screen
+start_screen = pygame.display.set_mode((1600,1200))
+start_screen_width, start_screen_height = start_screen.get_size()
 
 
 # Set up LSL stream
@@ -34,31 +37,31 @@ outlet = StreamOutlet(info)
 # FUNCTIONS ##################
 ##############################
 
-def start_button(screen):
+def start_button(start_screen):
     """Draws a centered "Start" button on the given Pygame screen and returns its rectangle."""
     btn_w, btn_h = 150, 60
     # Place center 
     margin = 30
-    x = (screen_width - btn_w) // 2
-    y = (screen_height - btn_h) // 2
+    x = (start_screen_width - btn_w) // 2
+    y = (start_screen_height - btn_h) // 2
     start_rect = pygame.Rect(x, y, btn_w, btn_h)
     # White button
-    pygame.draw.rect(screen, (255, 255, 255), start_rect)
+    pygame.draw.rect(start_screen, (255, 255, 255), start_rect)
     font = pygame.font.Font(None, 48)
     # Black text for button
     start_surf = font.render("Start", True, (0, 0, 0))
-    screen.blit(start_surf, start_surf.get_rect(center=start_rect.center))
+    start_screen.blit(start_surf, start_surf.get_rect(center=start_rect.center))
     return start_rect
 
 def show_start_screen():
     """Display the start screen with a button to begin and send event marker."""
-    screen.fill((0, 0, 0))
+    start_screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
-    title_rect = title_surface.get_rect(center=(screen_width // 2, screen_height // 4))
-    screen.blit(title_surface, title_rect)
+    title_rect = title_surface.get_rect(center=(start_screen_width // 2, start_screen_height // 4))
+    start_screen.blit(title_surface, title_rect)
 
-    start_rect = start_button(screen)
+    start_rect = start_button(start_screen)
     pygame.display.flip()
 
     waiting = True
