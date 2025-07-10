@@ -373,8 +373,7 @@ video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' t
 ### Start Screen 
 show_start_screen()
 
-# Set up screen to display
-# screen = pygame.display.set_mode((1600,1200))
+# Set Full Screen 
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen_width, screen_height = screen.get_size()
 
