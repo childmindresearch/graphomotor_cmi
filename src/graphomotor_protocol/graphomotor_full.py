@@ -20,10 +20,6 @@ import random
 # Initialize pygame 
 pygame.init()
 
-# Set up screen to display
-#screen = pygame.display.set_mode((1600,1200))
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen_width, screen_height = screen.get_size()
 # Start Screen
 start_screen = pygame.display.set_mode((1600,1200))
 start_screen_width, start_screen_height = start_screen.get_size()
@@ -376,6 +372,11 @@ video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' t
 
 ### Start Screen 
 show_start_screen()
+
+# Set up screen to display
+# screen = pygame.display.set_mode((1600,1200))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen_width, screen_height = screen.get_size()
 
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
