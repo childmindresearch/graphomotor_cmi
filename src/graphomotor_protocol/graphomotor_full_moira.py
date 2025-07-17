@@ -309,10 +309,10 @@ rey_copy_instrc = ["When you are ready, click 'Next' to begin Rey Copy Task.", "
 rey_copy = ["Rey Copy", "", "", "Click 'Next' when you are finished."]
 alpha_instrc = ["When you are ready, click 'Next' to begin Alpha Task.", "", "", "Click 'Next' to continue."]
 alpha = ["Alpha", "", "", "Click 'Next' when you are finished."]
-sprial_dominat_instrc = ["When you are ready, click 'Next' to begin Spiral Drawing Dominat.", "", "", "Click 'Next' to continue."]
-sprial_dominat = ["Spiral Drawing Dominat", "", "", "Click 'Next' when you are finished."]
-spiral_nondominat_instrc = ["When you are ready, click 'Next' to beging Spiral Drawing Non-Dominat.", "", "", "Click 'Next' to continue."]
-spiral_nondominat = ["Spiral Drawing Non-Dominat", "", "", "Click 'Next' when you are finished."]
+sprial_dominat_instrc = ["When you are ready, click 'Next' to begin Spiral Drawing Dominant.", "", "", "Click 'Next' to continue."]
+sprial_dominat = ["Spiral Drawing Dominant", "", "", "Click 'Next' when you are finished."]
+spiral_nondominat_instrc = ["When you are ready, click 'Next' to beging Spiral Drawing Non-Dominant.", "", "", "Click 'Next' to continue."]
+spiral_nondominat = ["Spiral Drawing Non-Dominant", "", "", "Click 'Next' when you are finished."]
 digit_symbol_sub_instrc = ["When you are ready, click 'Next' to begin Digit Symbol Subsitution.", "", "", "Click 'Next' to continue."]
 digit_symbol_sub = ["Digit Symbol Substitution", "", "", "Click 'Next' when you are finished."]
 rey_delay_instrc = ["When you are ready, click 'Next' to begin Rey Delay.", "", "", "Click 'Next' to continue."]
@@ -342,7 +342,7 @@ speaker_rate_training_instrct = [
     "SPEAKING RATE TRAINING", "",
     "Now you are going to hear a set of sounds. After listening to the audio,",
     "you must whipser the syllable 'ta' (ta ta ta...) continuously and at the",
-    "same rate as teh sounds you just heard. Press 'Next' when ready."
+    "same rate as the sounds you just heard. Press 'Next' when ready."
 ]
 speaker_rate_training = ["Please pay attention to the rate and remain silent."]
 whisper_ta_instrc = [
