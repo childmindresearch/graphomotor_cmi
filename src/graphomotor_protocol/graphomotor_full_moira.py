@@ -382,35 +382,35 @@ screen_width, screen_height = screen.get_size()
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+# ### Resting State
+# show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
-### MindLogger
-protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-              rey_delay, trails_instrc, trails, 
-              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-              [32,33],[34,35],[36,37],[38,39],[40,41]])
+# ### MindLogger
+# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+#               rey_delay, trails_instrc, trails, 
+#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+#               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
-### Sync Audio Test
-protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
-protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
-protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
-show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
-protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
-# Run through a 2nd time
-protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
-play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
-protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
-show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
-protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
-play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
+# ### Sync Audio Test
+# protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
+# play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
+# play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+# protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
+# show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
+# protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
+# play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+# # Run through a 2nd time
+# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
+# play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
+# protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
+# show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
+# protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
+# play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
@@ -418,8 +418,10 @@ video_files = [
     r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary of a Wimpy Kid Trailer.mp4",
     r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\despicable_me_clip.mp4",
     r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\the_present.mp4",
-    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Fun_Fractals_v2_full.mp4"
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\fun_with_fractuals_vol_adj.mp4"
 ]
+
+
 video_event_markers = {
     video_files[0]: [76, 77],
     video_files[1]: [78, 79],
