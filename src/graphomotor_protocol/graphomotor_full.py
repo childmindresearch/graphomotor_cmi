@@ -383,7 +383,7 @@ screen_width, screen_height = screen.get_size()
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
 ### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+# show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
 ### MindLogger
 protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
