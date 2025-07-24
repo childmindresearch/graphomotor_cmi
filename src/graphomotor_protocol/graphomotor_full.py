@@ -375,8 +375,8 @@ video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' t
 show_start_screen()
 
 # Set Full Screen 
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-# screen = pygame.display.set_mode((1600,1200))
+# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((1920, 1080)) # 1600x1200
 screen_width, screen_height = screen.get_size()
 
 ### Experiment Start, Resting State 
