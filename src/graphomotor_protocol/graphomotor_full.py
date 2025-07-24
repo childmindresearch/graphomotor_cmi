@@ -161,12 +161,9 @@ def protocol_flow(*screens, event_markers):
             idx += 1
 
 def show_text_no_buttons(text_lines, duration_ms, event_markers):
-    """Show text on screen wihtout buttons. Need to specify duration in milliseconds."""
-    # Event Marker Start
+    """Show text on screen without buttons. Need to specify duration in milliseconds."""
     markers = event_markers
     outlet.push_sample([markers[0]])
-    # print("start marker:", markers[0])
-    # Display screen 
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
@@ -176,22 +173,22 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
     pygame.display.flip()
-    # Wait for the specified duration
-    pygame.time.delay(duration_ms)
+    # Wait for the specified duration, pumping events to keep window responsive
+    wait_time = 0
+    interval = 50  # ms
+    while wait_time < duration_ms:
+        pygame.event.pump()
+        pygame.time.delay(interval)
+        wait_time += interval
     screen.fill((0, 0, 0))
     pygame.display.flip()
-    # Event Marker End 
-    # print("end marker:", markers[1])
     outlet.push_sample([markers[1]])
 
 
 def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
-    # Event Marker Start
     markers = event_markers
     outlet.push_sample([markers[0]])
-    # print("start marker:", markers[0])
-    # Display screen
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
@@ -201,15 +198,14 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
     pygame.display.flip()
-    # Play audio
     pygame.mixer.music.load(audio_file)
-    pygame.mixer.music.play(num_times_play) # number of times to play audio file
-    # Wait for the audio to finish playing
+    pygame.mixer.music.play(num_times_play)
+    # Wait for the audio to finish playing, pumping events
     while pygame.mixer.music.get_busy():
+        pygame.event.pump()
         pygame.time.Clock().tick(10)
-    # Event Marker End 
     outlet.push_sample([markers[1]])
-    # print("end marker:", markers[1])
+
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
@@ -375,9 +371,11 @@ video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' t
 show_start_screen()
 
 # Set Full Screen 
-# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1920, 1080)) # 1600x1200
-screen_width, screen_height = screen.get_size()
+info = pygame.display.Info()
+screen_width, screen_height = info.current_w, info.current_h
+screen = pygame.display.set_mode((screen_width, screen_height))
+# screen = pygame.display.set_mode((1920, 1080)) # 1600x1200
+# screen_width, screen_height = screen.get_size()
 
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
