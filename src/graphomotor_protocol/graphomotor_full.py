@@ -371,11 +371,9 @@ video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' t
 show_start_screen()
 
 # Set Full Screen 
-info = pygame.display.Info()
-screen_width, screen_height = info.current_w, info.current_h
-screen = pygame.display.set_mode((screen_width, screen_height))
-# screen = pygame.display.set_mode((1920, 1080)) # 1600x1200
-# screen_width, screen_height = screen.get_size()
+# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((2560, 1400), pygame.RESIZEABLE, pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
+screen_width, screen_height = screen.get_size()
 
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
