@@ -372,7 +372,7 @@ show_start_screen()
 
 # Set Full Screen 
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-screen = pygame.display.set_mode((2560, 1400), pygame.RESIZEABLE, pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
+screen = pygame.display.set_mode((2560, 1400), pygame.RESIZABLE, pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
 screen_width, screen_height = screen.get_size()
 
 ### Experiment Start, Resting State 
