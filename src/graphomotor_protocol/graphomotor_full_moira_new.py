@@ -410,12 +410,7 @@ play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulu
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
-# video_files = [
-#     r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4",
-#     r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4",
-#     r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
-#     r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\fun_with_fractuals_vol_adj.mp4"
-# ]
+
 video_files = [
     r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary of a Wimpy Kid Trailer.mp4",
     r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\despicable_me_clip.mp4",
