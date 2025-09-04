@@ -289,7 +289,7 @@ def play_video(video_path):
             screen.blit(background_image, (0, 0))
             screen.blit(frame_surface, video_pos)
             skip_rect = draw_skip_button_video(screen)
-            end_rect = draw_end_experiment_button(screen)
+            # end_rect = draw_end_experiment_button(screen)
             pygame.display.flip()
 
         # Handle quit events
@@ -298,13 +298,13 @@ def play_video(video_path):
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if skip_rect.collidepoint(event.pos):
-                    return "next"
-                if end_rect.collidepoint(event.pos):
-                    outlet.push_sample([84])  # Send final event marker
-                    pygame.quit()
-                    exit()
+            # elif event.type == pygame.MOUSEBUTTONDOWN:
+            #     if skip_rect.collidepoint(event.pos):
+            #         return "next"
+            #     if end_rect.collidepoint(event.pos):
+            #         outlet.push_sample([84])  # Send final event marker
+            #         pygame.quit()
+            #         exit()
 
         clock.tick(60)  # Limit to 60 FPS for smoothness
 
@@ -332,6 +332,21 @@ def play_videos_in_random_order(video_paths, event_markers):
         # Wait for a key press to continue to the next video
         text_lines = ["Press 'Next' to watch the next video."]
         show_text_screen(text_lines)
+        end_rect = draw_end_experiment_button(screen)
+
+        running = True
+        while running:
+        # Handle quit events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if end_rect.collidepoint(event.pos):
+                        outlet.push_sample([84])  # Send final event marker
+                        pygame.quit()
+                        exit()
 
 
 # SCREENS ####################
