@@ -298,9 +298,9 @@ def play_video(video_path):
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 running = False
-            # elif event.type == pygame.MOUSEBUTTONDOWN:
-            #     if skip_rect.collidepoint(event.pos):
-            #         return "next"
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if skip_rect.collidepoint(event.pos):
+                    return "next"
             #     if end_rect.collidepoint(event.pos):
             #         outlet.push_sample([84])  # Send final event marker
             #         pygame.quit()
