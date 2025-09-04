@@ -334,20 +334,6 @@ def play_videos_in_random_order(video_paths, event_markers):
         show_text_screen(text_lines)
         end_rect = draw_end_experiment_button(screen)
 
-        running = True
-        while running:
-        # Handle quit events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
-                    running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if end_rect.collidepoint(event.pos):
-                        outlet.push_sample([84])  # Send final event marker
-                        pygame.quit()
-                        exit()
-
 
 # SCREENS ####################
 ##############################
