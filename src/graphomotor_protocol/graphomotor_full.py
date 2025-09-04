@@ -140,7 +140,6 @@ def draw_end_experiment_button(screen):
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
-
 def show_text_screen(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
     screen.fill((0, 0, 0))
@@ -255,7 +254,6 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     screen.fill((0, 0, 0))
     pygame.display.flip()
     outlet.push_sample([markers[1]])
-
 
 def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
@@ -470,15 +468,15 @@ screen_width, screen_height = screen.get_size()
 #               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
 #               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
-# ### Sync Audio Test
-# protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
-# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
-# protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
-# show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
-# protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-# play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+### Sync Audio Test
+protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
+show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
+protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
+play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
 # # Run through a 2nd time
 # protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
 # play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
