@@ -118,12 +118,12 @@ def draw_skip_button_video(screen):
     """Draws a "Skip" button for the videos."""
     btn_w, btn_h = 150, 60
     margin = 30
-    x = ((screen_width - btn_w) // 2) - 500
+    x = ((screen_width - btn_w) // 2) - 300
     y = screen_height - btn_h - margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
     pygame.draw.rect(screen, (0,0,0), forward_rect)
     font = pygame.font.Font(None, 48)
-    forward_surf = font.render("Skip", True, (211,211,211))
+    forward_surf = font.render("Skip", True, (200,200,200))
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
@@ -131,12 +131,12 @@ def draw_end_experiment_button(screen):
     """ Draws an 'End Experiment' button."""
     btn_w, btn_h = 150, 60
     margin = 30
-    x = ((screen_width - btn_w) // 2 ) - margin 
+    x = ((screen_width - btn_w) // 2 ) + 300 
     y = screen_height - btn_h - margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
     pygame.draw.rect(screen, (0,0,0), forward_rect)
     font = pygame.font.Font(None, 48)
-    forward_surf = font.render("End Experiment", True, (211,211,211))
+    forward_surf = font.render("End Experiment", True, (200,200,200))
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
@@ -289,7 +289,7 @@ def play_video(video_path):
             screen.blit(background_image, (0, 0))
             screen.blit(frame_surface, video_pos)
             skip_rect = draw_skip_button_video(screen)
-            # end_rect = draw_end_experiment_button(screen)
+            end_rect = draw_end_experiment_button(screen)
             pygame.display.flip()
 
         # Handle quit events
@@ -301,6 +301,8 @@ def play_video(video_path):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if skip_rect.collidepoint(event.pos):
                     return "next"
+                if end_rect.collidepoint(event.pos):
+                    running = False
 
         clock.tick(60)  # Limit to 60 FPS for smoothness
 
