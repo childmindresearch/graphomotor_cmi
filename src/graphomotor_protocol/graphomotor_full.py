@@ -302,7 +302,9 @@ def play_video(video_path):
                 if skip_rect.collidepoint(event.pos):
                     return "next"
                 if end_rect.collidepoint(event.pos):
-                    running = False
+                    outlet.push_sample([84])  # Send final event marker
+                    pygame.quit()
+                    exit()
 
         clock.tick(60)  # Limit to 60 FPS for smoothness
 
