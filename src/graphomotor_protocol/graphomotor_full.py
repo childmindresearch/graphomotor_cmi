@@ -118,7 +118,7 @@ def draw_skip_button_video(screen):
     """Draws a "Skip" button for the videos."""
     btn_w, btn_h = 150, 60
     margin = 30
-    x = ((screen_width - btn_w) // 2) - 60
+    x = ((screen_width - btn_w) // 2) - 500
     y = screen_height - btn_h - margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
     pygame.draw.rect(screen, (0,0,0), forward_rect)
