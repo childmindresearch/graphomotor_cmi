@@ -170,6 +170,37 @@ def show_text_screen(text_lines):
                 # return "next"
     return "next"
 
+def show_text_screen_videos(text_lines):
+    """Show text on screen with 'Back' and 'Next' buttons."""
+    screen.fill((0, 0, 0))
+    font = pygame.font.Font(None, 60)
+    y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+    for line in text_lines:
+        text_surface = font.render(line, True, (255, 255, 255))
+        text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+        screen.blit(text_surface, text_rect)
+        y_offset += font.get_linesize()
+    back_rect = draw_back_button(screen)
+    forward_rect = draw_forward_button(screen)
+    end_rect = draw_end_experiment_button(screen)
+    pygame.display.flip()
+
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return "quit"
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if back_rect.collidepoint(event.pos):
+                    return "back"
+                if forward_rect.collidepoint(event.pos):
+                    return "next"
+                if end_rect.collidepoint(event.pos):
+                    outlet.push_sample([84]) # Send final marker
+                    pygame.quit()
+                    exit()
+    return "next"
+
 def protocol_flow(*screens, event_markers):
     """
     Display a sequence of instruction screens.
@@ -289,7 +320,6 @@ def play_video(video_path):
             screen.blit(background_image, (0, 0))
             screen.blit(frame_surface, video_pos)
             skip_rect = draw_skip_button_video(screen)
-            # end_rect = draw_end_experiment_button(screen)
             pygame.display.flip()
 
         # Handle quit events
@@ -331,8 +361,7 @@ def play_videos_in_random_order(video_paths, event_markers):
             # print("end marker:", event_markers[video][1])
         # Wait for a key press to continue to the next video
         text_lines = ["Press 'Next' to watch the next video."]
-        show_text_screen(text_lines)
-        end_rect = draw_end_experiment_button(screen)
+        show_text_screen_videos(text_lines)
 
 
 # SCREENS ####################
