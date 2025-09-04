@@ -255,6 +255,27 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     pygame.display.flip()
     outlet.push_sample([markers[1]])
 
+# def play_audio(audio_file, num_times_play, text_lines, event_markers):
+#     """Play an audio file a specified number of times and display text on screen."""
+#     markers = event_markers
+#     outlet.push_sample([markers[0]])
+#     screen.fill((0, 0, 0))
+#     font = pygame.font.Font(None, 60)
+#     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+#     for line in text_lines:
+#         text_surface = font.render(line, True, (255, 255, 255))
+#         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+#         screen.blit(text_surface, text_rect)
+#         y_offset += font.get_linesize()
+#     pygame.display.flip()
+#     pygame.mixer.music.load(audio_file)
+#     pygame.mixer.music.play(num_times_play)
+#     # Wait for the audio to finish playing, pumping events
+#     while pygame.mixer.music.get_busy():
+#         pygame.event.pump()
+#         pygame.time.Clock().tick(10)
+#     outlet.push_sample([markers[1]])
+
 def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
     markers = event_markers
@@ -262,18 +283,35 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
+    
+    # Store text rectangles for click detection
+    text_rects = []
     for line in text_lines:
         text_surface = font.render(line, True, (255, 255, 255))
         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
+        text_rects.append(text_rect)
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
+    
     pygame.display.flip()
     pygame.mixer.music.load(audio_file)
     pygame.mixer.music.play(num_times_play)
-    # Wait for the audio to finish playing, pumping events
+    
+    # Wait for the audio to finish playing, pumping events and checking for clicks
     while pygame.mixer.music.get_busy():
-        pygame.event.pump()
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # Check if click is on any text line
+                for text_rect in text_rects:
+                    if text_rect.collidepoint(event.pos):
+                        pygame.mixer.music.stop()  # Stop the audio
+                        break
+            elif event.type == pygame.QUIT:
+                pygame.mixer.music.stop()
+                break
+        
         pygame.time.Clock().tick(10)
+    
     outlet.push_sample([markers[1]])
 
 def play_video(video_path):
