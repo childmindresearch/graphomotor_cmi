@@ -101,10 +101,12 @@ def draw_forward_button(screen):
 
 def draw_skip_button_video(screen):
     """Draws a "Skip" button for the videos."""
-    btn_w, btn_h = 150, 60
+    btn_w, btn_h = 300, 300
     margin = 30
-    x = ((screen_width - btn_w) // 2) 
-    y = screen_height - btn_h - margin
+    # x = ((screen_width - btn_w) // 2) 
+    x = margin
+    # y = screen_height - btn_h - margin
+    y = margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
     pygame.draw.rect(screen, (0,0,0), forward_rect)
     font = pygame.font.Font(None, 20)
@@ -336,9 +338,9 @@ def play_video(video_path):
             frame_surface = pygame.transform.scale(frame_surface, (video_width, video_height))
 
             # Draw background, then video frame
+            skip_rect = draw_skip_button_video(screen) 
             screen.blit(background_image, (0, 0))
             screen.blit(frame_surface, video_pos)
-            skip_rect = draw_skip_button_video(screen)
             pygame.display.flip()
 
         # Handle quit events
@@ -477,7 +479,7 @@ screen_width, screen_height = screen.get_size()
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
 ### Resting State
-# show_text_no_buttons(cross, 120000, event_markers=[6,7])
+show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
 ### MindLogger
 protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
