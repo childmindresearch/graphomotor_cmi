@@ -416,51 +416,6 @@ rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
 trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
 trails = ["Trails", "", "", "Click 'Next' when you are finished."]
 
-# Sync Audio Screens
-sync_audio_instrc = [
-    "VOLUME ADJUSTMENT",
-    "In the next step you will listen to an audio.",
-    "Once the audio starts playing increase the volume",
-    "as much as possible without being uncomfortable.",
-    "", "", "Press 'Next' to continue"
-]
-increase_vol = ["Increase the volume to a loud, but comfortable level."]
-sync_test_instruc_1 = [
-    "SYNCHRONY TEST", "",
-    "We will evaluate your degree of synchrony. In this task you will listen to",
-    "a strange voice thorugh your headphones. While listening to the voice",
-    "you should whisper continuously and in synch with the voice the",
-    "syllable 'tah' (in synch means with the same rhythm at the same pace).",
-    "Let's show you how to whisper rhythmically by doing a short training.",
-    "", "", "Press 'Next' to continue"
-]
-speaker_rate_training_instrct = [
-    "SPEAKING RATE TRAINING", "",
-    "Now you are going to hear a set of sounds. After listening to the audio,",
-    "you must whipser the syllable 'ta' (ta ta ta...) continuously and at the",
-    "same rate as the sounds you just heard. Press 'Next' when ready."
-]
-speaker_rate_training = ["Please pay attention to the rate and remain silent."]
-whisper_ta_instrc = [
-    "Now it is your turn!",
-    "As soon as you PRESS ANY KEY TO CONTINUE, start whispering 'ta'",
-    "continuously ('ta ta ta ...') and at the SAME RATE as the sounds",
-    "you heard previously."
-]
-whisper_ta = ["Recording! Continue to whisper 'ta ta ta'."]
-sync_test_instruc_2 = [
-    "SYNCHRONY TEST", "",
-    "You will now listen to an audio that contains several sounds",
-    "presented rhythmically. Your task is to whisper the syllable 'ta'",
-    "SIMULTANEOUSLY AND IN SYNCH with the sounds throughout the ENTIRE",
-    "presentation of the audio. Keep in mind that:",
-    "1. You must WHISPER (softly, as if telling a secret), not speak loudly",
-    "2. You must repeat 'ta ta ta' CONTINUOUSLY, SIMULTANEOUSLY, and IN SYNCH",
-    "           with the audio. Do not stop before audio ends.",
-    "3. Fix your gaze on a cross that will appear in the center of the screen.",
-    "", "", "Click 'Next' when ready!"
-]
-
 # NEW Sync Audio Screens
 sync_audio_instrc = [
     "VOLUME ADJUSTMENT",
@@ -502,12 +457,11 @@ sync_test_instruc_2 = [
     "practiced AT THE SAME TIME. You will whisper 'ta' while you are listening to",
     "the sounds and you must whisper 'ta' at the same speed as the sounds. "
     "Remember, you are going to:", "", "", 
-    "1) Whisper and not speak loudly.", "",
+    "1) Whisper and do not speak loudly.", "",
     "2) You must whisper 'ta' the entire time the sounds are playing at the same speed the sounds are playing.", "",
     "3) Make sure you look at the cross on the screen while you do it.",
     "", "", "Press 'Next' when ready!"
 ]
-
 
 # Video Screens
 video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' to continue."]
@@ -523,21 +477,21 @@ show_start_screen()
 screen = pygame.display.set_mode((2560, 1340), pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
 screen_width, screen_height = screen.get_size()
 
-# ### Experiment Start, Resting State 
-# protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
+### Experiment Start, Resting State 
+protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-# ### Resting State
-# show_text_no_buttons(cross, 120000, event_markers=[6,7])
+### Resting State
+show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
-# ### MindLogger
-# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-#               rey_delay, trails_instrc, trails, 
-#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-#               [32,33],[34,35],[36,37],[38,39],[40,41]])
+### MindLogger
+protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+              rey_delay, trails_instrc, trails, 
+              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+              [32,33],[34,35],[36,37],[38,39],[40,41]])
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
