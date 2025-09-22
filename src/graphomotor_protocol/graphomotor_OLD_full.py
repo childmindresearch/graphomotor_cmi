@@ -461,6 +461,14 @@ sync_test_instruc_2 = [
     "", "", "Click 'Next' when ready!"
 ]
 
+# NEW Sync Audio Screens
+sync_audio_instrc = [
+    "VOLUME ADJUSTMENT",
+    "We are going to play a game where you will listen to sounds and",
+    "need to whisper0"
+]
+
+
 # Video Screens
 video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' to continue."]
 
