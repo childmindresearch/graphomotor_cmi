@@ -502,9 +502,8 @@ sync_test_instruc_2 = [
     "practiced AT THE SAME TIME. You will whisper 'ta' while you are listening to",
     "the sounds and you must whisper 'ta' at the same speed as the sounds. "
     "Remember, you are going to:", "", "", 
-    "1) Whisper and not speak loudly.",
-    "2) You must whisper 'ta' the entire time the sounds are playing at the same speed",
-    "     the sounds are playing.",
+    "1) Whisper and not speak loudly.", "",
+    "2) You must whisper 'ta' the entire time the sounds are playing at the same speed the sounds are playing.", "",
     "3) Make sure you look at the cross on the screen while you do it.",
     "", "", "Press 'Next' when ready!"
 ]
