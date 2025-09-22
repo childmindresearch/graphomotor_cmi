@@ -471,8 +471,43 @@ sync_audio_instrc = [
     "volume as loud as you can without huring your ears.",
     "", "", "Press 'Next' to continue."
 ]
-
-
+increase_vol = ["Increase the volume to a loud, but comfortable level."]
+sync_test_instruc_1 = [
+    "SYNCHRONY TEST", "",
+    "We are going to play a game where you have to whisper the word 'ta' at",
+    "the same speed as a set of sounds you are going to hear. When you hear",  
+    "the sound, you will whisper 'ta' at the same speed at the same pace.",
+    "Let's do some practice!",
+    "", "", "Press 'Next' to continue."
+]
+speaker_rate_training_instrct = [
+    "SPEAKING RATE TRAINING", "",
+    "Now you are going to hear a set of sounds. Please be quiet and pay attention",
+    "to the speed the sounds are being spoken.",
+    "","", "Press 'Next' when you are ready."
+]
+speaker_rate_training = ["Please pay attention to the speed of sounds and remain silent."]
+whisper_ta_instrc = [
+    "Now it is your turn!",
+    "When I say 'Go', start whispering 'ta' at the SAME SPEED as the",
+    "sound you just heard. Can you practice whispering 'ta' for me?",
+    "","(Practice whispering 'ta'.)",
+    "", "Press 'Next' to continue."
+]
+whisper_ta = ["Recording! Continue to whisper 'ta ta ta'."]
+sync_test_instruc_2 = [
+    "SYNCHRONY TEST", "",
+    "We are ready to play the game! You will now hear some sounds through your",
+    "headphones. While the sounds are playing, you will whisper 'ta', like we",
+    "practiced AT THE SAME TIME. You will whisper 'ta' while you are listening to",
+    "the sounds and you must whisper 'ta' at teh same speed as the sounds. "
+    "Remember, you are going to:",
+    "1) Whisper and not speak loudly.",
+    "2) You must whisper 'ta' the entire time the sounds are playing at the same speed",
+    "     the sounds are playing.",
+    "3) Make sure you look at the cross on the screen while you do it.",
+    "", "", "Press 'Next' when ready!"
+]
 
 
 # Video Screens
