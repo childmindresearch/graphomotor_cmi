@@ -461,6 +461,20 @@ sync_test_instruc_2 = [
     "", "", "Click 'Next' when ready!"
 ]
 
+# NEW Sync Audio Screens
+sync_audio_instrc = [
+    "VOLUME ADJUSTMENT",
+    "We are going to play a game where you will listen",
+    "to sounds and need to whisper with the sounds. Before",
+    "we start our game, we need to make sure you can hear",
+    "the sounds in the headphones. I will help you adjust the",
+    "volume as loud as you can without huring your ears.",
+    "", "", "Press 'Next' to continue."
+]
+
+
+
+
 # Video Screens
 video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' to continue."]
 
@@ -475,21 +489,21 @@ show_start_screen()
 screen = pygame.display.set_mode((2560, 1340), pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
 screen_width, screen_height = screen.get_size()
 
-### Experiment Start, Resting State 
-protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
+# ### Experiment Start, Resting State 
+# protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+# ### Resting State
+# show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
-### MindLogger
-protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
-              rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-              digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
-              rey_delay, trails_instrc, trails, 
-              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
-              [32,33],[34,35],[36,37],[38,39],[40,41]])
+# ### MindLogger
+# protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
+#               rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+#               digit_symbol_sub_instrc, digit_symbol_sub, rey_delay_instrc,
+#               rey_delay, trails_instrc, trails, 
+#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
+#               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
