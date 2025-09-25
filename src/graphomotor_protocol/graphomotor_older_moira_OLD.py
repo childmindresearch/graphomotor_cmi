@@ -99,33 +99,6 @@ def draw_forward_button(screen):
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
-def draw_skip_button_video(screen):
-    """Draws a "Skip" button for the videos."""
-    btn_w, btn_h = 300, 300
-    margin = 30
-    # x = ((screen_width - btn_w) // 2) 
-    x = margin
-    # y = screen_height - btn_h - margin
-    y = margin
-    forward_rect = pygame.Rect(x, y, btn_w, btn_h)
-    pygame.draw.rect(screen, (0,0,0), forward_rect)
-    font = pygame.font.Font(None, 20)
-    forward_surf = font.render("Skip", True, (200,200,200))
-    screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
-    return forward_rect
-
-def draw_end_experiment_button(screen):
-    """ Draws an 'End Experiment' button."""
-    btn_w, btn_h = 150, 60
-    margin = 30
-    x = ((screen_width - btn_w) // 2 ) 
-    y = screen_height - btn_h - margin
-    forward_rect = pygame.Rect(x, y, btn_w, btn_h)
-    pygame.draw.rect(screen, (0,0,0), forward_rect)
-    font = pygame.font.Font(None, 20)
-    forward_surf = font.render("End Experiment", True, (200,200,200))
-    screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
-    return forward_rect
 
 def show_text_screen(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
@@ -154,37 +127,6 @@ def show_text_screen(text_lines):
             # elif event.type == pygame.KEYDOWN:
                 # Optionally, you can keep this to allow keyboard navigation
                 # return "next"
-    return "next"
-
-def show_text_screen_videos(text_lines):
-    """Show text on screen with 'Back' and 'Next' buttons."""
-    screen.fill((0, 0, 0))
-    font = pygame.font.Font(None, 60)
-    y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-    for line in text_lines:
-        text_surface = font.render(line, True, (255, 255, 255))
-        text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-        screen.blit(text_surface, text_rect)
-        y_offset += font.get_linesize()
-    back_rect = draw_back_button(screen)
-    forward_rect = draw_forward_button(screen)
-    end_rect = draw_end_experiment_button(screen)
-    pygame.display.flip()
-
-    waiting = True
-    while waiting:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return "quit"
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if back_rect.collidepoint(event.pos):
-                    return "back"
-                if forward_rect.collidepoint(event.pos):
-                    return "next"
-                if end_rect.collidepoint(event.pos):
-                    outlet.push_sample([84]) # Send final marker
-                    pygame.quit()
-                    exit()
     return "next"
 
 def protocol_flow(*screens, event_markers):
@@ -225,41 +167,23 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-    
-    # Store text rectangles for click detection
-    text_rects = []
     for line in text_lines:
         text_surface = font.render(line, True, (255, 255, 255))
         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-        text_rects.append(text_rect)
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
-    
     pygame.display.flip()
-    
-    # Wait for the specified duration, pumping events and checking for clicks
+    # Wait for the specified duration, pumping events to keep window responsive
     wait_time = 0
     interval = 50  # ms
     while wait_time < duration_ms:
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # Check if click is on any text line
-                for text_rect in text_rects:
-                    if text_rect.collidepoint(event.pos):
-                        # Skip ahead by breaking out of the time loop
-                        wait_time = duration_ms
-                        break
-            elif event.type == pygame.QUIT:
-                wait_time = duration_ms  # Exit the loop
-                break
-        
-        if wait_time < duration_ms:  # Only delay if we haven't skipped
-            pygame.time.delay(interval)
-            wait_time += interval
-    
+        pygame.event.pump()
+        pygame.time.delay(interval)
+        wait_time += interval
     screen.fill((0, 0, 0))
     pygame.display.flip()
     outlet.push_sample([markers[1]])
+
 
 def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
@@ -268,40 +192,24 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
-    
-    # Store text rectangles for click detection
-    text_rects = []
     for line in text_lines:
         text_surface = font.render(line, True, (255, 255, 255))
         text_rect = text_surface.get_rect(center=(screen_width // 2, y_offset))
-        text_rects.append(text_rect)
         screen.blit(text_surface, text_rect)
         y_offset += font.get_linesize()
-    
     pygame.display.flip()
     pygame.mixer.music.load(audio_file)
     pygame.mixer.music.play(num_times_play)
-    
-    # Wait for the audio to finish playing, pumping events and checking for clicks
+    # Wait for the audio to finish playing, pumping events
     while pygame.mixer.music.get_busy():
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # Check if click is on any text line
-                for text_rect in text_rects:
-                    if text_rect.collidepoint(event.pos):
-                        pygame.mixer.music.stop()  # Stop the audio
-                        break
-            elif event.type == pygame.QUIT:
-                pygame.mixer.music.stop()
-                break
-        
+        pygame.event.pump()
         pygame.time.Clock().tick(10)
-    
     outlet.push_sample([markers[1]])
+
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
-    background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
+    background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg"
     background_image = pygame.image.load(background_image_path)
     background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
@@ -338,7 +246,6 @@ def play_video(video_path):
             frame_surface = pygame.transform.scale(frame_surface, (video_width, video_height))
 
             # Draw background, then video frame
-            skip_rect = draw_skip_button_video(screen) 
             screen.blit(background_image, (0, 0))
             screen.blit(frame_surface, video_pos)
             pygame.display.flip()
@@ -349,13 +256,6 @@ def play_video(video_path):
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if skip_rect.collidepoint(event.pos):
-                    return "next"
-            #     if end_rect.collidepoint(event.pos):
-            #         outlet.push_sample([84])  # Send final event marker
-            #         pygame.quit()
-            #         exit()
 
         clock.tick(60)  # Limit to 60 FPS for smoothness
 
@@ -382,7 +282,7 @@ def play_videos_in_random_order(video_paths, event_markers):
             # print("end marker:", event_markers[video][1])
         # Wait for a key press to continue to the next video
         text_lines = ["Press 'Next' to watch the next video."]
-        show_text_screen_videos(text_lines)
+        show_text_screen(text_lines)
 
 
 # SCREENS ####################
@@ -416,51 +316,49 @@ rey_delay = ["Rey Delay", "", "", "Click 'Next' when you are finished."]
 trails_instrc = ["When you are ready, click 'Next' to begin Trails.", "", "", "Click 'Next' to continue."]
 trails = ["Trails", "", "", "Click 'Next' when you are finished."]
 
-# NEW Sync Audio Screens
+# Sync Audio Screens
 sync_audio_instrc = [
     "VOLUME ADJUSTMENT",
-    "We are going to play a game where you will listen",
-    "to sounds and need to whisper with the sounds. Before",
-    "we start our game, we need to make sure you can hear",
-    "the sounds in the headphones. I will help you adjust the",
-    "volume as loud as you can without huring your ears.",
-    "", "", "Press 'Next' to continue."
+    "In the next step you will listen to an audio.",
+    "Once the audio starts playing increase the volume",
+    "as much as possible without being uncomfortable.",
+    "", "", "Press 'Next' to continue"
 ]
 increase_vol = ["Increase the volume to a loud, but comfortable level."]
 sync_test_instruc_1 = [
     "SYNCHRONY TEST", "",
-    "We are going to play a game where you have to whisper the word 'ta' at",
-    "the same speed as a set of sounds you are going to hear. When you hear",  
-    "the sound, you will whisper 'ta' at the same speed at the same pace.",
-    "Let's do some practice!",
-    "", "", "Press 'Next' to continue."
+    "We will evaluate your degree of synchrony. In this task you will listen to",
+    "a strange voice thorugh your headphones. While listening to the voice",
+    "you should whisper continuously and in synch with the voice the",
+    "syllable 'tah' (in synch means with the same rhythm at the same pace).",
+    "Let's show you how to whisper rhythmically by doing a short training.",
+    "", "", "Press 'Next' to continue"
 ]
 speaker_rate_training_instrct = [
     "SPEAKING RATE TRAINING", "",
-    "Now you are going to hear a set of sounds. Please be quiet and pay attention",
-    "to the speed the sounds are being spoken.",
-    "","", "Press 'Next' when you are ready."
+    "Now you are going to hear a set of sounds. After listening to the audio,",
+    "you must whipser the syllable 'ta' (ta ta ta...) continuously and at the",
+    "same rate as the sounds you just heard. Press 'Next' when ready."
 ]
-speaker_rate_training = ["Please pay attention to the speed of sounds and remain silent."]
+speaker_rate_training = ["Please pay attention to the rate and remain silent."]
 whisper_ta_instrc = [
     "Now it is your turn!",
-    "When I say 'Go', start whispering 'ta' at the SAME SPEED as the",
-    "sound you just heard. Can you practice whispering 'ta' for me?",
-    "","(Practice whispering 'ta'.)",
-    "", "Press 'Next' to continue."
+    "As soon as you PRESS ANY KEY TO CONTINUE, start whispering 'ta'",
+    "continuously ('ta ta ta ...') and at the SAME RATE as the sounds",
+    "you heard previously."
 ]
 whisper_ta = ["Recording! Continue to whisper 'ta ta ta'."]
 sync_test_instruc_2 = [
     "SYNCHRONY TEST", "",
-    "We are ready to play the game! You will now hear some sounds through your",
-    "headphones. While the sounds are playing, you will whisper 'ta', like we",
-    "practiced AT THE SAME TIME. You will whisper 'ta' while you are listening to",
-    "the sounds and you must whisper 'ta' at the same speed as the sounds. "
-    "Remember, you are going to:", "", "", 
-    "1) Whisper and do not speak loudly.", "",
-    "2) You must whisper 'ta' the entire time the sounds are playing at the same speed the sounds are playing.", "",
-    "3) Make sure you look at the cross on the screen while you do it.",
-    "", "", "Press 'Next' when ready!"
+    "You will now listen to an audio that contains several sounds",
+    "presented rhythmically. Your task is to whisper the syllable 'ta'",
+    "SIMULTANEOUSLY AND IN SYNCH with the sounds throughout the ENTIRE",
+    "presentation of the audio. Keep in mind that:",
+    "1. You must WHISPER (softly, as if telling a secret), not speak loudly",
+    "2. You must repeat 'ta ta ta' CONTINUOUSLY, SIMULTANEOUSLY, and IN SYNCH",
+    "           with the audio. Do not stop before audio ends.",
+    "3. Fix your gaze on a cross that will appear in the center of the screen.",
+    "", "", "Click 'Next' when ready!"
 ]
 
 # Video Screens
@@ -481,7 +379,7 @@ screen_width, screen_height = screen.get_size()
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
 ### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+# show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
 ### MindLogger
 protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing, 
@@ -495,28 +393,29 @@ protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing,
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
 protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
 protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
 # Run through a 2nd time
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
 protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
 protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
+
 video_files = [
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\fun_with_fractuals_vol_adj.mp4"
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary of a Wimpy Kid Trailer.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\despicable_me_clip.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\the_present.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\fun_with_fractuals_vol_adj.mp4"
 ]
 video_event_markers = {
     video_files[0]: [76, 77],
