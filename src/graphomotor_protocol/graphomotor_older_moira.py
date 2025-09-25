@@ -301,7 +301,7 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
-    background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
+    background_image_path = r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\video_graphomotor2.jpg"
     background_image = pygame.image.load(background_image_path)
     background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
@@ -495,28 +495,28 @@ protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing,
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
 protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
 protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
 # Run through a 2nd time
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
 protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
 protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
 video_files = [
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\fun_with_fractuals_vol_adj.mp4"
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\Diary of a Wimpy Kid Trailer.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\despicable_me_clip.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\the_present.mp4",
+    r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\videos\fun_with_fractuals_vol_adj.mp4"
 ]
 video_event_markers = {
     video_files[0]: [76, 77],
