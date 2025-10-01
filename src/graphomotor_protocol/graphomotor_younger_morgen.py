@@ -493,20 +493,20 @@ protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, 
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\volume_ExpAcc_ffmpeg.wav", 4, increase_vol, event_markers=[44,45])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 4, increase_vol, event_markers=[44,45])
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[46,47], [48,49]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[50,51])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[50,51])
 protocol_flow(whisper_ta_instrc, event_markers=[[52,53]])
 show_text_no_buttons(whisper_ta, 10000, event_markers=[54,55])
 protocol_flow(sync_test_instruc_2, event_markers=[[56,57]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[58,59])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[58,59])
 # Run through a 2nd time
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[60,61], [62,63]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\example_ExpAcc.wav", 1, speaker_rate_training, event_markers=[64,65])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[64,65])
 protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
 protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
-play_audio(r"C:\Users\MoBI\Desktop\From Old Setup\sync_test\stimulus_ExpAcc_filt_ffmpeg.wav", 1, cross, event_markers=[72,73])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[72,73])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
