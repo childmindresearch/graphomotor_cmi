@@ -516,7 +516,7 @@ video_files = [
     r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\Diary of a Wimpy Kid Trailer.mp4",
     r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\despicable_me_clip.mp4",
     r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\the_present.mp4",
-    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\fun_with_fractuals_vol_adj.mp4""
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\fun_with_fractuals_vol_adj.mp4"
 ]
 video_event_markers = {
     video_files[0]: [76, 77],
