@@ -301,7 +301,7 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
-    background_image_path = r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\video_graphomotor2.jpg"
+    background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
     background_image = pygame.image.load(background_image_path)
     background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
@@ -511,10 +511,10 @@ play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, e
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
 video_files = [
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\Diary of a Wimpy Kid Trailer.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\despicable_me_clip.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\new_videos\the_present.mp4",
-    r"C:\Users\MoBI\Desktop\From Old Setup\graphomotor_protocol\videos\fun_with_fractuals_vol_adj.mp4"
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\Diary of a Wimpy Kid Trailer.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\despicable_me_clip.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\the_present.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\fun_with_fractuals_vol_adj.mp4"
 ]
 video_event_markers = {
     video_files[0]: [76, 77],
