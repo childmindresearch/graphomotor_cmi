@@ -8,71 +8,73 @@ Event Triggers
 6 - Resting State Start 
 7 - Resting State End  
 8 - Mind Logger Instructions Start 
-9 - Mind Logger Instructions End  
-10 - Name Hand Writing Instructions Start 
-11 - Name Hand Writing Instructions End  
-12 - Name Hand Writing Start 
-13 - Name Hand Writing End
-14 - Rey Copy Instructions Start 
-15 - Rey Copy Instructions End  
-16 - Rey Copy Start 
-17 - Rey Copy End  
-18 - Alpha Instructions Start 
-19 - Alpha Instructions End  
-20 - Alpha Start 
-21 - Alpha End  
-22 - Sprial Dominant Instructions Start 
-23 - Spiral Dominant Instructions End  
-24 - Sprial Dominant Start
-25 - Sprial Dominant End  
-26 - Sprial Nondominat Instructions Start 
-27 - Sprial Nondominat Instructions End  
-28 - Sprial Nondominat Start 
-29 - Sprial Nondominat End  
-30 - Digit Symbol Substitution Instructions Start 
-31 - Digit Symbol Substitution Instructions End  
-32 - Digit Symbol Substitution Start 
-33 - Digit Symbol Substitution End  
-34 - Rey Delay Instructions Start
-35 - Rey Delay Instructions End  
-36 - Rey Delay Start 
-37 - Rey Delay End  
-38 - Trails Instructions Start 
-39 - Trails Instructions End
-40 - Trails Start 
-41 - Trails End  
-42 - Sync Audio Instructions Start 
-43 - Sync Audio Instructions End 
-44 - Increase Volume Audio Start
-45 - Increase Voume Audio End  
-46 - Sync Test Instructions Part 1.1 Start 
-47 - Sync Test Instructions Part 1.1 End  
-48 - Speaker Rate Training 1 Instructions Start 
-49 - Speaker Rate Training 1 Instructions End  
-50 - Speaker Rate Training 1 Audio Start
-51 - Speaker Rate Training 1 Audio End 
-52 - Whisper Ta Instructions 1 Start
-53 - Whisper Ta Instructions 1 End  
-54 - Whisper Ta 1 Start 
-55 - Whisper Ta 1 End  
-56 - Sync Test Instructions Part 2.1 Start
-57 - Sync Test Instructions Part 2.1 End  
-58 - Sync Test Audio 1 Start
-59 - Sync Test Audio 1 End  
-60 - Sync Test Instructions Part 1.2 Start 
-61 - Sync Test Instructions Part 1.2 End  
-62 - Speaker Rate Training 2 Instructions Start 
-63 - Speaker Rate Training 2 Instructions End  
-64 - Speaker Rate Training 2 Audio Start
-65 - Speaker Rate Training 2 Audio End 
-66 - Whisper Ta Instructions 2 Start
-67 - Whisper Ta Instructions 2 End  
-68 - Whisper Ta 2 Start 
-69 - Whisper Ta 2 End  
-70 - Sync Test Instructions Part 2.2 Start
-71 - Sync Test Instructions Part 2.2 End  
-72 - Sync Test Audio 2 Start
-73 - Sync Test Audio 2 End  
+9 - Mind Logger Instructions End 
+--
+10 - Rey Copy Instructions Start 
+11 - Rey Copy Instructions End  
+12 - Rey Copy Start 
+13 - Rey Copy End  
+14 - Alpha Instructions Start 
+15 - Alpha Instructions End  
+16 - Alpha Start 
+17 - Alpha End  
+18 - Sprial Dominant Instructions Start 
+19 - Spiral Dominant Instructions End  
+20 - Sprial Dominant Start
+21 - Sprial Dominant End  
+22 - Sprial Nondominat Instructions Start 
+23 - Sprial Nondominat Instructions End  
+24 - Sprial Nondominat Start 
+25 - Sprial Nondominat End  
+26 - Digit Symbol Substitution Instructions Start 
+27 - Digit Symbol Substitution Instructions End  
+28 - Digit Symbol Substitution Start 
+29 - Digit Symbol Substitution End  
+30 - Rey Delay Instructions Start
+31 - Rey Delay Instructions End  
+32 - Rey Delay Start 
+33 - Rey Delay End  
+34 - Trails Instructions Start 
+35 - Trails Instructions End
+36 - Trails Start 
+37 - Trails End  
+38 - Break 1 Start 
+39 - Break 1 End 
+--
+40 - Sync Audio Instructions Start 
+41 - Sync Audio Instructions End 
+42 - Increase Volume Audio Start
+43 - Increase Voume Audio End  
+44 - Sync Test Instructions Part 1.1 Start 
+45 - Sync Test Instructions Part 1.1 End  
+46 - Speaker Rate Training 1 Instructions Start 
+47 - Speaker Rate Training 1 Instructions End  
+48 - Speaker Rate Training 1 Audio Start
+49 - Speaker Rate Training 1 Audio End 
+50 - Whisper Ta Instructions 1 Start
+51 - Whisper Ta Instructions 1 End  
+52 - Whisper Ta 1 Start 
+53 - Whisper Ta 1 End  
+54 - Sync Test Instructions Part 2.1 Start
+55 - Sync Test Instructions Part 2.1 End  
+56 - Sync Test Audio 1 Start
+57 - Sync Test Audio 1 End  
+58 - Sync Test Instructions Part 1.2 Start 
+59 - Sync Test Instructions Part 1.2 End  
+60 - Speaker Rate Training 2 Instructions Start 
+61 - Speaker Rate Training 2 Instructions End  
+62 - Speaker Rate Training 2 Audio Start
+63 - Speaker Rate Training 2 Audio End 
+64 - Whisper Ta Instructions 2 Start
+65 - Whisper Ta Instructions 2 End  
+66 - Whisper Ta 2 Start 
+67 - Whisper Ta 2 End  
+68 - Sync Test Instructions Part 2.2 Start
+69 - Sync Test Instructions Part 2.2 End  
+70 - Sync Test Audio 2 Start
+71 - Sync Test Audio 2 End  
+72 - Break 2 Start
+73 - Break 2 End 
 74 - Video Instructions Start 
 75 - Video Instructions End  
 76 - Diary of Wimpy Kid Video Start
