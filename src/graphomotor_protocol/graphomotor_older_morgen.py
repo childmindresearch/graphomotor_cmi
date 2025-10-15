@@ -466,6 +466,9 @@ sync_test_instruc_2 = [
 # Video Screens
 video_start_instrc = ["You will now watch some videos!", "", "", "Press 'Next' to continue."]
 
+# Break Screen 
+break_screen = ["Awesome Job! Let's do another task!", "", "", "Press 'Next' to continue."]
+
 # PROTOCOL ##################
 ##############################
 
@@ -493,6 +496,9 @@ protocol_flow(mindlogger_start, name_hand_writing_instrc, name_hand_writing,
               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29],[30,31],
               [32,33],[34,35],[36,37],[38,39],[40,41]])
 
+### Break 
+protocol_flow(break_screen, event_markers=[[99, 98]])
+
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[42,43]])
 play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 4, increase_vol, event_markers=[44,45])
@@ -509,6 +515,9 @@ protocol_flow(whisper_ta_instrc, event_markers=[[66,67]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[68,69])
 protocol_flow(sync_test_instruc_2, event_markers=[[70,71]])
 play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[72,73])
+
+### Break 
+protocol_flow(break_screen, event_markers=[[99, 98]])
 
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
