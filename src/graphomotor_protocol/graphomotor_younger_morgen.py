@@ -481,35 +481,35 @@ screen_width, screen_height = screen.get_size()
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-# ### Resting State
-# show_text_no_buttons(cross, 120000, event_markers=[6,7])
+### Resting State
+show_text_no_buttons(cross, 120000, event_markers=[6,7])
 
-# ### MindLogger
-# protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
-#               sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
-#               digit_symbol_sub_instrc, digit_symbol_sub,
-#               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
-#               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29]])
+### MindLogger
+protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
+              sprial_dominat, spiral_nondominat_instrc, spiral_nondominat, 
+              digit_symbol_sub_instrc, digit_symbol_sub,
+              event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
+              [18,19],[20,21],[22,23],[24,25], [26,27],[28,29]])
 
-# ### Break 
-# protocol_flow(break_screen, event_markers=[[38, 39]])
+### Break 
+protocol_flow(break_screen, event_markers=[[38, 39]])
 
-# ### Sync Audio Test
-# protocol_flow(sync_audio_instrc, event_markers=[[40,41]])
-# play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 4, increase_vol, event_markers=[42,43])
-# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[44,45], [46,47]])
-# play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[48,49])
-# protocol_flow(whisper_ta_instrc, event_markers=[[50,51]])
-# show_text_no_buttons(whisper_ta, 10000, event_markers=[52,53])
-# protocol_flow(sync_test_instruc_2, event_markers=[[54,55]])
-# play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[56,57]) 
-# # Run through a 2nd time
-# protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[58,59], [60,61]])
-# play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[62,63])
-# protocol_flow(whisper_ta_instrc, event_markers=[[64,65]])
-# show_text_no_buttons(whisper_ta, 5000, event_markers=[66,67])
-# protocol_flow(sync_test_instruc_2, event_markers=[[68,69]])
-# play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[70,71])
+### Sync Audio Test
+protocol_flow(sync_audio_instrc, event_markers=[[40,41]])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 4, increase_vol, event_markers=[42,43])
+protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[44,45], [46,47]])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[48,49])
+protocol_flow(whisper_ta_instrc, event_markers=[[50,51]])
+show_text_no_buttons(whisper_ta, 10000, event_markers=[52,53])
+protocol_flow(sync_test_instruc_2, event_markers=[[54,55]])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[56,57]) 
+# Run through a 2nd time
+protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[58,59], [60,61]])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[62,63])
+protocol_flow(whisper_ta_instrc, event_markers=[[64,65]])
+show_text_no_buttons(whisper_ta, 5000, event_markers=[66,67])
+protocol_flow(sync_test_instruc_2, event_markers=[[68,69]])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[70,71])
 
 ### Break 
 protocol_flow(break_screen, event_markers=[[72, 73]])
