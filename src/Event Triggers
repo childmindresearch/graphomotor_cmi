@@ -5,8 +5,18 @@ Event Triggers
 3 - Experiment Instructions End  
 4 - Resting State Instructions Start 
 5 - Resting State Instructions End
-6 - Resting State Start 
-7 - Resting State End  
+6 - Resting State eyes_open_1 Start 
+7 - Resting State eyes_open_1 End 
+85 - Resting State Instructions eyes_closed_1 Start
+86 - Resting State Instructions eyes_closed_1 End
+87 - Resting State eyes_closed_1 Start
+88 - Resting State eyes_closed_1 End
+
+
+
+
+
+
 8 - Mind Logger Instructions Start 
 9 - Mind Logger Instructions End 
 --

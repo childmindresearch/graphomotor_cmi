@@ -392,10 +392,13 @@ def play_videos_in_random_order(video_paths, event_markers):
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
 resting_state_instrc = [
     "You will now start the resting state task",
-    "Please keep your eyes on the cross at the center of the screen.",
+    "You will now be asked to keep your eyes open and eyes closed",
+    "To start, please keep your eyes open and stare at the cross.",
     "", "", "Click 'Next' when you are ready to start."
 ]
 cross = ["+"]
+eyes_open = ["Please open your eyes and stare at the cross."]
+eyes_closed = ["Please close your eyes. I will tell you when you can open them again."]
 
 # Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.", "", "", "Click 'Next' when task is complete."]
@@ -421,7 +424,7 @@ sync_audio_instrc = [
     "to sounds and need to whisper with the sounds. Before",
     "we start our game, we need to make sure you can hear",
     "the sounds in the headphones. I will help you adjust the",
-    "volume as loud as you can without huring your ears.",
+    "volume as loud as you can without hurting your ears.",
     "", "", "Press 'Next' to continue."
 ]
 increase_vol = ["Increase the volume to a loud, but comfortable level."]
@@ -481,8 +484,62 @@ screen_width, screen_height = screen.get_size()
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+### Resting State - eyes_open_1
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_closed_1 
+protocol_flow(eyes_closed, event_markers=[[85,86]])
+
+### Resting State - eyes_closed_1
+show_text_no_buttons(cross, 30000, event_markers=[87,88])
+
+### Instructions: eyes_open_2 
+protocol_flow(eyes_open, event_markers=[[99,98]])
+
+### Resting State - eyes_open_2
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_closed_2
+protocol_flow(eyes_closed, event_markers=[[99,98]])
+
+### Resting State - eyes_closed_2
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_open_3 
+protocol_flow(eyes_open, event_markers=[[99,98]])
+
+### Resting State - eyes_open_3
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_closed_3
+protocol_flow(eyes_closed, event_markers=[[99,98]])
+
+### Resting State - eyes_closed_3
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_open_4 
+protocol_flow(eyes_open, event_markers=[[99,98]])
+
+### Resting State - eyes_open_4
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_closed_4
+protocol_flow(eyes_closed, event_markers=[[99,98]])
+
+### Resting State - eyes_closed_4
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_open_5 
+protocol_flow(eyes_open, event_markers=[[99,98]])
+
+### Resting State - eyes_open_5
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+
+### Instructions: eyes_closed_5
+protocol_flow(eyes_closed, event_markers=[[99,98]])
+
+### Resting State - eyes_closed_5
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
 
 ### MindLogger
 protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
