@@ -488,34 +488,34 @@ protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5
 
 ### Resting State 
 # Eyes Open 1
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Closed 1
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Open 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Closed 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Open 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Closed 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Open 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Closed 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Open 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 # Eyes Closed 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\graphomotor_protocol_2025\resting_state\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 
 ### MindLogger
