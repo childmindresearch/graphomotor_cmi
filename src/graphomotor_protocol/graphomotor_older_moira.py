@@ -30,6 +30,7 @@ info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
 outlet = StreamOutlet(info)
 
+
 # FUNCTIONS ##################
 ##############################
 
@@ -385,6 +386,7 @@ def play_videos_in_random_order(video_paths, event_markers):
         show_text_screen_videos(text_lines)
 
 
+
 # SCREENS ####################
 ##############################
 
@@ -484,61 +486,36 @@ screen_width, screen_height = screen.get_size()
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-### Resting State - eyes_open_1
+### Resting State 
+# Eyes Open 1
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_closed_1 
-protocol_flow(eyes_closed, event_markers=[[85,86]])
-
-### Resting State - eyes_closed_1
-show_text_no_buttons(cross, 30000, event_markers=[87,88])
-
-### Instructions: eyes_open_2 
-protocol_flow(eyes_open, event_markers=[[99,98]])
-
-### Resting State - eyes_open_2
+# Eyes Closed 1
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_closed_2
-protocol_flow(eyes_closed, event_markers=[[99,98]])
-
-### Resting State - eyes_closed_2
+# Eyes Open 2
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_open_3 
-protocol_flow(eyes_open, event_markers=[[99,98]])
-
-### Resting State - eyes_open_3
+# Eyes Closed 2
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_closed_3
-protocol_flow(eyes_closed, event_markers=[[99,98]])
-
-### Resting State - eyes_closed_3
+# Eyes Open 3
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_open_4 
-protocol_flow(eyes_open, event_markers=[[99,98]])
-
-### Resting State - eyes_open_4
+# Eyes Closed 3
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_closed_4
-protocol_flow(eyes_closed, event_markers=[[99,98]])
-
-### Resting State - eyes_closed_4
+# Eyes Open 4
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_open_5 
-protocol_flow(eyes_open, event_markers=[[99,98]])
-
-### Resting State - eyes_open_5
+# Eyes Closed 4
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
-
-### Instructions: eyes_closed_5
-protocol_flow(eyes_closed, event_markers=[[99,98]])
-
-### Resting State - eyes_closed_5
+# Eyes Open 5
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+show_text_no_buttons(cross, 30000, event_markers=[6,7])
+# Eyes Closed 5
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[6,7])
 
 ### MindLogger
