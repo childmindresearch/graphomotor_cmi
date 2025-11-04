@@ -50,8 +50,8 @@ def start_button(start_screen):
 
 def show_start_screen():
     """Display the start screen with a button to begin and send event marker."""
-    # start_screen.fill((0, 0, 0))
-    start_screen.blit(background_image, (0,0))
+    start_screen.fill((0, 0, 0))
+    #start_screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
     title_rect = title_surface.get_rect(center=(start_screen_width // 2, start_screen_height // 4))
@@ -72,30 +72,30 @@ def show_start_screen():
 
 def draw_back_button(screen):
     """Draws a "Back" button at the bottom left corner of the given Pygame screen."""
-    btn_w, btn_h = 150, 60
-    margin = 30
+    btn_w, btn_h = 130, 60
+    margin = 35
     # Place at bottom left
     x = margin 
     y = screen_height - btn_h - margin
     back_rect = pygame.Rect(x, y, btn_w, btn_h)
-    # White button
-    pygame.draw.rect(screen, (255, 255, 255), back_rect)
+    # Black button
+    pygame.draw.rect(screen, (0, 0, 0), back_rect) # white button (255, 255, 255)
     font = pygame.font.Font(None, 48)
-    # Black text for button 
-    back_surf = font.render("Back", True, (0,0,0))
+    # White text for button 
+    back_surf = font.render("Back", True, (255,255,255)) # black text (0, 0, 0)
     screen.blit(back_surf, back_surf.get_rect(center=back_rect.center))
     return back_rect
 
 def draw_forward_button(screen):
     """Draws a "Next" button at the bottom right corner of the given Pygame screen."""
-    btn_w, btn_h = 150, 60
-    margin = 30
+    btn_w, btn_h = 130, 60
+    margin = 35
     x = screen_width - btn_w - margin
     y = screen_height - btn_h - margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
-    pygame.draw.rect(screen, (255, 255, 255), forward_rect)
+    pygame.draw.rect(screen, (0, 0, 0), forward_rect)
     font = pygame.font.Font(None, 48)
-    forward_surf = font.render("Next", True, (0,0,0))
+    forward_surf = font.render("Next", True, (255,255,255))
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
