@@ -52,7 +52,7 @@ def start_button(start_screen):
 def show_start_screen():
     """Display the start screen with a button to begin and send event marker."""
     background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
-    start_screen = pygame.image.load(background_image_path)
+    background_image = pygame.image.load(background_image_path)
     start_screen = pygame.transform.scale(background_image, (screen_width, screen_height))
     #start_screen.fill((0, 0, 0))
     font = pygame.font.Font(None, 60)
