@@ -24,12 +24,6 @@ pygame.init()
 start_screen = pygame.display.set_mode((2560, 1400), pygame.RESIZABLE) # 1600x1200 
 start_screen_width, start_screen_height = start_screen.get_size()
 
-# Load background image globally
-background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
-background_image = pygame.image.load(background_image_path)
-background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
-
-
 # Set up LSL stream
 info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
@@ -490,6 +484,11 @@ show_start_screen()
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen = pygame.display.set_mode((2560, 1340), pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
 screen_width, screen_height = screen.get_size()
+
+# Load background image globally
+background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
