@@ -496,34 +496,34 @@ protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5
 ### Resting State 
 # Eyes Open 1
 play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+show_text_no_buttons(cross, 30000, event_markers=[85,86])
 # Eyes Closed 1
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[87,88])
+show_text_no_buttons(cross, 30000, event_markers=[89,90])
 # Eyes Open 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[91,92])
+show_text_no_buttons(cross, 30000, event_markers=[93,94])
 # Eyes Closed 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[95,96])
+show_text_no_buttons(cross, 30000, event_markers=[97,98])
 # Eyes Open 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[99,100])
+show_text_no_buttons(cross, 30000, event_markers=[101,102])
 # Eyes Closed 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[103,104])
+show_text_no_buttons(cross, 30000, event_markers=[105,106])
 # Eyes Open 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[107,108])
+show_text_no_buttons(cross, 30000, event_markers=[109,110])
 # Eyes Closed 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[111,112])
+show_text_no_buttons(cross, 30000, event_markers=[113,114])
 # Eyes Open 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[115,116])
+show_text_no_buttons(cross, 30000, event_markers=[117,118])
 # Eyes Closed 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[6,7])
-show_text_no_buttons(cross, 30000, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[119,120])
+show_text_no_buttons(cross, 30000, event_markers=[121,122])
 
 ### MindLogger
 protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 

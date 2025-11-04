@@ -24,7 +24,6 @@ pygame.init()
 start_screen = pygame.display.set_mode((2560, 1400), pygame.RESIZABLE) # 1600x1200 
 start_screen_width, start_screen_height = start_screen.get_size()
 
-
 # Set up LSL stream
 info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
                   channel_format='int32', source_id='uniqueid12345')
@@ -52,6 +51,7 @@ def start_button(start_screen):
 def show_start_screen():
     """Display the start screen with a button to begin and send event marker."""
     start_screen.fill((0, 0, 0))
+    #start_screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
     title_rect = title_surface.get_rect(center=(start_screen_width // 2, start_screen_height // 4))
@@ -72,30 +72,30 @@ def show_start_screen():
 
 def draw_back_button(screen):
     """Draws a "Back" button at the bottom left corner of the given Pygame screen."""
-    btn_w, btn_h = 150, 60
-    margin = 30
+    btn_w, btn_h = 130, 60
+    margin = 35
     # Place at bottom left
     x = margin 
     y = screen_height - btn_h - margin
     back_rect = pygame.Rect(x, y, btn_w, btn_h)
-    # White button
-    pygame.draw.rect(screen, (255, 255, 255), back_rect)
+    # Black button
+    pygame.draw.rect(screen, (0, 0, 0), back_rect) # white button (255, 255, 255)
     font = pygame.font.Font(None, 48)
-    # Black text for button 
-    back_surf = font.render("Back", True, (0,0,0))
+    # White text for button 
+    back_surf = font.render("Back", True, (255,255,255)) # black text (0, 0, 0)
     screen.blit(back_surf, back_surf.get_rect(center=back_rect.center))
     return back_rect
 
 def draw_forward_button(screen):
     """Draws a "Next" button at the bottom right corner of the given Pygame screen."""
-    btn_w, btn_h = 150, 60
-    margin = 30
+    btn_w, btn_h = 130, 60
+    margin = 35
     x = screen_width - btn_w - margin
     y = screen_height - btn_h - margin
     forward_rect = pygame.Rect(x, y, btn_w, btn_h)
-    pygame.draw.rect(screen, (255, 255, 255), forward_rect)
+    pygame.draw.rect(screen, (0, 0, 0), forward_rect)
     font = pygame.font.Font(None, 48)
-    forward_surf = font.render("Next", True, (0,0,0))
+    forward_surf = font.render("Next", True, (255,255,255))
     screen.blit(forward_surf, forward_surf.get_rect(center=forward_rect.center))
     return forward_rect
 
@@ -129,7 +129,8 @@ def draw_end_experiment_button(screen):
 
 def show_text_screen(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     for line in text_lines:
@@ -158,7 +159,8 @@ def show_text_screen(text_lines):
 
 def show_text_screen_videos(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     for line in text_lines:
@@ -222,7 +224,8 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     """Show text on screen without buttons. Need to specify duration in milliseconds."""
     markers = event_markers
     outlet.push_sample([markers[0]])
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     
@@ -265,7 +268,8 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
     markers = event_markers
     outlet.push_sample([markers[0]])
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     
@@ -301,9 +305,9 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
-    background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
-    background_image = pygame.image.load(background_image_path)
-    background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+    # background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+    # background_image = pygame.image.load(background_image_path)
+    # background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
     # to play video:
     player = MediaPlayer(video_path)
@@ -392,10 +396,13 @@ def play_videos_in_random_order(video_paths, event_markers):
 experiment_start = ["Welcome to the Graphomotor Protocol", "", "", "Click 'Next' to continue."]
 resting_state_instrc = [
     "You will now start the resting state task",
-    "Please keep your eyes on the cross at the center of the screen.",
+    "You will now be asked to keep your eyes open and eyes closed",
+    "To start, please keep your eyes open and stare at the cross.",
     "", "", "Click 'Next' when you are ready to start."
 ]
 cross = ["+"]
+eyes_open = ["Please open your eyes and stare at the cross."]
+eyes_closed = ["Please close your eyes. I will tell you when you can open them again."]
 
 # Mind Logger screens
 mindlogger_start = ["Now it is time to play on the iPad!", "Please listen to the research assistant.", "", "", "Click 'Next' when task is complete."]
@@ -421,7 +428,7 @@ sync_audio_instrc = [
     "to sounds and need to whisper with the sounds. Before",
     "we start our game, we need to make sure you can hear",
     "the sounds in the headphones. I will help you adjust the",
-    "volume as loud as you can without huring your ears.",
+    "volume as loud as you can without hurting your ears.",
     "", "", "Press 'Next' to continue."
 ]
 increase_vol = ["Increase the volume to a loud, but comfortable level."]
@@ -478,11 +485,45 @@ show_start_screen()
 screen = pygame.display.set_mode((2560, 1340), pygame.NOFRAME) # 1600x1200, 1920x1080, 1280x1024, 1920,1200, 2560, 1440
 screen_width, screen_height = screen.get_size()
 
+# Load background image globally
+background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+
 ### Experiment Start, Resting State 
 protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5]])
 
-### Resting State
-show_text_no_buttons(cross, 120000, event_markers=[6,7])
+### Resting State 
+# Eyes Open 1
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+show_text_no_buttons(cross, 30000, event_markers=[85,86])
+# Eyes Closed 1
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[87,88])
+show_text_no_buttons(cross, 30000, event_markers=[89,90])
+# Eyes Open 2
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[91,92])
+show_text_no_buttons(cross, 30000, event_markers=[93,94])
+# Eyes Closed 2
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[95,96])
+show_text_no_buttons(cross, 30000, event_markers=[97,98])
+# Eyes Open 3
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[99,100])
+show_text_no_buttons(cross, 30000, event_markers=[101,102])
+# Eyes Closed 3
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[103,104])
+show_text_no_buttons(cross, 30000, event_markers=[105,106])
+# Eyes Open 4
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[107,108])
+show_text_no_buttons(cross, 30000, event_markers=[109,110])
+# Eyes Closed 4
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[111,112])
+show_text_no_buttons(cross, 30000, event_markers=[113,114])
+# Eyes Open 5
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[115,116])
+show_text_no_buttons(cross, 30000, event_markers=[117,118])
+# Eyes Closed 5
+play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[119,120])
+show_text_no_buttons(cross, 30000, event_markers=[121,122])
 
 ### MindLogger
 protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, sprial_dominat_instrc, 
@@ -491,7 +532,7 @@ protocol_flow(mindlogger_start, rey_copy_instrc, rey_copy, alpha_instrc, alpha, 
               event_markers=[[8,9], [10,11],[12,13],[14,15], [16,17],
               [18,19],[20,21],[22,23],[24,25], [26,27],[28,29]])
 
-### Break 
+#### Break 
 protocol_flow(break_screen, event_markers=[[38, 39]])
 
 ### Sync Audio Test
@@ -533,4 +574,3 @@ play_videos_in_random_order(video_files, video_event_markers)
 
 ### Send final end marker   
 outlet.push_sample([84])
-
