@@ -24,6 +24,11 @@ pygame.init()
 start_screen = pygame.display.set_mode((2560, 1400), pygame.RESIZABLE) # 1600x1200 
 start_screen_width, start_screen_height = start_screen.get_size()
 
+# Load background image globally
+background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+background_image = pygame.image.load(background_image_path)
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+
 
 # Set up LSL stream
 info = StreamInfo(name='experiment_stream', type='Markers', channel_count=1,
@@ -51,7 +56,8 @@ def start_button(start_screen):
 
 def show_start_screen():
     """Display the start screen with a button to begin and send event marker."""
-    start_screen.fill((0, 0, 0))
+    # start_screen.fill((0, 0, 0))
+    start_screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     title_surface = font.render("Graphomotor Protocol", True, (255, 255, 255))
     title_rect = title_surface.get_rect(center=(start_screen_width // 2, start_screen_height // 4))
@@ -129,7 +135,8 @@ def draw_end_experiment_button(screen):
 
 def show_text_screen(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     for line in text_lines:
@@ -158,7 +165,8 @@ def show_text_screen(text_lines):
 
 def show_text_screen_videos(text_lines):
     """Show text on screen with 'Back' and 'Next' buttons."""
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     for line in text_lines:
@@ -222,7 +230,8 @@ def show_text_no_buttons(text_lines, duration_ms, event_markers):
     """Show text on screen without buttons. Need to specify duration in milliseconds."""
     markers = event_markers
     outlet.push_sample([markers[0]])
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     
@@ -265,7 +274,8 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
     """Play an audio file a specified number of times and display text on screen."""
     markers = event_markers
     outlet.push_sample([markers[0]])
-    screen.fill((0, 0, 0))
+    # screen.fill((0, 0, 0))
+    screen.blit(background_image, (0,0))
     font = pygame.font.Font(None, 60)
     y_offset = (screen_height - len(text_lines) * font.get_linesize()) // 2
     
@@ -301,9 +311,9 @@ def play_audio(audio_file, num_times_play, text_lines, event_markers):
 
 def play_video(video_path):
     """Play a video file with a background image with ET air tags."""
-    background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
-    background_image = pygame.image.load(background_image_path)
-    background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
+    # background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+    # background_image = pygame.image.load(background_image_path)
+    # background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
     # to play video:
     player = MediaPlayer(video_path)
