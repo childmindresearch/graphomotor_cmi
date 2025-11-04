@@ -7,16 +7,26 @@ Event Triggers
 5 - Resting State Instructions End
 6 - Resting State eyes_open_1 Start 
 7 - Resting State eyes_open_1 End 
-
-
-
-
-
-
-
+85 - Resting State eyes_closed_1 Start
+86 - Resting State eyes_closed_1 End
+87 - Resting State eyes_open_2 Start 
+88 - Resting State eyes_open_2 End 
+89 - Resting State eyes_closed_2 Start
+90 - Resting State eyes_closed_2 End
+91 - Resting State eyes_open_3 Start 
+92 - Resting State eyes_open_3 End 
+93 - Resting State eyes_closed_3 Start
+94 - Resting State eyes_closed_3 End
+95 - Resting State eyes_open_4 Start 
+96 - Resting State eyes_open_4 End
+97 - Resting State eyes_closed_4 Start
+98 - Resting State eyes_closed_4 End
+99 - Resting State eyes_open_5 Start 
+100 - Resting State eyes_open_5 End
+101 - Resting State eyes_closed_5 Start
+102 - Resting State eyes_closed_5 End
 8 - Mind Logger Instructions Start 
 9 - Mind Logger Instructions End 
---
 10 - Rey Copy Instructions Start 
 11 - Rey Copy Instructions End  
 12 - Rey Copy Start 
@@ -47,7 +57,6 @@ Event Triggers
 37 - Trails End  
 38 - Break 1 Start 
 39 - Break 1 End 
---
 40 - Sync Audio Instructions Start 
 41 - Sync Audio Instructions End 
 42 - Increase Volume Audio Start
