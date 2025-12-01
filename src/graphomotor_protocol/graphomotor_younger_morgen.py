@@ -446,7 +446,7 @@ speaker_rate_training_instrct = [
     "to the speed the sounds are being spoken.",
     "","", "Press 'Next' when you are ready."
 ]
-speaker_rate_training = ["Please pay attention to the speed of sounds and remain silent."]
+speaker_rate_training = ["LISTEN"]
 whisper_ta_instrc = [
     "Now it is your turn!",
     "When I say 'Go', start whispering 'ta' at the SAME SPEED as the",
@@ -537,7 +537,7 @@ protocol_flow(break_screen, event_markers=[[38, 39]])
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[40,41]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 4, increase_vol, event_markers=[42,43])
+play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 8, increase_vol, event_markers=[42,43])
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[44,45], [46,47]])
 play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[48,49])
 protocol_flow(whisper_ta_instrc, event_markers=[[50,51]])
