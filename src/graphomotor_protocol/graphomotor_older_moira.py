@@ -486,7 +486,7 @@ screen = pygame.display.set_mode((2560, 1340), pygame.NOFRAME) # 1600x1200, 1920
 screen_width, screen_height = screen.get_size()
 
 # Load background image globally
-background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\video_graphomotor2.jpg"
+background_image_path = r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\video_graphomotor2.jpg"
 background_image = pygame.image.load(background_image_path)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
@@ -495,34 +495,34 @@ protocol_flow(experiment_start, resting_state_instrc, event_markers=[[2,3], [4,5
 
 ### Resting State 
 # Eyes Open 1
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[6,7])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\open_eyes.wav", 1, cross, event_markers=[6,7])
 show_text_no_buttons(cross, 30000, event_markers=[85,86])
 # Eyes Closed 1
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[87,88])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\close_eyes.wav", 1, cross, event_markers=[87,88])
 show_text_no_buttons(cross, 30000, event_markers=[89,90])
 # Eyes Open 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[91,92])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\open_eyes.wav", 1, cross, event_markers=[91,92])
 show_text_no_buttons(cross, 30000, event_markers=[93,94])
 # Eyes Closed 2
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[95,96])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\close_eyes.wav", 1, cross, event_markers=[95,96])
 show_text_no_buttons(cross, 30000, event_markers=[97,98])
 # Eyes Open 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[99,100])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\open_eyes.wav", 1, cross, event_markers=[99,100])
 show_text_no_buttons(cross, 30000, event_markers=[101,102])
 # Eyes Closed 3
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[103,104])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\close_eyes.wav", 1, cross, event_markers=[103,104])
 show_text_no_buttons(cross, 30000, event_markers=[105,106])
 # Eyes Open 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[107,108])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\open_eyes.wav", 1, cross, event_markers=[107,108])
 show_text_no_buttons(cross, 30000, event_markers=[109,110])
 # Eyes Closed 4
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[111,112])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\close_eyes.wav", 1, cross, event_markers=[111,112])
 show_text_no_buttons(cross, 30000, event_markers=[113,114])
 # Eyes Open 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\open_eyes.wav", 1, cross, event_markers=[115,116])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\open_eyes.wav", 1, cross, event_markers=[115,116])
 show_text_no_buttons(cross, 30000, event_markers=[117,118])
 # Eyes Closed 5
-play_audio(r"C:\Users\MoBI\Documents\resting_state_task\close_eyes.wav", 1, cross, event_markers=[119,120])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\close_eyes.wav", 1, cross, event_markers=[119,120])
 show_text_no_buttons(cross, 30000, event_markers=[121,122])
 
 ### MindLogger
@@ -539,20 +539,20 @@ protocol_flow(break_screen, event_markers=[[38, 39]])
 
 ### Sync Audio Test
 protocol_flow(sync_audio_instrc, event_markers=[[40,41]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\volume.wav", 8, increase_vol, event_markers=[42,43])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\volume.wav", 8, increase_vol, event_markers=[42,43])
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[44,45], [46,47]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[48,49])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\example.wav", 1, speaker_rate_training, event_markers=[48,49])
 protocol_flow(whisper_ta_instrc, event_markers=[[50,51]])
 show_text_no_buttons(whisper_ta, 10000, event_markers=[52,53])
 protocol_flow(sync_test_instruc_2, event_markers=[[54,55]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[56,57]) 
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\stimulus.wav", 1, cross, event_markers=[56,57]) 
 # Run through a 2nd time
 protocol_flow(sync_test_instruc_1, speaker_rate_training_instrct, event_markers=[[58,59], [60,61]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\example.wav", 1, speaker_rate_training, event_markers=[62,63])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\example.wav", 1, speaker_rate_training, event_markers=[62,63])
 protocol_flow(whisper_ta_instrc, event_markers=[[64,65]])
 show_text_no_buttons(whisper_ta, 5000, event_markers=[66,67])
 protocol_flow(sync_test_instruc_2, event_markers=[[68,69]])
-play_audio(r"C:\Users\MoBI\Documents\speech_sync_task\stimulus.wav", 1, cross, event_markers=[70,71])
+play_audio(r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\stimulus.wav", 1, cross, event_markers=[70,71])
 
 ### Break 
 protocol_flow(break_screen, event_markers=[[72, 73]])
@@ -560,10 +560,10 @@ protocol_flow(break_screen, event_markers=[[72, 73]])
 ### Videos 
 protocol_flow(video_start_instrc, event_markers=[[74,75]])
 video_files = [
-    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\Diary of a Wimpy Kid Trailer.mp4",
-    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\despicable_me_clip.mp4",
-    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\the_present.mp4",
-    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files for protocol\fun_with_fractuals_vol_adj.mp4"
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\Diary of a Wimpy Kid Trailer.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\despicable_me_clip.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\the_present.mp4",
+    r"C:\Users\MoBI\Desktop\Custom_MoBI_Software\files_for_protocol\fun_with_fractuals_vol_adj.mp4"
 ]
 video_event_markers = {
     video_files[0]: [76, 77],
