@@ -8,6 +8,8 @@
 # ]
 # ///
 
+#testing something
+
 import pygame 
 import time
 from pylsl import StreamInfo, StreamOutlet
